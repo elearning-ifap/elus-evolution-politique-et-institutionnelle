@@ -37,3 +37,13 @@ Sécurisation avant recette Moodle : feedbacks réellement visibles et rejouable
 - aucune donnée de score global n’est écrite dans SCORM ;
 - radar affiché uniquement après les trois passations ipsatives complètes ;
 - frise toujours accessible depuis le menu et l’accès direct.
+
+
+## v1.6 — recette design
+- correction définitive des consignes vidéo ;
+- positionnement ipsatif en 3 étapes × 2 dimensions, avec radar à 6 branches sans score global ;
+- validation directe du positionnement initial depuis la 3e étape ;
+- hiérarchie éditoriale renforcée sur accueil, périodes, vidéos et frise ;
+- ruban des périodes transformé en parcours chronologique ;
+- confidentialité sans emoji système ;
+- focus clavier, responsive tablette et surfaces harmonisés.

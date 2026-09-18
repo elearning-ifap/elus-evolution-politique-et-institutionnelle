@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Évolution politique et institutionnelle de la Nouvelle-Calédonie — Prototype v1.3</title>
+<title>Évolution politique et institutionnelle de la Nouvelle-Calédonie — Design v1.6</title>
 <!--
 ================================================================================
   GABARIT NOYAU v1.6.1 — fichier de référence
@@ -664,6 +664,191 @@ table.tab td.revele::after{content:none}
 @media(max-width:900px){.g-radar-wrap{grid-template-columns:1fr}.g-radar-card{max-width:560px;margin:0 auto;width:100%}}
 @media(max-width:560px){.epi-actionbar .btn{width:100%;min-width:0}}
 
+
+/* ===== EPI v1.5 · audit design premium — couche module, sans modifier le noyau ===== */
+:root{
+  --page:#F4F7F9;
+  --ligne:#D9E2E8;
+  --encre:#223544;
+  --texte-2:#637585;
+  --ombre-carte:0 10px 30px rgba(31,50,64,.055);
+  --fs-corps:17px;
+  --interligne:1.55;
+}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;background:var(--page)}
+h1{font-size:clamp(31px,3.4vw,45px);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin-bottom:14px}
+h2{font-size:clamp(23px,2.2vw,29px);line-height:1.18;letter-spacing:-.015em}
+h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2);max-width:72ch}
+.eyebrow{letter-spacing:.095em;font-size:12px;margin-bottom:8px}
+.g-page{padding-top:32px}.g-contenu{max-width:1000px}
+
+/* Chrome et navigation : moins de bruit, hiérarchie plus nette. */
+.g-chrome{box-shadow:none;border-bottom:1px solid rgba(255,255,255,.12)}
+.g-chrome-inner{min-height:64px;padding:10px 22px}.g-chrome .g-titre{font-size:14.5px;line-height:1.25}.g-chrome .g-titre span{margin-top:2px;font-size:12px;opacity:.86}
+.g-chrome-btn{min-height:40px;padding:8px 12px;border:1px solid rgba(255,255,255,.25);border-radius:9px;transition:background .16s ease,border-color .16s ease,transform .16s ease}
+.g-chrome-btn:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.45)}
+.g-layout{grid-template-columns:264px minmax(0,1000px);gap:34px}
+.g-menu{top:88px;padding:16px 10px 14px;border-radius:14px;box-shadow:none;border-color:var(--ligne);background:rgba(255,255,255,.96)}
+.g-menu-head{margin:2px 10px 14px}.g-menu-titre{font-size:16px}.g-menu-pct{background:#F0F4F6;border:1px solid var(--ligne);padding:4px 8px}
+.g-menu a{position:relative;min-height:54px;padding:10px 12px;border-radius:10px;transition:background .15s ease,color .15s ease}
+.g-menu li.est-actif a{box-shadow:none;background:var(--bleu-nuit);padding-left:15px}
+.g-menu li.est-actif a::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:4px;border-radius:0 4px 4px 0;background:var(--or)}
+.g-menu li.est-termine a{background:#FAFCFD}.g-menu li.est-termine .g-menu-statut{font-size:14px}
+.g-menu-outils{margin:16px 4px 0;padding-top:14px}.g-menu-outils a{min-height:42px!important;padding:9px 10px!important;border-radius:9px!important}
+
+/* Boutons : même langage que Budget, sans aspect générateur de template. */
+.btn{min-height:46px;padding:12px 18px;border-radius:10px;font-size:15.5px;font-weight:700;transition:transform .15s ease,box-shadow .15s ease,background .15s ease,border-color .15s ease}
+.btn:not([disabled]):hover{transform:translateY(-1px)}
+.btn-accent{box-shadow:0 5px 14px rgba(176,127,0,.14)}.btn-primaire{box-shadow:0 5px 14px rgba(47,67,84,.12)}
+.btn-secondaire{border-width:1px}
+
+/* Accueil : supprimer les cartes redondantes et donner un rythme éditorial. */
+.epi-accueil-hero{gap:20px;margin-bottom:28px}.epi-accueil-main{padding:36px 38px;border-radius:16px;box-shadow:var(--ombre-carte)}
+.epi-accueil-main h1{max-width:760px}.epi-accueil-main .chapo{font-size:18px;color:var(--texte-2)}
+.epi-meta-row{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0}.epi-meta-row span{display:inline-flex;align-items:center;min-height:32px;padding:6px 10px;border:1px solid var(--ligne);border-radius:999px;background:#F8FAFB;color:var(--bleu-nuit);font-size:12.5px;font-weight:700}
+.epi-question-fil{margin-top:24px;padding:18px 20px;border-left:4px solid var(--or);border-radius:0 10px 10px 0;background:#FFF8E8}.epi-question-fil strong{font-size:19px}
+.epi-accueil-visuel{border-radius:16px;padding:10px;gap:6px;box-shadow:var(--ombre-carte)}.epi-accueil-visuel figure{border-radius:8px}.epi-accueil-visuel figure:first-child{min-height:178px}.epi-accueil-visuel figcaption{padding:26px 10px 9px;font-size:11.5px}
+.epi-section-title{margin:0 0 14px!important;font-size:21px!important}
+.epi-ruban{gap:7px;margin:0 0 22px}.epi-ruban-item{min-height:88px;padding:14px 12px 12px;border-radius:10px;box-shadow:none}.epi-ruban-item::before{height:4px;border-radius:10px 10px 0 0}.epi-ruban-item small{font-size:11px}.epi-ruban-item b{font-size:13.5px}
+.epi-savoir{box-shadow:none}.epi-savoir summary{min-height:50px;display:flex;align-items:center;justify-content:space-between}.epi-savoir summary::after{float:none;margin-left:16px}
+.epi-accueil-bas{margin-top:20px;padding:18px 20px;background:#fff;border-radius:12px}.epi-accueil-bas .chapo{font-size:14px}
+
+/* Contexte de période : plus léger qu'une carte répétée à chaque écran. */
+.epi-seq-head{margin:0 0 20px;padding:0 0 13px;background:transparent;border:0;border-bottom:1px solid var(--ligne);border-radius:0;box-shadow:none}
+.epi-seq-num{width:32px;height:32px;font-size:14px}.epi-seq-meta small{font-size:10.5px}.epi-seq-meta strong{font-size:14px}.epi-seq-step{font-size:11.5px;padding:5px 9px;border:1px solid var(--ligne);border-radius:999px;background:#fff}
+
+/* Ouverture de période : split éditorial plein format, comme les missions Budget. */
+.epi-period{grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);gap:0;padding:0;overflow:hidden;border-radius:16px;box-shadow:var(--ombre-carte)}
+.epi-period>div:first-child{padding:34px 34px 32px}.epi-period>img{width:100%;height:100%;min-height:330px;aspect-ratio:auto!important;object-fit:cover;border-radius:0!important}
+.epi-period .epi-question{font-size:clamp(29px,3.2vw,40px);line-height:1.12;letter-spacing:-.022em;margin:12px 0 14px}.epi-period>div:first-child>p:not(.epi-question){color:var(--texte-2);max-width:62ch}
+.epi-mission-chip{background:#F7F9FA;border-color:var(--ligne);font-size:12px}
+
+/* Consignes : corrige le bug de grille de la capture et retire le double étiquetage. */
+.g-consigne::before{display:none!important}.g-consigne{border-width:1px!important;background:#FFF9E9!important;padding:16px 18px!important}.g-consigne>b:first-child{display:block;font-size:12px;line-height:1.2;text-transform:uppercase;letter-spacing:.075em;color:var(--or-texte);margin-bottom:7px}
+.epi-objectif::before{content:none!important;display:none!important}.epi-objectif{grid-template-columns:44px minmax(0,1fr)!important;gap:14px!important;align-items:start!important;padding:16px 18px!important;background:#FFF9E9!important;border:1px solid #E9CE78!important;border-radius:12px!important}
+.epi-objectif .picto{width:44px;height:44px;border-radius:11px}.epi-objectif>div:last-child{min-width:0}.epi-objectif b{font-size:12px;text-transform:uppercase;letter-spacing:.075em;color:var(--or-texte);margin-bottom:6px}.epi-objectif span{font-size:16.5px;line-height:1.5;overflow-wrap:normal;word-break:normal}
+
+/* Repères : enlever le double titre et éviter le grand pavé sombre générique. */
+.g-repere::before{display:none!important}.g-repere{position:relative;background:#fff;color:var(--encre);border:1px solid var(--ligne);border-left:5px solid var(--or);border-top-width:1px;padding:18px 20px;box-shadow:none}
+.g-repere>b:first-child{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--or-texte);margin-bottom:7px}.g-repere span{display:block;font-size:17px;line-height:1.5;color:var(--bleu-nuit)}
+
+/* Cartes et interactions : moins de boîtes, plus de contenu. */
+.epi-card{padding:19px 20px;border-radius:12px;background:#fff}.epi-card h3{font-size:18px}.epi-card p{color:var(--texte-2)}
+.epi-item{padding:16px 17px;border-radius:12px}.epi-choice{border-width:1px;padding:14px 16px;border-radius:10px;transition:border-color .14s ease,background .14s ease,box-shadow .14s ease}
+.epi-choice:hover{box-shadow:0 3px 12px rgba(31,50,64,.05)}
+.epi-feedback{padding:16px 18px;border-left-width:4px!important}.epi-feedback strong{color:var(--bleu-nuit)}
+.epi-actionbar{margin-top:26px;padding-top:20px}.epi-actionbar .btn{min-width:210px}
+
+/* Positionnement ipsatif : 3 écrans x 2 dimensions, zone radar à gauche. */
+.epi-pos-layout{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:24px;align-items:start;margin-top:22px}
+.epi-pos-aside{position:sticky;top:90px;border:1px solid var(--ligne);border-radius:14px;background:#fff;padding:20px;box-shadow:var(--ombre-carte)}
+.epi-pos-aside h2{font-size:18px;margin:0 0 7px}.epi-pos-aside p{font-size:14px;color:var(--texte-2);margin:0}.epi-pos-progress{display:flex;gap:7px;margin:18px 0 14px}.epi-pos-dot{height:7px;flex:1;border-radius:99px;background:#E7EDF1}.epi-pos-dot.on{background:var(--or)}
+.epi-pos-radar{margin-top:14px;min-height:250px;display:grid;place-items:center}.epi-pos-radar svg{width:100%;max-width:290px;height:auto}.epi-pos-radar-empty{display:grid;place-items:center;width:210px;height:210px;border-radius:50%;border:1px dashed #C9D4DB;color:var(--texte-2);text-align:center;padding:28px;font-size:13px;background:#FAFCFD}
+.epi-pos-main{min-width:0}.epi-pos-step-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px}.epi-pos-step-head b{font-size:14px;color:var(--bleu-nuit)}.epi-pos-step-head span{font-size:12px;color:var(--texte-2)}
+.g-item-pos{box-shadow:none;border:1px solid var(--ligne);border-radius:12px;padding:19px 20px;margin-bottom:12px}.g-item-pos p{font-size:16.5px;line-height:1.45;margin-bottom:13px}
+.g-echelle{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.g-echelle button{min-height:50px;flex:none;padding:8px;border-width:1px;border-radius:9px;font-size:12.5px;line-height:1.25}.g-echelle button.on{box-shadow:inset 0 0 0 1px var(--bleu-nuit)}
+.epi-pos-nav{display:flex;justify-content:space-between;gap:10px;margin-top:16px}.epi-pos-nav .btn{min-width:140px}.epi-pos-step[hidden]{display:none!important}
+#g-pre-suivant,#g-retro-suivant{margin-top:14px}
+
+/* Radar final : respirations et légende. */
+.g-radar-wrap{gap:30px}.g-radar-card{padding:20px;border-radius:14px;box-shadow:none}.g-delta-list{gap:8px}.g-delta-item{padding:13px 15px;background:#fff}.g-delta-item strong{font-size:14.5px}.g-delta-item small{line-height:1.4}
+
+/* Frise : matérialiser réellement le fil chronologique. */
+.epi-period-col{box-shadow:none;border-radius:12px}.epi-period-events{position:relative;padding:14px 10px 14px 24px}.epi-period-events::before{content:"";position:absolute;left:13px;top:18px;bottom:18px;width:1px;background:#DCE4E9}.epi-event{position:relative;min-height:68px;border-left:1px solid var(--bordure);padding:10px 11px;margin:0;border-radius:9px}.epi-event::before{content:"";position:absolute;left:-17px;top:18px;width:9px;height:9px;border-radius:50%;background:var(--or);box-shadow:0 0 0 4px #fff,0 0 0 5px var(--ligne)}
+.epi-event[data-cat="institution"]::before{background:#58788F}.epi-event[data-cat="texte"]::before{background:#B07F00}.epi-event[data-cat="mouvement"]::before{background:#6C6B70}.epi-event[data-cat="acteur"]::before{background:#7A5E10}.epi-event[data-cat="accord"]::before{background:#2E7D52}.epi-event[data-cat="contexte"]::before{background:#647583}
+.epi-frise-detail{box-shadow:var(--ombre-carte);border-radius:12px}.epi-frise-detail-copy{padding:20px 20px 18px 0}
+
+/* Responsive : tablette d'abord, le menu se replie avant que le contenu ne soit comprimé. */
+@media(max-width:1180px){
+  .g-layout{display:block}.g-chrome #g-btn-menu{display:inline-block}.g-menu{display:none;position:fixed;z-index:70;left:16px;right:auto;width:min(330px,calc(100vw - 32px));top:74px;max-height:calc(100dvh - 94px)}.g-menu.ouvert{display:block}
+  .g-contenu{max-width:none}.g-page{padding-left:22px;padding-right:22px}
+}
+@media(max-width:860px){
+  .epi-period{grid-template-columns:1fr}.epi-period>div:first-child{padding:26px 24px 24px}.epi-period>img{min-height:220px;max-height:300px}
+  .epi-pos-layout{grid-template-columns:1fr}.epi-pos-aside{position:static}.epi-pos-radar{min-height:220px}
+  .epi-accueil-hero{grid-template-columns:1fr}.epi-accueil-visuel{min-height:330px}
+}
+@media(max-width:680px){
+  .g-page{padding:22px 14px 40px}.epi-accueil-main{padding:25px 20px}.epi-accueil-visuel{display:none}.epi-ruban{grid-template-columns:1fr}.epi-ruban-item:last-child{grid-column:auto}
+  .g-echelle{grid-template-columns:repeat(2,minmax(0,1fr))}.epi-pos-nav{flex-direction:column-reverse}.epi-pos-nav .btn{width:100%}
+  .epi-seq-head{align-items:flex-start}.epi-seq-step{display:none}.epi-actionbar{display:block}.epi-actionbar .btn{width:100%}
+}
+@media(prefers-reduced-motion:no-preference){
+  .panel.actif{animation:epiEnter .2s ease-out}@keyframes epiEnter{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
+/* Rétrospectif : volontairement plus compact que le positionnement principal. */
+.epi-retro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.epi-retro-grid .g-item-pos{margin:0;padding:14px 15px}.epi-retro-grid .g-item-pos p{font-size:14.5px}.epi-retro-grid .g-echelle{grid-template-columns:repeat(2,minmax(0,1fr))}.epi-retro-grid .g-echelle button{min-height:42px;font-size:11.5px}
+.epi-reset{margin-top:34px;padding:18px 0 0;border:0;border-top:1px solid var(--ligne);border-radius:0;background:transparent}.epi-reset h2{font-size:17px;margin:0 0 6px}.epi-reset p{font-size:13.5px;color:var(--texte-2);max-width:70ch}.epi-reset .btn{min-height:40px;padding:9px 13px;font-size:13.5px}
+@media(max-width:760px){.epi-retro-grid{grid-template-columns:1fr}}
+
+
+/* ===== EPI v1.6 · recette design — finition Budget / produit numérique ===== */
+/* accueil : le ruban devient un véritable parcours, pas une rangée de cartes */
+.epi-ruban{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;padding:0 4px;margin:8px 0 28px}
+.epi-ruban::before{content:"";position:absolute;left:8%;right:8%;top:23px;height:2px;background:linear-gradient(90deg,#D9E2E8 0%,#F8BB00 48%,#D9E2E8 100%);z-index:0}
+.epi-ruban-item{position:relative;z-index:1;min-height:94px;padding:0 10px 10px;background:transparent!important;border:0!important;box-shadow:none!important;text-align:center}
+.epi-ruban-item::before{content:""!important;display:block!important;position:static!important;width:16px!important;height:16px!important;margin:15px auto 12px!important;border-radius:50%!important;background:#fff!important;border:4px solid var(--or)!important;box-shadow:0 0 0 5px var(--page)!important}
+.epi-ruban-item small{display:block;color:var(--or-texte);font-size:10.5px;letter-spacing:.075em;text-transform:uppercase;margin-bottom:4px}
+.epi-ruban-item b{display:block;font-size:13px;line-height:1.3;color:var(--bleu-nuit)}
+
+/* confidentialité : iconographie vectorielle CSS au lieu de l’emoji système */
+.epi-confid{display:grid!important;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;padding:13px 15px!important;border:1px solid var(--ligne)!important;border-radius:10px!important;background:#F7FAFB!important;color:var(--texte-2)!important;font-size:13px!important;line-height:1.45!important}
+.epi-lock{position:relative;display:block;width:20px;height:16px;margin:6px 0 0 3px;border:2px solid var(--bleu-ardoise);border-radius:4px}
+.epi-lock::before{content:"";position:absolute;left:3px;right:3px;top:-10px;height:10px;border:2px solid var(--bleu-ardoise);border-bottom:0;border-radius:8px 8px 0 0}
+
+/* vidéo : priorité au contenu, note technique secondaire */
+.epi-video-shell{padding:0!important;overflow:hidden;border-radius:16px!important;background:#fff!important}
+.epi-video-shell .epi-video{border-radius:0!important}
+.epi-video-shell .epi-video iframe{border-radius:0!important}
+.epi-video-note{margin:0!important;padding:11px 15px 13px!important;border-top:1px solid var(--ligne);background:#FAFCFD;color:var(--texte-2)!important;font-size:12.5px!important;line-height:1.45!important}
+
+/* positionnement : vocabulaire et hiérarchie plus proches du Budget */
+.epi-pos-dim{display:inline-flex;align-items:center;min-height:25px;margin-bottom:8px;padding:4px 8px;border-radius:999px;background:#EEF4F7;color:var(--bleu-nuit);font-size:10.5px;font-weight:800;letter-spacing:.055em;text-transform:uppercase}
+.epi-pos-aside{overflow:hidden}
+.epi-pos-aside::before{content:"Auto-positionnement";display:block;margin:-20px -20px 17px;padding:10px 20px;border-bottom:1px solid var(--ligne);background:#F8FAFB;color:var(--or-texte);font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.epi-pos-step-head{padding-bottom:9px;border-bottom:1px solid var(--ligne)}
+.epi-pos-step-head b{font-size:15px}.epi-pos-step-head span{font-weight:700}
+.epi-pos-progress{gap:8px}.epi-pos-dot{height:6px}.epi-pos-dot.partial{background:#E9D798}.epi-pos-dot.on{background:var(--or)}
+.g-item-pos{transition:border-color .14s ease,background .14s ease}.g-item-pos:focus-within{border-color:#B8C7D1;background:#FCFDFE}
+.g-echelle button{position:relative}.g-echelle button::before{display:block;margin-bottom:3px;color:inherit;font-size:10px;font-weight:900;opacity:.75}
+.g-echelle button:nth-child(1)::before{content:"1"}.g-echelle button:nth-child(2)::before{content:"2"}.g-echelle button:nth-child(3)::before{content:"3"}.g-echelle button:nth-child(4)::before{content:"4"}
+#g-pre-suivant{display:none!important}
+
+/* ouverture de période : l’image fonctionne comme média éditorial, pas comme vignette */
+.epi-period>img{filter:saturate(.92) contrast(1.02)}
+.epi-period{border-color:#D8E1E7}
+.epi-period .epi-kicker{font-size:11px;font-weight:900;letter-spacing:.1em}
+.epi-period .epi-question{max-width:16ch}
+
+/* activités : états tactiles et clavier haut de gamme, sans effets décoratifs inutiles */
+.btn:focus-visible,.g-chrome-btn:focus-visible,.g-menu a:focus-visible,.epi-choice:focus-visible,.epi-event:focus-visible,.g-echelle button:focus-visible{outline:3px solid rgba(248,187,0,.55);outline-offset:3px}
+.epi-choice:active,.epi-event:active,.btn:not([disabled]):active{transform:translateY(0)}
+.epi-feedback{box-shadow:none!important}
+
+/* frise : augmenter la sensation de chronologie et réduire l’effet dashboard */
+.epi-period-visual{aspect-ratio:16/7.6}.epi-period-caption{left:12px;right:12px;bottom:10px}
+.epi-period-events{background:linear-gradient(90deg,#FBFCFD 0,#fff 26px,#fff 100%)}
+.epi-event{box-shadow:none!important}.epi-event:hover{border-color:#C7D3DB;background:#FAFCFD}.epi-event.on{box-shadow:inset 0 0 0 1px var(--bleu-nuit)!important}
+.epi-frise-detail-copy h3{font-size:22px;letter-spacing:-.01em}
+
+/* clôture : réduire le caractère “template de fin” */
+#g-fin .hero{padding:28px 30px;border-radius:16px;background:linear-gradient(135deg,var(--bleu-nuit),#40596D);box-shadow:none}
+#g-fin .hero h1{max-width:760px}.epi-reset{opacity:.88}
+
+/* micro-cohérence des surfaces */
+.epi-savoir,.epi-accueil-bas,.epi-card,.g-item-pos,.g-radar-card,.g-delta-item{border-color:var(--ligne)!important}
+.epi-savoir,.epi-accueil-bas,.epi-card,.g-item-pos,.g-radar-card,.g-delta-item,.epi-video-shell{box-shadow:none!important}
+
+@media(max-width:860px){
+  .epi-ruban{grid-template-columns:1fr;gap:0;padding-left:12px}.epi-ruban::before{left:19px;right:auto;top:14px;bottom:14px;width:2px;height:auto;background:#D9E2E8}
+  .epi-ruban-item{display:grid;grid-template-columns:26px 1fr;grid-template-rows:auto auto;column-gap:10px;min-height:58px;padding:5px 0 8px;text-align:left}
+  .epi-ruban-item::before{grid-row:1/3;grid-column:1;align-self:start;width:12px!important;height:12px!important;margin:7px auto 0!important;border-width:3px!important;box-shadow:0 0 0 4px var(--page)!important}
+  .epi-ruban-item small{grid-column:2;margin:0 0 2px}.epi-ruban-item b{grid-column:2}
+}
+@media(max-width:680px){
+  .epi-period .epi-question{max-width:none}.epi-pos-aside{padding:17px}.epi-pos-aside::before{margin:-17px -17px 15px;padding:9px 17px}
+}
+
 </style>
 </head>
 <body>
@@ -672,8 +857,8 @@ table.tab td.revele::after{content:none}
 <p class="g-titre" id="g-titre-module">Titre du module
       <span id="g-sous-titre">Congrès de la Nouvelle-Calédonie × IFAP — mandature 2026-2031</span></p>
 <button aria-expanded="false" class="g-chrome-btn" id="g-btn-menu">Parcours</button>
-<button class="g-chrome-btn" data-ouvrir-modal="g-acces" id="g-btn-acces">⚡ Accès direct</button>
-<button aria-pressed="false" class="g-chrome-btn" hidden="" id="g-btn-plein-ecran">⛶ Plein écran</button>
+<button class="g-chrome-btn" data-ouvrir-modal="g-acces" id="g-btn-acces">Accès rapide</button>
+<button aria-pressed="false" class="g-chrome-btn" hidden="" id="g-btn-plein-ecran">Plein écran</button>
 </div>
 <div aria-label="Progression" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="g-progression" role="progressbar">
 <div class="g-avancee" id="g-jauge"></div>
@@ -704,6 +889,7 @@ table.tab td.revele::after{content:none}
 <p class="eyebrow">Évolution politique et institutionnelle · 1944-1998</p>
 <h1>Cinq périodes pour comprendre comment les équilibres politiques se sont construits</h1>
 <p class="chapo">Ce parcours ne vous demande pas de retenir une succession de dates. Il vous aide à comprendre les transformations qui relient la fin de l’ordre colonial, l’émancipation politique, les évolutions statutaires, la confrontation puis le temps des accords.</p>
+<div class="epi-meta-row" aria-label="Repères du parcours"><span>5 périodes</span><span>5 vidéos</span><span>1 frise interactive</span><span>≈ 1 h</span></div>
 <div class="epi-question-fil">
 <small>Votre question fil rouge</small>
 <strong>Qu’est-ce qui change à chaque période, et pourquoi cela change-t-il la suite ?</strong>
@@ -717,12 +903,7 @@ table.tab td.revele::after{content:none}
 <figure><img alt="Photogramme de la période 1988-1998" src="assets/v5_poster.jpg"/><figcaption>1988-1998</figcaption></figure>
 </div>
 </div>
-<div aria-label="Repères du parcours" class="epi-accueil-reperes">
-<div class="epi-repere-kpi"><b>5 périodes</b><span>pour lire les grandes transformations</span></div>
-<div class="epi-repere-kpi"><b>5 vidéos</b><span>courtes, au cœur de chaque période</span></div>
-<div class="epi-repere-kpi"><b>1 frise</b><span>accessible à tout moment pour se repérer</span></div>
-</div>
-<h2 style="margin-top:0">Votre parcours en un coup d’œil</h2>
+<h2 class="epi-section-title">Votre parcours en un coup d’œil</h2>
 <div aria-label="Les cinq périodes du parcours" class="epi-ruban">
 <div class="epi-ruban-item"><small>Période 1</small><b>1944-1946<br/>L’ordre bascule</b></div>
 <div class="epi-ruban-item"><small>Période 2</small><b>1946-1957<br/>Émancipation politique</b></div>
@@ -749,7 +930,7 @@ table.tab td.revele::after{content:none}
 <p class="eyebrow">Positionnement</p>
 <h1>Où en êtes-vous aujourd'hui ?</h1>
 <p class="chapo">Six affirmations. Pas de bonne réponse, pas de note, pas de classement. En fin de module, vous verrez le chemin parcouru.</p>
-<div class="g-confid">🔒 <span>Cet auto-positionnement est déclaratif et ne constitue ni une note ni une évaluation de réussite. Vos réponses sont enregistrées dans la plateforme et accessibles aux personnels IFAP habilités afin d’analyser votre niveau de départ et votre progression perçue.</span></div>
+<div class="g-confid epi-confid"><span aria-hidden="true" class="epi-lock"></span><span>Cet auto-positionnement est déclaratif et ne constitue ni une note ni une évaluation de réussite. Vos réponses sont enregistrées dans la plateforme et accessibles aux personnels IFAP habilités afin d’analyser votre niveau de départ et votre progression perçue.</span></div>
 <div id="g-pre-items"></div>
 <div id="g-orientation"></div>
 <p><button class="btn btn-primaire" disabled="" id="g-pre-suivant">Je valide mon positionnement</button></p>
@@ -776,7 +957,7 @@ table.tab td.revele::after{content:none}
 </section>
 <section class="panel epi-period-screen" data-composant="video" data-obligatoire="" data-titre="Séquence 1 · 1944-1946" id="epi-p1-video"><div aria-label="Période 1 — 1944-1946" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">1</span><div class="epi-seq-meta"><small>Période 1 · 1944-1946</small><strong>L’ordre bascule</strong></div></div><span class="epi-seq-step">Étape 2/4</span></div>
 <p class="eyebrow">1944-1946</p><h1>1944-1946 : L’ordre bascule</h1>
-<div class="g-consigne epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>quels changements ouvrent une nouvelle séquence politique ?</strong></span></div></div>
+<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>quels changements ouvrent une nouvelle séquence politique ?</strong></span></div></div>
 <div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="about:blank" data-youtube-src="https://www.youtube-nocookie.com/embed/pb7Fx1v_NjM?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" title="1944-1946 : L’ordre bascule"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
 
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p1-activite" data-termine-ecran="">J’ai terminé la vidéo</button></p>
@@ -798,7 +979,7 @@ table.tab td.revele::after{content:none}
 </section>
 <section class="panel epi-period-screen" data-composant="video" data-obligatoire="" data-titre="Séquence 2 · 1946-1957" id="epi-p2-video"><div aria-label="Période 2 — 1946-1957" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">2</span><div class="epi-seq-meta"><small>Période 2 · 1946-1957</small><strong>L’émancipation politique</strong></div></div><span class="epi-seq-step">Étape 2/4</span></div>
 <p class="eyebrow">1946-1957</p><h1>Émancipation politique</h1>
-<div class="g-consigne epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>comment passe-t-on de la citoyenneté à une représentation politique plus effective ?</strong></span></div></div>
+<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>comment passe-t-on de la citoyenneté à une représentation politique plus effective ?</strong></span></div></div>
 <div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="about:blank" data-youtube-src="https://www.youtube-nocookie.com/embed/_ZlqA0R3jXs?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" title="Émancipation politique"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
 
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p2-activite" data-termine-ecran="">J’ai terminé la vidéo</button></p>
@@ -820,7 +1001,7 @@ table.tab td.revele::after{content:none}
 </section>
 <section class="panel epi-period-screen" data-composant="video" data-obligatoire="" data-titre="Séquence 3 · 1957-1981" id="epi-p3-video"><div aria-label="Période 3 — 1957-1981" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">3</span><div class="epi-seq-meta"><small>Période 3 · 1957-1981</small><strong>Autonomie et recompositions</strong></div></div><span class="epi-seq-step">Étape 2/5</span></div>
 <p class="eyebrow">1957-1981</p><h1>Nouvelle-Calédonie 57-77</h1>
-<div class="g-consigne epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>qu’est-ce qui relève d’une évolution institutionnelle, d’une reprise en main ou d’une transformation du contexte ?</strong></span></div></div>
+<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>qu’est-ce qui relève d’une évolution institutionnelle, d’une reprise en main ou d’une transformation du contexte ?</strong></span></div></div>
 <div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="about:blank" data-youtube-src="https://www.youtube-nocookie.com/embed/HhK2hFaJa8M?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" title="Nouvelle-Calédonie 57-77"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
 
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p3-activite" data-termine-ecran="">J’ai terminé la vidéo</button></p>
@@ -847,7 +1028,7 @@ table.tab td.revele::after{content:none}
 </section>
 <section class="panel epi-period-screen" data-composant="video" data-obligatoire="" data-titre="Séquence 4 · 1981-1988" id="epi-p4-video"><div aria-label="Période 4 — 1981-1988" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">4</span><div class="epi-seq-meta"><small>Période 4 · 1981-1988</small><strong>Confrontation et négociation</strong></div></div><span class="epi-seq-step">Étape 2/5</span></div>
 <p class="eyebrow">1981-1988</p><h1>Confrontation &amp; négociation 81-88</h1>
-<div class="g-consigne epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>quelles étapes font passer de la polarisation au retour à la négociation ?</strong></span></div></div>
+<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>quelles étapes font passer de la polarisation au retour à la négociation ?</strong></span></div></div>
 <div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="about:blank" data-youtube-src="https://www.youtube-nocookie.com/embed/XxdrkW3-TQw?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" title="Confrontation &amp; négociation 81-88"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
 
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p4-activite" data-termine-ecran="">J’ai terminé la vidéo</button></p>
@@ -875,7 +1056,7 @@ table.tab td.revele::after{content:none}
 </section>
 <section class="panel epi-period-screen" data-composant="video" data-obligatoire="" data-titre="Séquence 5 · 1988-1998" id="epi-p5-video"><div aria-label="Période 5 — 1988-1998" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">5</span><div class="epi-seq-meta"><small>Période 5 · 1988-1998</small><strong>Le temps des accords</strong></div></div><span class="epi-seq-step">Étape 2/4</span></div>
 <p class="eyebrow">1988-1998</p><h1>De Matignon à Nouméa</h1>
-<div class="g-consigne epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>quels leviers transforment le compromis politique en transformations institutionnelles, territoriales et humaines ?</strong></span></div></div>
+<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>quels leviers transforment le compromis politique en transformations institutionnelles, territoriales et humaines ?</strong></span></div></div>
 <div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="about:blank" data-youtube-src="https://www.youtube-nocookie.com/embed/iluEH6o8LCs?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" title="De Matignon à Nouméa"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
 
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p5-activite" data-termine-ecran="">J’ai terminé la vidéo</button></p>
@@ -963,7 +1144,7 @@ table.tab td.revele::after{content:none}
 <p>La complétion atteste que vous avez parcouru les séquences et réalisé le positionnement de sortie. Aucun score ni classement n’est associé à ce module.</p>
 </div>
 <!-- v1.6 (U2) — RECOMMENCER : action destructrice, placée en clôture (jamais dans le chrome). -->
-<div class="encadre">
+<div class="encadre epi-reset">
 <h2>Recommencer le module</h2>
 <p>Cette action efface vos réponses et votre progression enregistrée, puis relance le module depuis le début.</p>
 <p><button class="btn btn-secondaire" id="g-btn-reprendre" type="button">Recommencer</button></p>
@@ -976,7 +1157,7 @@ table.tab td.revele::after{content:none}
 <tr><th>Conception pédagogique et production numérique</th><td>IFAP — Institut de formation à l’administration publique.</td></tr>
 <tr><th>Expertise historique et contenus de référence</th><td>Olivier Houdan.</td></tr>
 <tr><th>Intégration technique</th><td>HTML / SCORM 1.2 pour la plateforme LIANE. Vidéos hébergées hors package.</td></tr>
-<tr><th>Version</th><td>Version de production v1.4 · septembre 2026.</td></tr>
+<tr><th>Version</th><td>Version design v1.6 · septembre 2026.</td></tr>
 </table>
 <h2 class="section">Médias utilisés dans le module</h2>
 <table class="epi-credit-table epi-credit-media">
@@ -1558,6 +1739,66 @@ GABARIT.init({
   dev:false
 });
 
+/* ===== EPI v1.5 · habillage du positionnement ipsatif façon Budget ===== */
+(function(){
+  'use strict';
+  var labels=[
+    'Repères chronologiques','Citoyenneté & représentation','Évolutions statutaires',
+    'Contexte & recompositions','Confrontation & négociation','Matignon-Oudinot / Nouméa'
+  ];
+  function radarSvg(values){
+    var n=6,cx=150,cy=150,R=92;
+    function pt(i,val,ray){var a=-Math.PI/2+(Math.PI*2*i/n),r=(ray!=null?ray:R)*(val/4);return[(cx+Math.cos(a)*r).toFixed(1),(cy+Math.sin(a)*r).toFixed(1)]}
+    var svg='<svg viewBox="0 0 300 300" role="img" aria-label="Radar de votre auto-positionnement sur six dimensions">';
+    for(var l=1;l<=4;l++)svg+='<polygon points="'+Array.from({length:n},function(_,i){return pt(i,4,R*l/4).join(',')}).join(' ')+'" fill="none" stroke="#DCE4E9" stroke-width="1"/>';
+    for(var i=0;i<n;i++){var p=pt(i,4);svg+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0]+'" y2="'+p[1]+'" stroke="#DCE4E9"/><text x="'+(cx+(p[0]-cx)*1.22).toFixed(1)+'" y="'+(cy+(p[1]-cy)*1.22).toFixed(1)+'" text-anchor="middle" dominant-baseline="middle" font-size="11" font-weight="700" fill="#2F4354">'+(i+1)+'</text>'}
+    if(values.every(Boolean)){
+      var poly=values.map(function(v,i){return pt(i,v).join(',')}).join(' ');
+      svg+='<polygon points="'+poly+'" fill="rgba(248,187,0,.17)" stroke="#B07F00" stroke-width="3"/>';
+      values.forEach(function(v,i){var p=pt(i,v);svg+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4" fill="#B07F00"/>'});
+    }
+    svg+='</svg>';return svg;
+  }
+  function enhance(rootId,key){
+    var root=document.getElementById(rootId);if(!root||root.dataset.enhanced)return;root.dataset.enhanced='1';
+    var items=Array.prototype.slice.call(root.querySelectorAll('.g-item-pos'));if(items.length!==6)return;
+    items.forEach(function(item,i){
+      var p=item.querySelector('p');if(p)p.textContent=p.textContent.replace(/^\d+\.\s*/, '');
+      if(!item.querySelector('.epi-pos-dim')){var tag=document.createElement('span');tag.className='epi-pos-dim';tag.textContent='Dimension '+(i+1)+' · '+labels[i];item.insertBefore(tag,item.firstChild)}
+    });
+    var section=root.closest('.panel');
+    var shell=document.createElement('div');shell.className='epi-pos-layout';
+    var aside=document.createElement('aside');aside.className='epi-pos-aside';aside.innerHTML='<h2>Votre profil se construit</h2><p>Trois étapes, deux dimensions à la fois. Le radar apparaît lorsque les six réponses sont renseignées.</p><div class="epi-pos-progress" aria-hidden="true"></div><div class="epi-pos-radar"></div>';
+    var main=document.createElement('div');main.className='epi-pos-main';
+    root.parentNode.insertBefore(shell,root);shell.appendChild(aside);shell.appendChild(main);main.appendChild(root);
+    var pages=[];
+    for(var step=0;step<3;step++){
+      var page=document.createElement('div');page.className='epi-pos-step';page.hidden=step!==0;page.dataset.step=step;
+      var head=document.createElement('div');head.className='epi-pos-step-head';head.innerHTML='<b>Dimensions '+(step*2+1)+' et '+(step*2+2)+'</b><span>Étape '+(step+1)+' sur 3</span>';page.appendChild(head);
+      page.appendChild(items[step*2]);page.appendChild(items[step*2+1]);
+      var nav=document.createElement('div');nav.className='epi-pos-nav';
+      var prev=document.createElement('button');prev.type='button';prev.className='btn btn-secondaire';prev.textContent='Précédent';prev.hidden=step===0;
+      var next=document.createElement('button');next.type='button';next.className='btn btn-primaire';next.textContent=step===2?(key==='pre'?'Valider mon positionnement':'Passer au regard rétrospectif'):'Continuer';next.disabled=true;
+      prev.addEventListener('click',function(){show(Math.max(0,current()-1))});
+      (function(st,b){b.addEventListener('click',function(){if(st<2){show(st+1);return}if(key==='pre'){var validate=document.getElementById('g-pre-suivant');if(validate&&!validate.disabled)validate.click()}else{var target=section.querySelector('#g-retro-bloc');if(target)target.scrollIntoView({behavior:'smooth',block:'start'})}})})(step,next);
+      nav.appendChild(prev);nav.appendChild(next);page.appendChild(nav);pages.push(page);root.appendChild(page);
+    }
+    var dots=aside.querySelector('.epi-pos-progress');for(var d=0;d<3;d++){var dot=document.createElement('span');dot.className='epi-pos-dot';dots.appendChild(dot)}
+    function values(){var obj=GABARIT.etat[key]||{};return labels.map(function(_,i){return obj[i]||0})}
+    function current(){for(var i=0;i<pages.length;i++)if(!pages[i].hidden)return i;return 0}
+    function answeredIn(step){var v=values();return !!v[step*2]&&!!v[step*2+1]}
+    function paint(){var v=values(),count=v.filter(Boolean).length;Array.prototype.forEach.call(dots.children,function(dot,i){var a=!!v[i*2],b=!!v[i*2+1];dot.classList.toggle('on',a&&b);dot.classList.toggle('partial',(a||b)&&!(a&&b))});
+      var r=aside.querySelector('.epi-pos-radar');r.innerHTML=count===6?radarSvg(v):'<div class="epi-pos-radar-empty"><strong>'+count+'/6</strong><br>dimensions renseignées</div>';
+      pages.forEach(function(p,i){var b=p.querySelector('.epi-pos-nav .btn-primaire');if(b)b.disabled=!answeredIn(i)});
+    }
+    function show(step){pages.forEach(function(p,i){p.hidden=i!==step});paint();var h=pages[step].querySelector('.epi-pos-step-head');if(h)h.scrollIntoView({behavior:'smooth',block:'nearest'})}
+    root.addEventListener('click',function(e){if(e.target.closest('.g-echelle button'))setTimeout(paint,0)});paint();
+  }
+  function compactRetro(){var r=document.getElementById('g-retro-items');if(!r)return;var its=Array.prototype.slice.call(r.querySelectorAll('.g-item-pos'));if(its.length===6){r.classList.add('epi-retro-grid');its.forEach(function(item,i){var p=item.querySelector('p');if(p)p.textContent=p.textContent.replace(/^\d+\.\s*/, '');if(!item.querySelector('.epi-pos-dim')){var tag=document.createElement('span');tag.className='epi-pos-dim';tag.textContent='Dimension '+(i+1)+' · '+labels[i];item.insertBefore(tag,item.firstChild)}})}}
+  var retro=document.getElementById('g-retro-items');if(retro){new MutationObserver(compactRetro).observe(retro,{childList:true});compactRetro()}
+  enhance('g-pre-items','pre');
+  enhance('g-post-items','post');
+})();
 
 /* ===== Interactions EPI · état sauvegardé dans suspend_data v5 ===== */
 (function(){
