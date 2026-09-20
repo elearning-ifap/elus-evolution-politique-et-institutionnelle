@@ -1,11 +1,12 @@
-# EPI GitHub v1.13 — iconographies arbitrées
+# EPI v1.14 — chronoscope
 
-Version autonome du module « Évolution politique et institutionnelle de la Nouvelle-Calédonie ».
+Version GitHub du module « Évolution politique et institutionnelle de la Nouvelle-Calédonie ».
 
-- noyau : v1.8.1 ;
-- 5 vidéos YouTube ;
-- 5 écrans iconographiques dédiés ;
-- iconographies extraites du support Olivier Houdan ;
-- frise interactive avec documents événementiels lorsque disponibles.
+## Nouveauté principale
+La grande frise devient un **chronoscope immersif** : panneau documentaire contextuel, mode « bascules », relations entre événements et exploration plein écran.
 
-Pour GitHub Pages : publier le contenu du dossier à la racine du dépôt.
+## Publication GitHub Pages
+Déposer le contenu à la racine du dépôt puis activer Pages sur la branche principale.
+
+## SCORM
+Utiliser l’archive SCORM dédiée fournie séparément pour LIANE / Moodle.

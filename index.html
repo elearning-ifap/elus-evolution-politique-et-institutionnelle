@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Évolution politique et institutionnelle de la Nouvelle-Calédonie — v1.13 · iconographies arbitrées</title>
+<title>Évolution politique et institutionnelle de la Nouvelle-Calédonie — v1.14 · chronoscope</title>
 <!--
 ================================================================================
   GABARIT NOYAU v1.8.1 — fichier de référence
@@ -549,6 +549,73 @@ table.tab td.revele::after{content:none}
 .epi-frise-detail-copy{padding:17px 18px 16px 0}.epi-frise-detail.no-media{grid-template-columns:1fr}.epi-frise-detail.no-media .epi-frise-detail-copy{padding:18px 20px}.epi-frise-detail-copy h3{margin:0 0 6px}.epi-frise-detail-copy p{margin:0 0 8px}.epi-frise-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}.epi-frise-meta span{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:var(--brume);font-size:11.5px;font-weight:800;color:var(--bleu-nuit)}
 .epi-frise-source{font-size:12.5px;color:var(--gris-doux);border-top:1px solid var(--bordure);padding-top:8px;margin-top:8px!important}
 .epi-frise-empty{padding:12px 10px;color:var(--gris-doux);font-size:12.5px}
+
+
+/* ===== EPI v1.14 · CHRONOSCOPE IMMERSIF ===== */
+.epi-chrono-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0 10px}
+.epi-chrono-modes{display:flex;gap:6px;padding:4px;background:#EEF3F6;border:1px solid #DCE5EA;border-radius:999px}
+.epi-chrono-mode{border:0;background:transparent;color:var(--bleu-nuit);padding:9px 14px;border-radius:999px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;min-height:40px}
+.epi-chrono-mode.on{background:#fff;box-shadow:0 2px 10px rgba(24,40,52,.10)}
+.epi-chrono-tools{display:flex;gap:8px;align-items:center}.epi-chrono-tools .btn{min-height:42px}
+.epi-chrono-hint{font-size:12.5px;color:var(--gris-doux);margin:0 0 10px}
+.epi-chronoscope{--chrono-accent:#B78A00;position:relative;display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:14px;align-items:start;border:1px solid #DCE5EA;border-radius:18px;background:linear-gradient(180deg,#F8FAFB 0%,#F2F5F7 100%);padding:14px;isolation:isolate;transition:background .25s ease,border-color .25s ease}
+.epi-chronoscope[data-period="1"]{--chrono-accent:#9C6A31;background:linear-gradient(180deg,#FBF8F2 0%,#F4F0E8 100%)}
+.epi-chronoscope[data-period="2"]{--chrono-accent:#B78A00;background:linear-gradient(180deg,#FFFDF5 0%,#F8F3DF 100%)}
+.epi-chronoscope[data-period="3"]{--chrono-accent:#58788F;background:linear-gradient(180deg,#F7FAFC 0%,#ECF2F5 100%)}
+.epi-chronoscope[data-period="4"]{--chrono-accent:#2E7D52;background:linear-gradient(180deg,#F6FAF8 0%,#EAF3EE 100%)}
+.epi-chronoscope[data-period="5"]{--chrono-accent:#344E67;background:linear-gradient(180deg,#F6F8FA 0%,#EAF0F4 100%)}
+.epi-chrono-main{min-width:0;position:relative}
+.epi-chronoscope .epi-timeline-wrap{margin:0;max-height:650px;overflow:auto;padding:2px 4px 10px;scrollbar-gutter:stable}
+.epi-chronoscope .epi-timeline{margin-top:0}
+.epi-chronoscope .epi-period-col{transition:opacity .18s ease,transform .18s ease,box-shadow .18s ease}
+.epi-chronoscope.has-selection .epi-period-col{opacity:.66}
+.epi-chronoscope.has-selection .epi-period-col.is-focus-col,.epi-chronoscope.has-selection .epi-period-col.is-related-col{opacity:1}
+.epi-event{position:relative;transition:opacity .16s ease,transform .16s ease,box-shadow .16s ease,background .16s ease}
+.epi-event.on{z-index:2;transform:translateX(3px);box-shadow:0 0 0 2px var(--chrono-accent),0 8px 20px rgba(24,40,52,.10)!important;background:#fff!important}
+.epi-event.on::after{content:"";position:absolute;left:-9px;top:50%;width:14px;height:14px;border-radius:50%;background:var(--chrono-accent);transform:translateY(-50%);animation:epiChronoPulse .55s ease-out}
+.epi-event.is-related{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--chrono-accent) 70%,white);background:#fff!important;opacity:1!important}
+.epi-event.is-dim{opacity:.38}
+@keyframes epiChronoPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--chrono-accent) 45%,transparent);transform:translateY(-50%) scale(.7)}100%{box-shadow:0 0 0 18px transparent;transform:translateY(-50%) scale(1)}}
+@media(prefers-reduced-motion:reduce){.epi-event,.epi-chronoscope,.epi-chrono-panel{transition:none!important}.epi-event.on::after{animation:none!important}}
+.epi-chrono-panel{position:sticky;top:126px;max-height:calc(100vh - 150px);overflow:auto;background:rgba(255,255,255,.98);border:1px solid #D7E0E5;border-top:5px solid var(--chrono-accent);border-radius:16px;box-shadow:0 18px 42px rgba(24,40,52,.14);transform:translateY(0);transition:transform .2s ease,opacity .2s ease,border-color .2s ease;opacity:1}
+.epi-chrono-panel.is-empty{box-shadow:none;border-top-color:#D7E0E5}
+.epi-chrono-panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-bottom:1px solid #E3E9ED;background:#FAFCFD;position:sticky;top:0;z-index:2}
+.epi-chrono-panel-head strong{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gris-doux)}
+.epi-chrono-close{border:0;background:#EEF3F6;color:var(--bleu-nuit);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:20px;line-height:1;font-weight:500}
+.epi-chrono-card{display:flex;flex-direction:column;min-height:100%}
+.epi-chrono-media{background:#192A36;display:grid;place-items:center;min-height:210px;max-height:360px;overflow:hidden}
+.epi-chrono-media img{width:100%;height:100%;max-height:360px;object-fit:contain;display:block;background:#F3F1EA}
+.epi-chrono-copy{padding:18px 20px 8px}
+.epi-chrono-copy .epi-frise-meta{margin-bottom:10px}.epi-chrono-copy h2{font-size:28px;line-height:1.08;margin:0 0 14px;letter-spacing:-.02em}
+.epi-chrono-change{margin:14px 0;padding:14px 15px;border-left:4px solid var(--chrono-accent);background:color-mix(in srgb,var(--chrono-accent) 7%,white);border-radius:0 10px 10px 0}
+.epi-chrono-change b{display:block;text-transform:uppercase;letter-spacing:.07em;font-size:11px;color:var(--chrono-accent);margin-bottom:5px}
+.epi-chrono-source{font-size:12px;line-height:1.45;color:var(--gris-doux);padding:11px 20px;border-top:1px solid #E3E9ED;margin:0}
+.epi-chrono-nav{display:flex;justify-content:space-between;gap:8px;padding:13px 14px 15px;border-top:1px solid #E3E9ED;background:#FAFCFD}
+.epi-chrono-nav button{flex:1;border:1px solid #D4DEE4;background:#fff;color:var(--bleu-nuit);border-radius:9px;padding:9px 10px;min-height:42px;font-weight:800;cursor:pointer;text-align:left}.epi-chrono-nav button:last-child{text-align:right}.epi-chrono-nav button:disabled{opacity:.35;cursor:default}
+.epi-chrono-backdrop{display:none}
+.epi-chronoscope.view-bascules .epi-filters{opacity:.45;pointer-events:none}.epi-chronoscope.view-bascules .epi-event:not(.is-core){display:none}.epi-chronoscope.view-bascules .epi-period-events{min-height:75px}
+.epi-bascules-note{display:none;margin:4px 0 12px;padding:10px 12px;border-radius:10px;background:#FFF8DF;border:1px solid #F0D98A;font-size:13px}.epi-chronoscope.view-bascules .epi-bascules-note{display:block}
+.epi-chronoscope.is-fullscreen{position:fixed;inset:12px;z-index:8800;background:#F5F8FA;border-radius:18px;padding:16px;grid-template-columns:minmax(0,1fr) 430px;box-shadow:0 22px 80px rgba(5,20,30,.28);overflow:hidden}
+.epi-chronoscope.is-fullscreen .epi-timeline-wrap{max-height:calc(100vh - 120px)}
+.epi-chronoscope.is-fullscreen .epi-chrono-panel{top:0;max-height:calc(100vh - 56px)}
+body.epi-chrono-fullscreen{overflow:hidden}
+#epi-chrono-fullscreen-exit{display:none}.epi-chronoscope.is-fullscreen #epi-chrono-fullscreen-exit{display:inline-flex}.epi-chronoscope.is-fullscreen #epi-chrono-fullscreen{display:none}
+.epi-chrono-empty{padding:26px 22px 30px;text-align:left}.epi-chrono-empty .epi-empty-orbit{width:72px;height:72px;border-radius:50%;border:1px solid #D5DEE4;display:grid;place-items:center;margin-bottom:18px;position:relative}.epi-chrono-empty .epi-empty-orbit::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--cnc-or);top:7px;right:8px}.epi-chrono-empty h3{font-size:22px;margin:0 0 8px}.epi-chrono-empty p{margin:0;color:var(--gris-doux);line-height:1.5}
+
+@media(max-width:1179px){
+  .epi-chronoscope{display:block;padding:12px}.epi-chronoscope .epi-timeline-wrap{max-height:none}
+  .epi-chrono-panel{position:fixed;right:0;top:0;bottom:0;width:min(430px,88vw);max-height:none;border-radius:18px 0 0 18px;z-index:8900;transform:translateX(105%);opacity:0;pointer-events:none;box-shadow:-20px 0 50px rgba(24,40,52,.22)}
+  .epi-chronoscope.panel-open .epi-chrono-panel{transform:translateX(0);opacity:1;pointer-events:auto}
+  .epi-chrono-backdrop{display:block;position:fixed;inset:0;background:rgba(15,29,39,.34);backdrop-filter:blur(2px);z-index:8850;opacity:0;pointer-events:none;transition:opacity .18s ease}
+  .epi-chronoscope.panel-open .epi-chrono-backdrop{opacity:1;pointer-events:auto}
+  .epi-chronoscope.is-fullscreen{display:block;inset:8px;padding:12px}.epi-chronoscope.is-fullscreen .epi-timeline-wrap{max-height:calc(100vh - 90px)}
+}
+@media(max-width:679px){
+  .epi-chrono-toolbar{align-items:flex-start}.epi-chrono-modes{width:100%}.epi-chrono-mode{flex:1;padding-left:10px;padding-right:10px}.epi-chrono-tools{width:100%}.epi-chrono-tools .btn{flex:1}
+  .epi-chrono-panel{left:0;right:0;top:auto;bottom:0;width:100%;height:min(82vh,720px);border-radius:20px 20px 0 0;transform:translateY(105%);border-top-width:5px}
+  .epi-chronoscope.panel-open .epi-chrono-panel{transform:translateY(0)}
+  .epi-chrono-media{min-height:190px;max-height:300px}.epi-chrono-copy h2{font-size:25px}.epi-chrono-nav{position:sticky;bottom:0}
+}
 
 .epi-archive-strip{margin-top:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .epi-archive-card{margin:0;background:#fff;border:1px solid var(--bordure);border-radius:12px;overflow:hidden;box-shadow:var(--ombre-carte)}
@@ -1360,12 +1427,18 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-frise" data-termine-ecran="">Explorer la grande frise</button></p>
 </section>
 <section class="panel" data-composant="frise" data-obligatoire="" data-titre="La grande frise" id="epi-frise">
-<p class="eyebrow">Vue d’ensemble</p><h1>La grande frise interactive</h1><p class="chapo">Explorez les cinq périodes et croisez plusieurs fils : institutions, textes et statuts, mouvements politiques, acteurs, accords et contexte. L’objectif est de comprendre les transformations, pas de mémoriser une liste de dates.</p>
-<div class="epi-frise-intro"><div class="epi-card"><h3>Comment la lire ?</h3><p>Choisissez un filtre, puis sélectionnez un repère. La fiche détaillée vous indique <strong>ce qui change</strong>, le document iconographique mobilisé et la source de vérification associée.</p></div><div class="epi-card"><h3>Documents d’appui</h3><p>Les cinq périodes s’appuient désormais sur des photographies historiques, des cartes et des documents d’époque ou de référence, distincts des visuels des vidéos.</p></div></div>
+<p class="eyebrow">Vue d’ensemble</p><h1>Le chronoscope : explorer 54 ans de transformations</h1><p class="chapo">Sélectionnez un repère : le document s’ouvre immédiatement sans vous faire perdre votre position dans la frise. Vous pouvez explorer librement ou afficher seulement les grandes bascules qui structurent le récit.</p>
+<div class="epi-frise-intro"><div class="epi-card"><h3>Explorer</h3><p>Filtrez par institutions, textes, mouvements, acteurs, accords ou contexte. Le repère choisi reste visible pendant que son document s’ouvre à droite.</p></div><div class="epi-card"><h3>Comprendre les bascules</h3><p>Ce mode réduit la frise à une dizaine de jalons structurants et met en lumière leurs liens : ce qui prépare, transforme ou prolonge l’événement sélectionné.</p></div></div>
+<div class="epi-chrono-toolbar"><div class="epi-chrono-modes" role="group" aria-label="Mode de lecture"><button class="epi-chrono-mode on" data-chrono-view="explore" type="button">Explorer</button><button class="epi-chrono-mode" data-chrono-view="bascules" type="button">Comprendre les bascules</button></div><div class="epi-chrono-tools"><button class="btn btn-secondaire" id="epi-chrono-fullscreen" type="button">⛶ Plein écran</button><button class="btn btn-secondaire" id="epi-chrono-fullscreen-exit" type="button">Quitter le plein écran</button></div></div>
+<p class="epi-chrono-hint">Astuce : utilisez ← / → dans la fiche pour parcourir les repères sans revenir à la frise.</p>
 <div aria-label="Filtres de la frise" class="epi-filters"><button class="epi-filter on" data-filter="all">Tous</button><button class="epi-filter" data-filter="institution">Institutions</button><button class="epi-filter" data-filter="texte">Textes &amp; statuts</button><button class="epi-filter" data-filter="mouvement">Mouvements</button><button class="epi-filter" data-filter="acteur">Acteurs</button><button class="epi-filter" data-filter="accord">Accords</button><button class="epi-filter" data-filter="contexte">Contexte</button></div>
-<div aria-label="Frise chronologique 1944-1998" class="epi-timeline-wrap"><div class="epi-timeline" id="epi-timeline"></div></div>
-<div aria-live="polite" class="epi-frise-detail" id="epi-event-detail"><div class="epi-frise-detail-media"><img alt="Photographie historique de Nouvelle-Calédonie, entre 1935 et 1944" src="assets/olivier/p1_main_cafe_canala.jpg" referrerpolicy="no-referrer"/></div><div class="epi-frise-detail-copy"><div class="epi-frise-meta"><span>1944-1998</span><span>Frise interactive</span></div><h3>Sélectionnez un repère</h3><p>Vous verrez ici ce que ce jalon transforme et le fil auquel il se rattache.</p></div></div>
-<p><button class="btn btn-accent" data-go="epi-frise-mode" data-termine-ecran="" disabled="" id="btn-frise">J’ai consulté un repère</button></p>
+<div class="epi-bascules-note"><strong>Mode bascules.</strong> Les repères structurants restent visibles ; les événements directement reliés au repère sélectionné sont mis en lumière.</div>
+<div class="epi-chronoscope" id="epi-chronoscope">
+  <div class="epi-chrono-main"><div aria-label="Frise chronologique 1944-1998" class="epi-timeline-wrap"><div class="epi-timeline" id="epi-timeline"></div></div></div>
+  <aside aria-live="polite" aria-label="Détail du repère sélectionné" class="epi-chrono-panel is-empty" id="epi-event-detail"><div class="epi-chrono-panel-head"><strong>Document historique</strong><button class="epi-chrono-close" id="epi-chrono-close" type="button" aria-label="Fermer la fiche">×</button></div><div class="epi-chrono-empty"><div class="epi-empty-orbit" aria-hidden="true">1944<br>1998</div><h3>Sélectionnez un repère</h3><p>La fiche s’ouvrira ici avec le document d’archive, ce que l’événement change et ses liens avec les autres jalons.</p></div></aside>
+  <div class="epi-chrono-backdrop" id="epi-chrono-backdrop" aria-hidden="true"></div>
+</div>
+<p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-frise-mode" data-termine-ecran="" disabled="" id="btn-frise">Continuer après l’exploration</button></p>
 </section>
 <section class="panel" data-composant="mode-emploi" data-obligatoire="" data-titre="Lire la frise" id="epi-frise-mode">
 <p class="eyebrow">Méthode</p><h1>Comment utiliser la frise sans apprendre une liste de dates ?</h1>
@@ -1446,7 +1519,7 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <tr><th>Conception pédagogique et production numérique</th><td>IFAP — Institut de formation à l’administration publique.</td></tr>
 <tr><th>Expertise historique et contenus de référence</th><td>Olivier Houdan.</td></tr>
 <tr><th>Intégration technique</th><td>HTML / SCORM 1.2 pour la plateforme LIANE. Vidéos hébergées hors package.</td></tr>
-<tr><th>Version</th><td>Version v1.13 · iconographies arbitrées · noyau 1.8.1 · septembre 2026.</td></tr>
+<tr><th>Version</th><td>Version v1.14 · iconographies arbitrées · noyau 1.8.1 · septembre 2026.</td></tr>
 </table>
 <h2 class="section">Iconographies intégrées depuis le support d’Olivier Houdan</h2><table class="epi-credit-table epi-credit-media"><tr><th>Période</th><th>Documents intégrés</th><th>Provenance immédiate</th></tr><tr><td>1944-1946</td><td>Café à Canala · Brazzaville · loi Houphouët-Boigny · Lamine Guèye</td><td>Support Olivier Houdan, diapos 4, 13, 17 et 18.</td></tr><tr><td>1946-1957</td><td>Profession de foi de 1953 · bureau UICALO · Maurice Lenormand · congrès fondateur de l’UC</td><td>Support Olivier Houdan, diapos 29, 30, 32 et 35.</td></tr><tr><td>1957-1981</td><td>Premier exécutif de 1957 · boom du nickel · Foulards rouges · Mélanésia 2000</td><td>Support Olivier Houdan, diapos 48, 64, 80 et 87.</td></tr><tr><td>1981-1988</td><td>Nainville-les-Roches · Éloi Machoro à Canala · mission du dialogue · poignée de mains Tjibaou-Lafleur</td><td>Support Olivier Houdan, diapos 102, 112, 122 et 123. Photo Machoro : Louise Takamatsu.</td></tr><tr><td>1988-1998</td><td>Oudinot · trois provinces · accord de Bercy · Accord de Nouméa</td><td>Support Olivier Houdan, diapos 125, 129, 138 et 139.</td></tr></table><div class="encadre encadre-attention"><h4>Crédits originaux à consolider avant diffusion externe</h4><p>Le support d’Olivier Houdan constitue ici la source immédiate. Lorsque le support ne précise pas l’auteur, le fonds ou le statut de réutilisation d’une image, le module l’indique comme « crédit original non indiqué dans le support ». Une vérification des droits devra précéder toute diffusion externe au dispositif.</p></div><p><button class="btn btn-secondaire" data-go="g-fin">Retour à la clôture</button></p>
 </section>
@@ -2188,7 +2261,8 @@ GABARIT.init({
     box.addEventListener('click',function(e){var b=e.target.closest('button[data-r]');if(!b||validated)return;s[b.dataset.r]=+b.dataset.o;vstore(key,s);render()});
     btn.addEventListener('click',function(){finishOrValidate(btn,function(){return validated},next,function(){validated=true;vstore(key+'v',true);render()})});render()}
 
-  function initTimeline(){var box=qs('#epi-timeline'),detail=qs('#epi-event-detail');if(!box)return;
+  function initTimeline(){
+    var box=qs('#epi-timeline'),detail=qs('#epi-event-detail'),chrono=qs('#epi-chronoscope');if(!box||!detail||!chrono)return;
     var periods=[
       {id:1,years:'1944-1946',title:'L’ordre bascule',img:'assets/olivier/p1_main_cafe_canala.jpg',fit:'cover'},
       {id:2,years:'1946-1957',title:'Émancipation politique',img:'assets/olivier/p2_main_profession_foi.jpg',fit:'cover'},
@@ -2230,11 +2304,55 @@ GABARIT.init({
       {p:5,y:'5 mai 1998',c:'accord',t:'Accord de Nouméa',d:'L’Accord de Nouméa organise un nouvel équilibre politique et institutionnel et un processus de transferts progressifs de compétences.',s:'Services de l’État en Nouvelle-Calédonie — Accord de Nouméa.',img:'assets/olivier/p5_main_accord_noumea.jpg',alt:'Signature de l’Accord de Nouméa le 5 mai 1998.',credit:'Support Olivier Houdan, diapo 139.'},
       {p:5,y:'8 nov. 1998',c:'contexte',t:'Approbation par consultation',d:'L’Accord de Nouméa est soumis à la population de Nouvelle-Calédonie et approuvé lors de la consultation du 8 novembre 1998.',s:'Sénat — travaux relatifs à la loi organique de 1999.'}
     ];
-    var ts=state('frise',{filter:'all',scroll:0,seen:false}),ancienSelected=ts.selected,sub=GABARIT.lireSousEtape('epi-frise'),selected=sub!=null?+sub:(ancienSelected!=null?+ancienSelected:null),current=ts.filter||'all',wrap=qs('.epi-timeline-wrap'),detailInitial=detail.innerHTML,scrollTimer=null;if(Object.prototype.hasOwnProperty.call(ts,'selected')){delete ts.selected;store('frise',ts);if(selected!=null)GABARIT.sousEtape('epi-frise',String(selected))}
-    function render(){box.innerHTML=periods.map(function(p){var ev=events.filter(function(e){return e.p===p.id&&(current==='all'||e.c===current)});return '<section class="epi-period-col"><div class="epi-period-visual '+(p.fit==='contain'?'is-document':'')+'"><img src="'+p.img+'" alt="Repère historique de la période '+p.years+'" referrerpolicy="no-referrer"><div class="epi-period-caption"><small>'+p.years+'</small><b>'+p.title+'</b></div></div><div class="epi-period-events">'+(ev.length?ev.map(function(e){var i=events.indexOf(e);return '<button class="epi-event" data-event="'+i+'" data-cat="'+e.c+'"><b>'+e.y+'</b><span>'+e.t+'</span><small>'+labels[e.c]+'</small></button>'}).join(''):'<div class="epi-frise-empty">Aucun repère pour ce filtre.</div>')+'</div></section>'}).join('');qsa('.epi-filter').forEach(function(x){x.classList.toggle('on',x.dataset.filter===current)});if(wrap)setTimeout(function(){wrap.scrollLeft=ts.scroll||0},0);if(selected!=null){var b=box.querySelector('[data-event="'+selected+'"]');if(b)show(selected,b);else{detail.classList.remove('no-media');detail.innerHTML=detailInitial}}else{detail.classList.remove('no-media');detail.innerHTML=detailInitial}enable('#btn-frise',!!ts.seen)}
-    function show(i,b){qsa('.epi-event',box).forEach(function(x){x.classList.toggle('on',x===b)});var e=events[i],p=periods[e.p-1],media=e.img?'<div class="epi-frise-detail-media"><img src="'+e.img+'" alt="'+(e.alt||('Document historique associé à '+e.t))+'" referrerpolicy="no-referrer"></div>':'';detail.classList.toggle('no-media',!e.img);detail.innerHTML=media+'<div class="epi-frise-detail-copy"><div class="epi-frise-meta"><span>'+e.y+'</span><span>'+labels[e.c]+'</span><span>Période '+e.p+'</span></div><h3>'+e.t+'</h3><p>'+e.d+'</p>'+(e.credit?'<p class="epi-frise-source"><strong>Document affiché :</strong> '+e.credit+'</p>':'')+'<p class="epi-frise-source"><strong>Source de vérification :</strong> '+e.s+'</p></div>'}
-    var filters=qs('.epi-filters');if(filters)filters.addEventListener('click',function(ev){var b=ev.target.closest('[data-filter]');if(!b)return;current=b.dataset.filter;ts.filter=current;store('frise',ts);render()});
-    box.addEventListener('click',function(ev){var b=ev.target.closest('[data-event]');if(!b)return;selected=+b.dataset.event;ts.seen=true;store('frise',ts);GABARIT.sousEtape('epi-frise',String(selected));enable('#btn-frise',true);show(selected,b)});
+    var CORE={'Citoyenneté':1,'Premiers élus mélanésiens':1,'Assemblée territoriale':1,'Mélanésia 2000':1,'Nainville-les-Roches':1,'FLNKS et boycott actif':1,'Mission du dialogue':1,'Accord de Matignon':1,'Trois provinces':1,'Accord de Nouméa':1};
+    var LINKS={
+      'Citoyenneté':['Premiers élus mélanésiens','Union calédonienne'],
+      'Premiers élus mélanésiens':['Citoyenneté','Union calédonienne','Assemblée territoriale'],
+      'Union calédonienne':['Premiers élus mélanésiens','Assemblée territoriale'],
+      'Assemblée territoriale':['Premiers élus mélanésiens','Loi Jacquinot','Statut de large autonomie'],
+      'Mélanésia 2000':['Nouvelles revendications kanak','Recomposition des blocs politiques'],
+      'Nainville-les-Roches':['FLNKS et boycott actif','Mission du dialogue'],
+      'FLNKS et boycott actif':['Nainville-les-Roches','Ouvéa : avril-mai 1988','Mission du dialogue'],
+      'Ouvéa : avril-mai 1988':['Mission du dialogue'],
+      'Mission du dialogue':['Ouvéa : avril-mai 1988','Accord de Matignon'],
+      'Accord de Matignon':['Mission du dialogue','Accord d’Oudinot','Trois provinces'],
+      'Trois provinces':['Accord de Matignon','Programme 400 cadres','Accord de Nouméa'],
+      'Accord de Bercy':['Reprise des négociations','Accord de Nouméa'],
+      'Accord de Nouméa':['Accord de Bercy','Trois provinces','Approbation par consultation']
+    };
+    events.forEach(function(e){e.core=!!CORE[e.t]});
+    var emptyHtml=detail.innerHTML,ts=state('frise',{filter:'all',scroll:0,seen:false,view:'explore'}),ancienSelected=ts.selected,sub=GABARIT.lireSousEtape('epi-frise'),selected=sub!=null?+sub:(ancienSelected!=null?+ancienSelected:null),current=ts.filter||'all',view=ts.view||'explore',wrap=qs('.epi-timeline-wrap'),scrollTimer=null;
+    if(Object.prototype.hasOwnProperty.call(ts,'selected')){delete ts.selected;store('frise',ts);if(selected!=null)GABARIT.sousEtape('epi-frise',String(selected))}
+    function visibleIndexes(){var out=[];events.forEach(function(e,i){if((current==='all'||e.c===current)&&(view!=='bascules'||e.core))out.push(i)});return out}
+    function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+    function render(){
+      chrono.classList.toggle('view-bascules',view==='bascules');
+      qsa('[data-chrono-view]').forEach(function(x){x.classList.toggle('on',x.dataset.chronoView===view)});
+      box.innerHTML=periods.map(function(p){var ev=events.filter(function(e){return e.p===p.id&&(current==='all'||e.c===current)&&(view!=='bascules'||e.core)});return '<section class="epi-period-col"><div class="epi-period-visual '+(p.fit==='contain'?'is-document':'')+'"><img src="'+p.img+'" alt="Repère historique de la période '+p.years+'" referrerpolicy="no-referrer"><div class="epi-period-caption"><small>'+p.years+'</small><b>'+p.title+'</b></div></div><div class="epi-period-events">'+(ev.length?ev.map(function(e){var i=events.indexOf(e);return '<button class="epi-event '+(e.core?'is-core':'')+'" data-event="'+i+'" data-title="'+escapeHtml(e.t)+'" data-cat="'+e.c+'"><b>'+e.y+'</b><span>'+e.t+'</span><small>'+labels[e.c]+'</small></button>'}).join(''):'<div class="epi-frise-empty">Aucun repère pour ce mode.</div>')+'</div></section>'}).join('');
+      qsa('.epi-filter').forEach(function(x){x.classList.toggle('on',x.dataset.filter===current)});
+      if(wrap)setTimeout(function(){wrap.scrollLeft=ts.scroll||0},0);
+      if(selected!=null){var b=box.querySelector('[data-event="'+selected+'"]');if(b)show(selected,b,false);else closePanel(true)}else closePanel(true);
+      enable('#btn-frise',!!ts.seen)
+    }
+    function relatedTitles(title){return LINKS[title]||[]}
+    function markRelations(i,b){var rel=relatedTitles(events[i].t);qsa('.epi-period-col',box).forEach(function(c){c.classList.remove('is-focus-col','is-related-col')});qsa('.epi-event',box).forEach(function(x){var ix=+x.dataset.event,isSel=ix===i,isRel=rel.indexOf(events[ix].t)!==-1;x.classList.toggle('on',isSel);x.classList.toggle('is-related',!isSel&&isRel);x.classList.toggle('is-dim',!isSel&&!isRel&&rel.length>0);var col=x.closest('.epi-period-col');if(col){if(isSel)col.classList.add('is-focus-col');else if(isRel)col.classList.add('is-related-col')}});chrono.classList.add('has-selection')}
+    function closePanel(clearSelection){chrono.classList.remove('panel-open');if(!clearSelection)return;chrono.classList.remove('has-selection');detail.classList.add('is-empty');detail.innerHTML=emptyHtml;chrono.removeAttribute('data-period');qsa('.epi-event',box).forEach(function(x){x.classList.remove('on','is-related','is-dim')});qsa('.epi-period-col',box).forEach(function(c){c.classList.remove('is-focus-col','is-related-col')});selected=null;GABARIT.sousEtape('epi-frise',null)}
+    function navIndex(i,dir){var arr=visibleIndexes(),p=arr.indexOf(i);if(p<0)return null;var n=p+dir;return n>=0&&n<arr.length?arr[n]:null}
+    function show(i,b,openPanel){
+      selected=i;var e=events[i],p=periods[e.p-1],prev=navIndex(i,-1),next=navIndex(i,1);markRelations(i,b);chrono.dataset.period=String(e.p);detail.classList.remove('is-empty');
+      var media=e.img?'<div class="epi-chrono-media"><img src="'+e.img+'" alt="'+escapeHtml(e.alt||('Document historique associé à '+e.t))+'" referrerpolicy="no-referrer"></div>':'';
+      detail.innerHTML='<div class="epi-chrono-panel-head"><strong>Document historique</strong><button class="epi-chrono-close" id="epi-chrono-close" type="button" aria-label="Fermer la fiche">×</button></div><div class="epi-chrono-card">'+media+'<div class="epi-chrono-copy"><div class="epi-frise-meta"><span>'+e.y+'</span><span>'+labels[e.c]+'</span><span>Période '+e.p+'</span></div><h2>'+e.t+'</h2><div class="epi-chrono-change"><b>Ce que cela change</b><span>'+e.d+'</span></div></div>'+(e.credit?'<p class="epi-chrono-source"><strong>Document affiché :</strong> '+e.credit+'</p>':'')+'<p class="epi-chrono-source"><strong>Source de vérification :</strong> '+e.s+'</p><div class="epi-chrono-nav"><button type="button" data-chrono-nav="prev" '+(prev==null?'disabled':'')+'>← '+(prev==null?'Début':escapeHtml(events[prev].y))+'</button><button type="button" data-chrono-nav="next" '+(next==null?'disabled':'')+'>'+(next==null?'Fin':escapeHtml(events[next].y))+' →</button></div></div>';
+      if(openPanel!==false && window.matchMedia('(max-width:1179px)').matches)chrono.classList.add('panel-open');
+      ts.seen=true;store('frise',ts);GABARIT.sousEtape('epi-frise',String(selected));enable('#btn-frise',true)
+    }
+    var filters=qs('.epi-filters');if(filters)filters.addEventListener('click',function(ev){var b=ev.target.closest('[data-filter]');if(!b||view==='bascules')return;current=b.dataset.filter;ts.filter=current;store('frise',ts);render()});
+    var modes=qs('.epi-chrono-modes');if(modes)modes.addEventListener('click',function(ev){var b=ev.target.closest('[data-chrono-view]');if(!b)return;view=b.dataset.chronoView;ts.view=view;if(view==='bascules'){current='all';ts.filter='all'}store('frise',ts);render()});
+    box.addEventListener('click',function(ev){var b=ev.target.closest('[data-event]');if(!b)return;show(+b.dataset.event,b,true)});
+    detail.addEventListener('click',function(ev){var close=ev.target.closest('#epi-chrono-close');if(close){closePanel(true);return}var n=ev.target.closest('[data-chrono-nav]');if(!n||n.disabled)return;var ni=navIndex(selected,n.dataset.chronoNav==='next'?1:-1);if(ni==null)return;var target=box.querySelector('[data-event="'+ni+'"]');if(target){show(ni,target,true);target.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})}});
+    var backdrop=qs('#epi-chrono-backdrop');if(backdrop)backdrop.addEventListener('click',function(){closePanel(false)});
+    function fullscreen(on){chrono.classList.toggle('is-fullscreen',on);document.body.classList.toggle('epi-chrono-fullscreen',on);if(on)setTimeout(function(){var b=selected!=null?box.querySelector('[data-event="'+selected+'"]'):null;if(b)b.scrollIntoView({block:'nearest',inline:'center'})},80)}
+    var fs=qs('#epi-chrono-fullscreen'),fsx=qs('#epi-chrono-fullscreen-exit');if(fs)fs.addEventListener('click',function(){fullscreen(true)});if(fsx)fsx.addEventListener('click',function(){fullscreen(false)});
+    document.addEventListener('keydown',function(ev){if(ev.key==='Escape'){if(chrono.classList.contains('is-fullscreen'))fullscreen(false);else if(chrono.classList.contains('panel-open'))closePanel(false)}});
     if(wrap)wrap.addEventListener('scroll',function(){clearTimeout(scrollTimer);scrollTimer=setTimeout(function(){ts.scroll=Math.round(wrap.scrollLeft);store('frise',ts)},250)},{passive:true});render()
   }
 
