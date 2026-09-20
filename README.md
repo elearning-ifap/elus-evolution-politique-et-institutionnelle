@@ -1,12 +1,13 @@
-# EPI v1.14 — chronoscope
+# Évolution politique et institutionnelle — v1.16
 
-Version GitHub du module « Évolution politique et institutionnelle de la Nouvelle-Calédonie ».
+Version synchronisée GitHub / SCORM intégrant la nouvelle vidéo d’ouverture V0 et les six liens YouTube actualisés.
 
-## Nouveauté principale
-La grande frise devient un **chronoscope immersif** : panneau documentaire contextuel, mode « bascules », relations entre événements et exploration plein écran.
+## Parcours vidéo
+1. Vue d’ensemble 1944-1998
+2. 1944-1946
+3. 1946-1957
+4. 1957-1981
+5. 1981-1989 (capsule rattachée à la période pédagogique 1981-1988)
+6. 1988-1998
 
-## Publication GitHub Pages
-Déposer le contenu à la racine du dépôt puis activer Pages sur la branche principale.
-
-## SCORM
-Utiliser l’archive SCORM dédiée fournie séparément pour LIANE / Moodle.
+Les vidéos sont chargées à la demande depuis YouTube en mode `youtube-nocookie`.

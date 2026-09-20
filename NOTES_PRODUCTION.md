@@ -1,32 +1,22 @@
-# EPI v1.14 — chronoscope immersif
+# EPI v1.16 — V0 + liens YouTube actualisés
 
-## Objet de la passe
-Transformer la grande frise EPI en composant signature du module, avec un retour immédiat au clic et un mode immersif qui aide à comprendre les enchaînements historiques.
+## Objet
+Mettre à jour les six vidéos YouTube du module et intégrer la V0 de vue d’ensemble sans modifier l’architecture pédagogique des cinq périodes.
 
-## Évolutions UX
-- panneau documentaire contextuel à droite sur ordinateur ;
-- tiroir latéral sur tablette ;
-- feuille remontante depuis le bas sur petit écran ;
-- aucun déplacement vertical de page lorsqu’un repère est sélectionné ;
-- repère actif et événements reliés mis en évidence ;
-- navigation précédent / suivant directement dans la fiche ;
-- mode « Explorer » et mode « Comprendre les bascules » ;
-- mode plein écran « chronoscope » ;
-- ambiance visuelle légèrement modulée selon la période ;
-- activation automatique du bouton de progression dès qu’un repère est consulté.
+## Décisions
+- ajout d’un écran obligatoire `epi-v0` après le positionnement initial et avant la période 1 ;
+- la V0 intervient après le positionnement afin de préserver la valeur du point de départ ipsatif ;
+- le menu macro comporte désormais une entrée « Vue d’ensemble » ;
+- les cinq liens des capsules de période sont remplacés par leurs nouveaux identifiants YouTube ;
+- les titres visibles des écrans vidéo reprennent les titres actuels publiés sur YouTube ;
+- l’accueil annonce 6 vidéos : 1 vue d’ensemble + 5 capsules de période ;
+- durée indicative mise à jour à 1 h 05 – 1 h 15 ;
+- le chronoscope, les iconographies, le noyau 1.8.1, les activités et les positionnements restent inchangés.
 
-## Principes pédagogiques
-- la frise n’est pas une liste de dates à mémoriser ;
-- le mode « bascules » réduit la densité à 10 jalons structurants ;
-- les liens éclairés montrent ce qu’un événement prépare, transforme ou prolonge ;
-- la fiche met au centre le bloc « Ce que cela change » ;
-- les documents iconographiques restent ceux sélectionnés depuis le support d’Olivier Houdan.
-
-## Non-régression
-Aucun changement dans :
-- les 5 périodes ;
-- les vidéos ;
-- le positionnement ipsatif ;
-- les activités ;
-- le noyau v1.8.1 ;
-- la politique de confidentialité / reporting.
+## Correspondance des vidéos
+- V0 : `TzoTWSblsi4` — 1944-1998 · De l’indigénat à l’Accord de Nouméa : 50 ans d’évolution politique
+- P1 : `SWTXWzBYMAk` — 1944-1946 · De la fin de l’indigénat à la citoyenneté : l’ordre colonial commence à basculer
+- P2 : `Jnsy8rZKlzA` — 1946-1957 · L’émancipation politique : de la citoyenneté à la représentation
+- P3 : `HtWY8gwj6Ww` — 1957-1981 · De l’autonomie à la revendication indépendantiste : un paysage politique en recomposition
+- P4 : `F438_f2SUJk` — 1981-1989 · De la confrontation au dialogue : la crise politique calédonienne
+- P5 : `K-2w3mFEyEk` — 1988-1998 · De Matignon-Oudinot à l’Accord de Nouméa : dix ans pour construire un nouvel équilibre
