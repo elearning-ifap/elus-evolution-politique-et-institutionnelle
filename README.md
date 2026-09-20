@@ -1,13 +1,13 @@
-# EPI v1.10 — évolution politique et institutionnelle
+# EPI — v1.11 iconographie historique
 
-Version candidate à recette LIANE, fondée sur le noyau commun v1.8.1.
+Version GitHub autonome du module « Évolution politique et institutionnelle de la Nouvelle-Calédonie ».
 
-## Points clés
-- 5 périodes, 5 vidéos, frise interactive ;
-- positionnement ipsatif sur 6 dimensions ;
-- iconographie historique renforcée ;
-- reprise SCORM 1.2 ;
-- réponses formatives non enregistrées ;
-- frise, progression et auto-positionnements restaurés.
+## Évolution principale
+Les visuels issus des capsules vidéo ont été retirés des écrans d’accueil, des ouvertures de période et de la frise. Ils sont remplacés par des documents historiques distincts et des repères documentaires HTML.
 
-Consulter `RECETTE_v1_10.md` pour le détail des contrôles.
+## Déploiement GitHub Pages
+Déposer le contenu à la racine du dépôt, puis activer GitHub Pages sur la branche principale.
+
+## Dépendances en ligne
+- cinq vidéos YouTube ;
+- cinq médias historiques chargés depuis Wikimedia Commons.
