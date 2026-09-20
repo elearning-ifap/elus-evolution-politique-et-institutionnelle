@@ -1,18 +1,12 @@
-# EPI v1.11 — iconographie historique distincte des vidéos
+# EPI v1.13 — iconographies arbitrées
 
-## Objet de la passe
-Supprimer les photogrammes/captures des capsules comme éléments d’illustration du module et réinstaller une iconographie historique autonome : photographies d’archives, cartes, vues aériennes et documents repères.
+Cette version part de la v1.12 et mène la passe de sélection qualitative image par image.
 
-## Changements
-- suppression de toutes les références locales `assets/v*_poster.jpg` et `assets/icono/*` issues des vidéos ;
-- accueil : les cinq cartes visuelles utilisent désormais des documents historiques représentatifs ;
-- ouvertures de période : composition éditoriale avec un document historique principal + deux repères documentaires en HTML ;
-- frise : les en-têtes de période et fiches de détail utilisent une iconographie historique autonome ;
-- crédits : attribution et licences des cinq médias externes ;
-- noyau 1.8.1 et logique de reprise v1.10 conservés sans modification fonctionnelle.
+## Changements majeurs
+- période 2 : remplacement de Jeanne Tunica/PCC par Maurice Lenormand (1951), plus directement relié à la représentation électorale ;
+- période 3 : remplacement des portraits Jacquinot/Messmer par le boom du nickel et un meeting des Foulards rouges ;
+- frise : suppression du recours automatique à l’image générique de période pour un événement sans document dédié ;
+- frise : ajout d’un jalon « Mission du dialogue » distinct d’Ouvéa ;
+- crédits et matrice iconographique mis à jour.
 
-## Principe retenu
-Les capsules racontent. L’iconographie du module documente. Une même image n’est plus utilisée pour remplir plusieurs fonctions.
-
-## Limite
-Les visuels historiques externes sont chargés depuis Wikimedia Commons. Une connexion est donc nécessaire, comme pour les vidéos YouTube. Les documents exacts de l’iconographie d’Olivier Houdan dont les droits de réutilisation ne sont pas explicitement établis ne sont pas copiés dans le package ; ils pourront être substitués ultérieurement si les fichiers sources/droits sont fournis.
+Aucune modification du noyau v1.8.1, du positionnement ipsatif, des activités ou des règles de complétion.

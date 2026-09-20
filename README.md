@@ -1,13 +1,11 @@
-# EPI — v1.11 iconographie historique
+# EPI GitHub v1.13 — iconographies arbitrées
 
-Version GitHub autonome du module « Évolution politique et institutionnelle de la Nouvelle-Calédonie ».
+Version autonome du module « Évolution politique et institutionnelle de la Nouvelle-Calédonie ».
 
-## Évolution principale
-Les visuels issus des capsules vidéo ont été retirés des écrans d’accueil, des ouvertures de période et de la frise. Ils sont remplacés par des documents historiques distincts et des repères documentaires HTML.
+- noyau : v1.8.1 ;
+- 5 vidéos YouTube ;
+- 5 écrans iconographiques dédiés ;
+- iconographies extraites du support Olivier Houdan ;
+- frise interactive avec documents événementiels lorsque disponibles.
 
-## Déploiement GitHub Pages
-Déposer le contenu à la racine du dépôt, puis activer GitHub Pages sur la branche principale.
-
-## Dépendances en ligne
-- cinq vidéos YouTube ;
-- cinq médias historiques chargés depuis Wikimedia Commons.
+Pour GitHub Pages : publier le contenu du dossier à la racine du dépôt.
