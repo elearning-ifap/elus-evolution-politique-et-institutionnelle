@@ -4,10 +4,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Évolution politique et institutionnelle de la Nouvelle-Calédonie — Design v1.6</title>
+<title>Évolution politique et institutionnelle de la Nouvelle-Calédonie — v1.10 · recette noyau 1.8.1</title>
 <!--
 ================================================================================
-  GABARIT NOYAU v1.6.1 — fichier de référence
+  GABARIT NOYAU v1.8.1 — fichier de référence
   Modules e-learning des élus du Congrès de la Nouvelle-Calédonie × IFAP
   Mandature 2026-2031.
 
@@ -22,9 +22,9 @@
 
   ── CHANGELOG v1.6 → v1.6.1 (06/08/2026) ──
   · La v1.6 reste le socle canonique : tokens v2 et accueil standard conservés.
-  · Navigation utile de la v1.7 reportée : menu 280 px, contenu 980 px,
+  · Navigation utile de la v1.8 reportée : menu 280 px, contenu 980 px,
     pourcentage en pastille, étape active bleu nuit et panneau mobile superposé.
-  · Aucun retour des bordures latérales décoratives de la v1.7.
+  · Aucun retour des bordures latérales décoratives de la v1.8.
 
   ── CHANGELOG v1.5 → v1.6 (06/08/2026) ──
   · [U1] REPRISE DE SESSION. Au retour dans un module partiellement suivi, un
@@ -549,6 +549,16 @@ table.tab td.revele::after{content:none}
 .epi-frise-detail-copy{padding:17px 18px 16px 0}.epi-frise-detail-copy h3{margin:0 0 6px}.epi-frise-detail-copy p{margin:0 0 8px}.epi-frise-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}.epi-frise-meta span{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:var(--brume);font-size:11.5px;font-weight:800;color:var(--bleu-nuit)}
 .epi-frise-source{font-size:12.5px;color:var(--gris-doux);border-top:1px solid var(--bordure);padding-top:8px;margin-top:8px!important}
 .epi-frise-empty{padding:12px 10px;color:var(--gris-doux);font-size:12.5px}
+
+.epi-archive-strip{margin-top:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.epi-archive-card{margin:0;background:#fff;border:1px solid var(--bordure);border-radius:12px;overflow:hidden;box-shadow:var(--ombre-carte)}
+.epi-archive-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--brume)}
+.epi-archive-card figcaption{padding:10px 12px 12px;font-size:12.8px;line-height:1.45}
+.epi-archive-card strong{display:block;color:var(--bleu-nuit);font-size:13px;margin-bottom:4px}
+.epi-archive-card small{display:block;color:var(--gris-doux);margin-top:4px}
+@media(max-width:860px){.epi-archive-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.epi-archive-strip{grid-template-columns:1fr}}
+
 @media(max-width:1100px){.epi-timeline{grid-template-columns:repeat(5,250px);min-width:max-content}.epi-frise-intro{grid-template-columns:1fr 230px}}
 @media(max-width:760px){.epi-frise-intro{grid-template-columns:1fr}.epi-frise-detail{grid-template-columns:1fr}.epi-frise-detail-media{min-height:180px;max-height:230px}.epi-frise-detail-copy{padding:0 16px 16px}.epi-timeline{grid-template-columns:repeat(5,235px)}}
 .epi-transform{display:grid;grid-template-columns:70px 1fr;gap:14px;align-items:start;padding:14px 0;border-bottom:1px solid var(--bordure)}
@@ -849,9 +859,265 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
   .epi-period .epi-question{max-width:none}.epi-pos-aside{padding:17px}.epi-pos-aside::before{margin:-17px -17px 15px;padding:9px 17px}
 }
 
+
+/* ============================================================================
+   EPI v1.8 · recette design ciblée
+   Objectif : rapprocher la grammaire Budget sans uniformiser les modules.
+   ============================================================================ */
+
+/* --- Accueil : un hero éditorial, moins "mosaïque de cartes" --- */
+.epi-accueil-hero{
+  display:block!important;
+  margin-bottom:30px!important;
+}
+.epi-accueil-main{
+  position:relative;
+  overflow:hidden;
+  padding:42px 44px 38px!important;
+  background:linear-gradient(135deg,#FFFFFF 0%,#FBFCFD 72%,#F5F8FA 100%)!important;
+  border:1px solid var(--ligne)!important;
+  box-shadow:none!important;
+}
+.epi-accueil-main::after{
+  content:"";
+  position:absolute;
+  width:220px;height:220px;border-radius:50%;
+  right:-92px;top:-98px;
+  background:var(--or);opacity:.10;pointer-events:none;
+}
+.epi-accueil-main h1{max-width:880px}
+.epi-accueil-main .chapo{max-width:800px}
+.epi-question-fil{max-width:780px}
+.epi-accueil-visuel{
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  gap:4px!important;
+  min-height:0!important;
+  margin-top:10px;
+  padding:0!important;
+  background:transparent!important;
+  border-radius:14px!important;
+  overflow:hidden;
+  box-shadow:none!important;
+}
+.epi-accueil-visuel figure,.epi-accueil-visuel figure:first-child{
+  grid-column:auto!important;
+  min-height:154px!important;
+  border-radius:0!important;
+}
+.epi-accueil-visuel figure:first-child{border-radius:14px 0 0 14px!important}
+.epi-accueil-visuel figure:last-child{border-radius:0 14px 14px 0!important}
+.epi-accueil-visuel img{filter:saturate(.90) contrast(1.02)}
+.epi-accueil-visuel figcaption{
+  padding:34px 10px 10px!important;
+  font-size:11.5px!important;
+  line-height:1.25;
+}
+.epi-section-kicker{
+  margin:28px 0 4px;
+  color:var(--or-texte);
+  font-size:11.5px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+}
+.epi-section-title{margin-top:0!important}
+.epi-accueil-bas{
+  border-top:1px solid var(--ligne);
+  border-bottom:1px solid var(--ligne);
+  border-left:0!important;border-right:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  padding:18px 0!important;
+}
+
+/* --- Navigation : lecture plus éditoriale, moins panneau d'administration --- */
+.g-menu{background:#FBFCFD!important}
+.g-menu-liste a,.g-menu a{transition:background .14s ease,color .14s ease,border-color .14s ease}
+.g-menu li.actif a{
+  background:#fff!important;
+  box-shadow:inset 4px 0 0 var(--or);
+}
+.g-menu li.termine a{opacity:.88}
+.g-menu-outils{border-top:1px solid var(--ligne)!important;padding-top:16px!important}
+
+/* --- Repère de période : breadcrumb discret, pas un deuxième bandeau --- */
+.epi-seq-head{margin-bottom:22px!important;padding-bottom:11px!important}
+.epi-seq-num{
+  width:28px!important;height:28px!important;
+  font-size:12px!important;
+  border-radius:8px!important;
+}
+.epi-seq-meta small{font-size:10.5px!important;letter-spacing:.07em;text-transform:uppercase}
+.epi-seq-meta strong{font-size:14px!important}
+.epi-seq-step{
+  border:1px solid var(--ligne);
+  border-radius:999px;
+  padding:5px 9px;
+  background:#FAFCFD;
+}
+
+/* --- Ouvertures de période : composition "mission" proche de Budget --- */
+.epi-period{
+  border:1px solid var(--ligne)!important;
+  box-shadow:none!important;
+}
+.epi-period>div:first-child{padding:40px 38px 36px!important}
+.epi-period>img{min-height:350px!important;filter:saturate(.92) contrast(1.02)}
+.epi-mission-chip{
+  background:#F7F9FA!important;
+  border-color:#E1E7EB!important;
+  font-size:11.5px!important;
+}
+
+/* --- Vidéos : question de lecture et média forment une seule composition --- */
+.epi-video-stage{
+  display:grid;
+  grid-template-columns:minmax(250px,.34fr) minmax(0,1fr);
+  gap:18px;
+  align-items:stretch;
+  margin:18px 0 20px;
+}
+.epi-video-stage .epi-objectif{
+  margin:0!important;
+  height:100%;
+  align-content:start;
+  background:#FFF9E9!important;
+}
+.epi-video-stage .epi-video-shell{
+  margin:0!important;
+  height:100%;
+}
+.epi-objectif b{font-size:11px!important;letter-spacing:.10em!important}
+.epi-objectif span{font-size:16px!important;line-height:1.55!important}
+.epi-video-shell{
+  border-color:#DDE4E9!important;
+  box-shadow:none!important;
+  background:#fff!important;
+}
+.epi-video-note{
+  color:var(--texte-2)!important;
+  font-size:12.5px!important;
+  line-height:1.45!important;
+}
+
+/* --- Activités : réduire l'effet "questionnaire généré" --- */
+.g-consigne{
+  background:#F7F9FA!important;
+  border:0!important;
+  border-left:4px solid var(--or)!important;
+  border-radius:0 10px 10px 0!important;
+  padding:14px 16px!important;
+}
+.g-consigne>b:first-child{font-size:11px!important;letter-spacing:.09em!important}
+.epi-item{
+  margin:8px 0!important;
+  border-color:#DFE6EA!important;
+  border-radius:10px!important;
+  box-shadow:none!important;
+}
+.epi-item:hover:not(.is-correct):not(.is-wrong){border-color:#C9D4DB!important}
+.epi-smallbtn,.epi-choice{
+  border-color:#C8D3DA!important;
+  border-radius:9px!important;
+  box-shadow:none!important;
+}
+.epi-smallbtn:hover,.epi-choice:hover{border-color:var(--bleu-ardoise)!important;box-shadow:none!important}
+.epi-smallbtn.on,.epi-choice.on{
+  background:var(--bleu-nuit)!important;
+  color:#fff!important;
+  border-color:var(--bleu-nuit)!important;
+}
+.epi-feedback{
+  border:0!important;
+  border-left:4px solid var(--or)!important;
+  border-radius:0 10px 10px 0!important;
+  background:#F7F9FA!important;
+}
+.epi-feedback.is-ok{background:#F2F8F4!important;border-left-color:var(--succes)!important}
+.epi-feedback.is-mi{background:#FFF9E9!important;border-left-color:var(--or)!important}
+.epi-replay{font-weight:700}
+
+/* --- Positionnement : davantage de respiration, radar comme repère central --- */
+#air-gap{} /* ancre volontaire pour conserver la lisibilité du bloc CSS */
+.epi-pos-layout{gap:30px!important}
+.epi-pos-aside{
+  padding:24px!important;
+  background:linear-gradient(180deg,#FFFFFF 0%,#FAFCFD 100%)!important;
+  box-shadow:none!important;
+}
+.epi-pos-aside h2{font-size:20px!important}
+.epi-pos-radar-empty{
+  width:220px!important;height:220px!important;
+  background:#fff!important;
+  border-color:#D1DBE1!important;
+}
+.epi-pos-step-head{
+  padding-bottom:12px;
+  margin-bottom:14px;
+  border-bottom:1px solid var(--ligne);
+}
+.g-item-pos{padding:21px 22px!important}
+.g-item-pos p{max-width:72ch}
+.g-echelle button{border-radius:9px!important}
+
+/* --- Frise : barre de filtres plus stable, densité visuelle réduite --- */
+.epi-filters{
+  position:sticky;
+  top:68px;
+  z-index:4;
+  padding:10px 0;
+  background:linear-gradient(#fff 82%,rgba(255,255,255,.92));
+  border-bottom:1px solid var(--ligne);
+}
+.epi-filter{box-shadow:none!important;border-color:#D7E0E5!important}
+.epi-filter.on{background:var(--bleu-nuit)!important;color:#fff!important;border-color:var(--bleu-nuit)!important}
+.epi-period-col{border-color:#DFE6EA!important}
+.epi-event{background:#fff!important}
+.epi-frise-detail{box-shadow:none!important;border-color:#DFE6EA!important}
+
+/* --- Clôture et crédits : hiérarchie plus nette --- */
+#g-fin .hero{
+  background:linear-gradient(135deg,#2F4354 0%,#3B556B 100%)!important;
+  border-radius:16px!important;
+  padding:34px 36px!important;
+}
+#g-fin .hero .eyebrow{color:#FFD66D!important}
+#g-fin .hero h1,#g-fin .hero p{color:#fff!important}
+.epi-credit-table{border-collapse:separate!important;border-spacing:0!important;border:1px solid var(--ligne);border-radius:12px;overflow:hidden}
+.epi-credit-table th,.epi-credit-table td{border:0!important;border-bottom:1px solid var(--ligne)!important;padding:13px 14px!important}
+.epi-credit-table tr:last-child th,.epi-credit-table tr:last-child td{border-bottom:0!important}
+.epi-credit-table th{background:#F7F9FA!important}
+
+/* --- Tablette : priorité au contenu, pas à la décoration --- */
+@media(max-width:980px){
+  .epi-video-stage{grid-template-columns:1fr}
+  .epi-video-stage .epi-objectif{height:auto}
+  .epi-period>div:first-child{padding:30px 26px 26px!important}
+  .epi-period>img{min-height:250px!important}
+  .epi-accueil-visuel{grid-template-columns:repeat(5,220px)!important;overflow-x:auto;scroll-snap-type:x proximity;justify-content:start}
+  .epi-accueil-visuel figure{scroll-snap-align:start}
+  .epi-accueil-visuel figure:first-child,.epi-accueil-visuel figure:last-child{border-radius:0!important}
+  .epi-accueil-visuel figure{min-height:140px!important}
+}
+@media(max-width:680px){
+  .epi-accueil-main{padding:28px 22px 26px!important}
+  .epi-accueil-visuel{display:none!important}
+  .epi-filters{position:static}
+  .epi-pos-aside{padding:19px!important}
+}
+
+
+/* Noyau v1.8.1 · politique d’affichage par profil d’appareil */
+.g-device-blocker{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:#F7F9FA;padding:24px}
+.g-device-blocker.g-actif{display:flex}
+.g-device-card{max-width:560px;background:#fff;border:1px solid var(--bordure);border-radius:var(--rayon-grand);box-shadow:var(--ombre-forte);padding:28px}
+.g-device-card h1{margin-top:0}
+
 </style>
 </head>
 <body>
+<div aria-hidden="true" aria-labelledby="g-device-title" aria-modal="true" class="g-device-blocker" id="g-device-blocker" role="dialog"><div class="g-device-card"><p class="eyebrow">Affichage</p><h1 id="g-device-title">Utilisez un ordinateur ou une tablette</h1><p>Ce module est conçu pour les écrans qui permettent de lire confortablement les frises, les documents et les interactions.</p></div></div>
 <header class="g-chrome" role="banner">
 <div class="g-chrome-inner">
 <p class="g-titre" id="g-titre-module">Titre du module
@@ -889,7 +1155,7 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <p class="eyebrow">Évolution politique et institutionnelle · 1944-1998</p>
 <h1>Cinq périodes pour comprendre comment les équilibres politiques se sont construits</h1>
 <p class="chapo">Ce parcours ne vous demande pas de retenir une succession de dates. Il vous aide à comprendre les transformations qui relient la fin de l’ordre colonial, l’émancipation politique, les évolutions statutaires, la confrontation puis le temps des accords.</p>
-<div class="epi-meta-row" aria-label="Repères du parcours"><span>5 périodes</span><span>5 vidéos</span><span>1 frise interactive</span><span>≈ 1 h</span></div>
+<div aria-label="Repères du parcours" class="epi-meta-row"><span>5 périodes</span><span>5 vidéos</span><span>1 frise interactive</span><span>≈ 1 h</span></div>
 <div class="epi-question-fil">
 <small>Votre question fil rouge</small>
 <strong>Qu’est-ce qui change à chaque période, et pourquoi cela change-t-il la suite ?</strong>
@@ -903,7 +1169,7 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <figure><img alt="Photogramme de la période 1988-1998" src="assets/v5_poster.jpg"/><figcaption>1988-1998</figcaption></figure>
 </div>
 </div>
-<h2 class="epi-section-title">Votre parcours en un coup d’œil</h2>
+<p class="epi-section-kicker">Votre parcours</p><h2 class="epi-section-title">Cinq périodes, un même fil historique</h2>
 <div aria-label="Les cinq périodes du parcours" class="epi-ruban">
 <div class="epi-ruban-item"><small>Période 1</small><b>1944-1946<br/>L’ordre bascule</b></div>
 <div class="epi-ruban-item"><small>Période 2</small><b>1946-1957<br/>Émancipation politique</b></div>
@@ -917,6 +1183,7 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <div><b>Vous pouvez avancer à votre rythme</b><span>Votre progression est enregistrée au fil de l’eau et vous reprenez exactement là où vous vous êtes arrêté.</span></div>
 <div><b>Les vidéos donnent le fil</b><span>Les activités qui suivent servent à relier les événements et les transformations, pas à réciter les capsules.</span></div>
 <div><b>La frise reste disponible</b><span>Depuis « Accès direct » et le menu, vous pouvez retrouver un repère sans interrompre votre parcours.</span></div>
+<div><b>Vos exercices restent confidentiels</b><span>Vos réponses aux activités formatives ne sont ni enregistrées ni transmises. La plateforme conserve uniquement ce qui est nécessaire à la progression et à la reprise du parcours, ainsi que vos auto-positionnements.</span></div>
 </div>
 </details>
 <div class="epi-accueil-bas">
@@ -953,16 +1220,15 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
        le même data-composant. Le noyau lève une alerte en dev sinon.
        ═══════════════════════════════════════════════════════════════════ -->
 <section class="panel epi-period-screen" data-composant="question" data-obligatoire="" data-titre="Séquence 1 · 1944-1946" id="epi-p1-question"><div aria-label="Période 1 — 1944-1946" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">1</span><div class="epi-seq-meta"><small>Période 1 · 1944-1946</small><strong>L’ordre bascule</strong></div></div><span class="epi-seq-step">Étape 1/4</span></div>
-<div class="epi-period"><div><span class="epi-kicker">1944 → 1946</span><p class="epi-question">En 1946, qu’est-ce qui bascule réellement : un statut, des droits ou l’ensemble de l’ordre politique ?</p><p>La première capsule installe le contexte de sortie de guerre et les ruptures qui touchent l’ordre colonial.</p><div aria-label="Contenu de cette période" class="epi-mission-meta"><span class="epi-mission-chip">Vidéo · 4 min 45</span><span class="epi-mission-chip">1 activité</span><span class="epi-mission-chip">1 repère clé</span></div><p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-p1-video" data-termine-ecran="">Voir la vidéo</button></p></div><img alt="Photogramme de la capsule 1944-1946 : L’ordre bascule" src="assets/v1_poster.jpg"/></div>
+<div class="epi-period"><div><span class="epi-kicker">1944 → 1946</span><p class="epi-question">En 1946, qu’est-ce qui bascule réellement : un statut, des droits ou l’ensemble de l’ordre politique ?</p><p>La première capsule installe le contexte de sortie de guerre et les ruptures qui touchent l’ordre colonial.</p><div aria-label="Contenu de cette période" class="epi-mission-meta"><span class="epi-mission-chip">Vidéo · 4 min 45</span><span class="epi-mission-chip">1 activité</span><span class="epi-mission-chip">3 repères documentaires</span></div><div aria-label="Repères documentaires de la période 1944-1946" class="epi-archive-strip"><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant l’ancienne logique coloniale d’extraction" src="assets/icono/p1_indigenat.jpg"/><figcaption><strong>Ordre colonial</strong>La capsule visualise l’ancienne logique coloniale et les contraintes de l’indigénat.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant la conférence de Brazzaville" src="assets/icono/p1_brazzaville.jpg"/><figcaption><strong>Brazzaville et le CNR</strong>Un repère visuel fort pour situer l’impulsion politique donnée depuis la France libre.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure><figure class="epi-archive-card"><img alt="Vue issue de la capsule rappelant les jalons de la rupture de 1946" src="assets/icono/p1_rupture1946.jpg"/><figcaption><strong>Rupture de 1946</strong>Les jalons de 1946 sont replacés dans une courte chronologie de bascule.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure></div><p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-p1-video" data-termine-ecran="">Voir la vidéo</button></p></div><img alt="Photogramme de la capsule 1944-1946 : L’ordre bascule" src="assets/v1_poster.jpg"/></div>
 </section>
 <section class="panel epi-period-screen" data-composant="video" data-obligatoire="" data-titre="Séquence 1 · 1944-1946" id="epi-p1-video"><div aria-label="Période 1 — 1944-1946" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">1</span><div class="epi-seq-meta"><small>Période 1 · 1944-1946</small><strong>L’ordre bascule</strong></div></div><span class="epi-seq-step">Étape 2/4</span></div>
 <p class="eyebrow">1944-1946</p><h1>1944-1946 : L’ordre bascule</h1>
-<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>quels changements ouvrent une nouvelle séquence politique ?</strong></span></div></div>
-<div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="about:blank" data-youtube-src="https://www.youtube-nocookie.com/embed/pb7Fx1v_NjM?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" title="1944-1946 : L’ordre bascule"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
-
+<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Question de lecture</b><span>Gardez cette question en tête pendant la vidéo : <strong>quels changements ouvrent une nouvelle séquence politique ?</strong></span></div></div>
+<div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" data-youtube-src="https://www.youtube-nocookie.com/embed/pb7Fx1v_NjM?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" src="about:blank" title="1944-1946 : L’ordre bascule"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p1-activite" data-termine-ecran="">J’ai terminé la vidéo</button></p>
 </section>
-<section class="panel epi-period-screen" data-composant="classement" data-obligatoire="" data-titre="Séquence 1 · Avant / après 1946" id="epi-p1-activite"><div aria-label="Période 1 — 1944-1946" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">1</span><div class="epi-seq-meta"><small>Période 1 · 1944-1946</small><strong>L’ordre bascule</strong></div></div><span class="epi-seq-step">Étape 3/4</span></div>
+<section class="panel epi-period-screen" data-composant="classement" data-obligatoire="" data-titre="Séquence 1 · Avant / après 1946" id="epi-p1-activite"><div aria-label="Période 1 — 1944-1946" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">1</span><div class="epi-seq-meta"><small>Période 1 · 1944-1946</small><strong>L’ordre bascule</strong></div></div><span class="epi-seq-step">Étape 3/4</span></div><div class="g-confid epi-confid epi-formative-confid"><span aria-hidden="true" class="epi-lock"></span><span>Vos réponses à cette activité ne sont ni enregistrées ni transmises. Vous pouvez essayer, vérifier et rejouer librement.</span></div>
 <p class="eyebrow">Je prends position</p><h1>Avant 1946 / ce que 1946 ouvre : classez les repères</h1>
 <div class="g-consigne"><b>Consigne</b><span>Pour chaque proposition, indiquez si elle décrit le cadre antérieur ou la nouvelle séquence ouverte en 1946.</span></div>
 <div id="act-p1"></div><div class="epi-feedback" hidden="" id="fb-p1"></div>
@@ -975,16 +1241,15 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p2-question" data-termine-ecran="">Passer à 1946-1957</button></p>
 </section>
 <section class="panel epi-period-screen" data-composant="question" data-obligatoire="" data-titre="Séquence 2 · 1946-1957" id="epi-p2-question"><div aria-label="Période 2 — 1946-1957" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">2</span><div class="epi-seq-meta"><small>Période 2 · 1946-1957</small><strong>L’émancipation politique</strong></div></div><span class="epi-seq-step">Étape 1/4</span></div>
-<div class="epi-period"><div><span class="epi-kicker">1946 → 1957</span><p class="epi-question">Être citoyen suffit-il pour participer effectivement au pouvoir politique ?</p><p>Cette période suit le passage des droits reconnus à l’organisation politique puis à la représentation.</p><div aria-label="Contenu de cette période" class="epi-mission-meta"><span class="epi-mission-chip">Vidéo · 4 min 42</span><span class="epi-mission-chip">1 activité</span><span class="epi-mission-chip">1 repère clé</span></div><p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-p2-video" data-termine-ecran="">Voir la vidéo</button></p></div><img alt="Photogramme de la capsule Émancipation politique" src="assets/v2_poster.jpg"/></div>
+<div class="epi-period"><div><span class="epi-kicker">1946 → 1957</span><p class="epi-question">Être citoyen suffit-il pour participer effectivement au pouvoir politique ?</p><p>Cette période suit le passage des droits reconnus à l’organisation politique puis à la représentation.</p><div aria-label="Contenu de cette période" class="epi-mission-meta"><span class="epi-mission-chip">Vidéo · 4 min 42</span><span class="epi-mission-chip">1 activité</span><span class="epi-mission-chip">3 repères documentaires</span></div><div aria-label="Repères documentaires de la période 1946-1957" class="epi-archive-strip"><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant la frise de l’élargissement électoral" src="assets/icono/p2_vote_elu.jpg"/><figcaption><strong>Du droit au vote</strong>La capsule rend visible le lien entre citoyenneté, élargissement électoral et représentation.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant les neuf premiers élus mélanésiens" src="assets/icono/p2_neuf_elus.jpg"/><figcaption><strong>Neuf premiers élus mélanésiens</strong>Une image clé pour matérialiser l’entrée concrète de nouveaux représentants au Conseil général.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant l’Union calédonienne" src="assets/icono/p2_uc.jpg"/><figcaption><strong>Union calédonienne</strong>L’adhésion et la devise sont mobilisées comme trace de la recomposition politique.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure></div><p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-p2-video" data-termine-ecran="">Voir la vidéo</button></p></div><img alt="Photogramme de la capsule Émancipation politique" src="assets/v2_poster.jpg"/></div>
 </section>
 <section class="panel epi-period-screen" data-composant="video" data-obligatoire="" data-titre="Séquence 2 · 1946-1957" id="epi-p2-video"><div aria-label="Période 2 — 1946-1957" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">2</span><div class="epi-seq-meta"><small>Période 2 · 1946-1957</small><strong>L’émancipation politique</strong></div></div><span class="epi-seq-step">Étape 2/4</span></div>
 <p class="eyebrow">1946-1957</p><h1>Émancipation politique</h1>
-<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>comment passe-t-on de la citoyenneté à une représentation politique plus effective ?</strong></span></div></div>
-<div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="about:blank" data-youtube-src="https://www.youtube-nocookie.com/embed/_ZlqA0R3jXs?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" title="Émancipation politique"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
-
+<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Question de lecture</b><span>Gardez cette question en tête pendant la vidéo : <strong>comment passe-t-on de la citoyenneté à une représentation politique plus effective ?</strong></span></div></div>
+<div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" data-youtube-src="https://www.youtube-nocookie.com/embed/_ZlqA0R3jXs?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" src="about:blank" title="Émancipation politique"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p2-activite" data-termine-ecran="">J’ai terminé la vidéo</button></p>
 </section>
-<section class="panel epi-period-screen" data-composant="ordonner" data-obligatoire="" data-titre="Séquence 2 · Le chemin vers la représentation" id="epi-p2-activite"><div aria-label="Période 2 — 1946-1957" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">2</span><div class="epi-seq-meta"><small>Période 2 · 1946-1957</small><strong>L’émancipation politique</strong></div></div><span class="epi-seq-step">Étape 3/4</span></div>
+<section class="panel epi-period-screen" data-composant="ordonner" data-obligatoire="" data-titre="Séquence 2 · Le chemin vers la représentation" id="epi-p2-activite"><div aria-label="Période 2 — 1946-1957" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">2</span><div class="epi-seq-meta"><small>Période 2 · 1946-1957</small><strong>L’émancipation politique</strong></div></div><span class="epi-seq-step">Étape 3/4</span></div><div class="g-confid epi-confid epi-formative-confid"><span aria-hidden="true" class="epi-lock"></span><span>Vos réponses à cette activité ne sont ni enregistrées ni transmises. Vous pouvez essayer, vérifier et rejouer librement.</span></div>
 <p class="eyebrow">Je comprends</p><h1>Reconstruisez le chemin vers la représentation</h1>
 <div class="g-consigne"><b>Consigne</b><span>Replacez les quatre transformations dans l’ordre logique. Utilisez les boutons ↑ et ↓ : aucun glisser-déposer n’est nécessaire.</span></div>
 <div id="act-p2"></div><div class="epi-feedback" hidden="" id="fb-p2"></div>
@@ -997,16 +1262,15 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p3-question" data-termine-ecran="">Passer à 1957-1981</button></p>
 </section>
 <section class="panel epi-period-screen" data-composant="question" data-obligatoire="" data-titre="Séquence 3 · 1957-1981" id="epi-p3-question"><div aria-label="Période 3 — 1957-1981" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">3</span><div class="epi-seq-meta"><small>Période 3 · 1957-1981</small><strong>Autonomie et recompositions</strong></div></div><span class="epi-seq-step">Étape 1/5</span></div>
-<div class="epi-period"><div><span class="epi-kicker">1957 → 1981</span><p class="epi-question">Pourquoi l’autonomie ouverte en 1957 ne produit-elle pas un équilibre institutionnel durable ?</p><p>La capsule suit l’ouverture institutionnelle, les reprises en main successives et les transformations économiques et politiques des décennies suivantes.</p><div aria-label="Contenu de cette période" class="epi-mission-meta"><span class="epi-mission-chip">Vidéo · 4 min 08</span><span class="epi-mission-chip">1 activité</span><span class="epi-mission-chip">Pont 1977-1981</span></div><p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-p3-video" data-termine-ecran="">Voir la vidéo</button></p></div><img alt="Photogramme de la capsule Nouvelle-Calédonie 57-77" src="assets/v3_poster.jpg"/></div>
+<div class="epi-period"><div><span class="epi-kicker">1957 → 1981</span><p class="epi-question">Pourquoi l’autonomie ouverte en 1957 ne produit-elle pas un équilibre institutionnel durable ?</p><p>La capsule suit l’ouverture institutionnelle, les reprises en main successives et les transformations économiques et politiques des décennies suivantes.</p><div aria-label="Contenu de cette période" class="epi-mission-meta"><span class="epi-mission-chip">Vidéo · 4 min 08</span><span class="epi-mission-chip">1 activité</span><span class="epi-mission-chip">3 repères documentaires</span></div><div aria-label="Repères documentaires de la période 1957-1981" class="epi-archive-strip"><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant la loi-cadre de 1957 et la loi Jacquinot de 1963" src="assets/icono/p3_lois.jpg"/><figcaption><strong>Loi-cadre et reprise en main</strong>La capsule juxtapose 1957 et 1963 pour visualiser l’aller-retour institutionnel.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant le boom du nickel" src="assets/icono/p3_nickel.jpg"/><figcaption><strong>Boom du nickel</strong>Le document mobilise des vues industrielles pour traduire l’ampleur des mutations économiques et démographiques.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant la chronologie 1957-1977, incluant Mélanésia 2000" src="assets/icono/p3_melanesia.jpg"/><figcaption><strong>Mélanésia 2000</strong>Le festival est replacé dans une chronologie qui met en évidence sa portée culturelle et politique.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure></div><p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-p3-video" data-termine-ecran="">Voir la vidéo</button></p></div><img alt="Photogramme de la capsule Nouvelle-Calédonie 57-77" src="assets/v3_poster.jpg"/></div>
 </section>
 <section class="panel epi-period-screen" data-composant="video" data-obligatoire="" data-titre="Séquence 3 · 1957-1981" id="epi-p3-video"><div aria-label="Période 3 — 1957-1981" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">3</span><div class="epi-seq-meta"><small>Période 3 · 1957-1981</small><strong>Autonomie et recompositions</strong></div></div><span class="epi-seq-step">Étape 2/5</span></div>
 <p class="eyebrow">1957-1981</p><h1>Nouvelle-Calédonie 57-77</h1>
-<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>qu’est-ce qui relève d’une évolution institutionnelle, d’une reprise en main ou d’une transformation du contexte ?</strong></span></div></div>
-<div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="about:blank" data-youtube-src="https://www.youtube-nocookie.com/embed/HhK2hFaJa8M?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" title="Nouvelle-Calédonie 57-77"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
-
+<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Question de lecture</b><span>Gardez cette question en tête pendant la vidéo : <strong>qu’est-ce qui relève d’une évolution institutionnelle, d’une reprise en main ou d’une transformation du contexte ?</strong></span></div></div>
+<div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" data-youtube-src="https://www.youtube-nocookie.com/embed/HhK2hFaJa8M?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" src="about:blank" title="Nouvelle-Calédonie 57-77"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p3-activite" data-termine-ecran="">J’ai terminé la vidéo</button></p>
 </section>
-<section class="panel epi-period-screen" data-composant="appariement" data-obligatoire="" data-titre="Séquence 3 · Autonomie, recentralisation, recompositions" id="epi-p3-activite"><div aria-label="Période 3 — 1957-1981" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">3</span><div class="epi-seq-meta"><small>Période 3 · 1957-1981</small><strong>Autonomie et recompositions</strong></div></div><span class="epi-seq-step">Étape 3/5</span></div>
+<section class="panel epi-period-screen" data-composant="appariement" data-obligatoire="" data-titre="Séquence 3 · Autonomie, recentralisation, recompositions" id="epi-p3-activite"><div aria-label="Période 3 — 1957-1981" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">3</span><div class="epi-seq-meta"><small>Période 3 · 1957-1981</small><strong>Autonomie et recompositions</strong></div></div><span class="epi-seq-step">Étape 3/5</span></div><div class="g-confid epi-confid epi-formative-confid"><span aria-hidden="true" class="epi-lock"></span><span>Vos réponses à cette activité ne sont ni enregistrées ni transmises. Vous pouvez essayer, vérifier et rejouer librement.</span></div>
 <p class="eyebrow">Je distingue</p><h1>Quatre dynamiques, une même période</h1><div class="g-consigne"><b>Consigne</b><span>Associez chaque repère à la dynamique qu’il illustre le mieux.</span></div>
 <div id="act-p3"></div><div class="epi-feedback" hidden="" id="fb-p3"></div>
 <p class="epi-actionbar"><button class="btn btn-accent" data-next="epi-p3-pont" disabled="" id="btn-p3">Vérifier mes associations</button></p>
@@ -1024,16 +1288,15 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p4-question" data-termine-ecran="">Passer à 1981-1988</button></p>
 </section>
 <section class="panel epi-period-screen" data-composant="question" data-obligatoire="" data-titre="Séquence 4 · 1981-1988" id="epi-p4-question"><div aria-label="Période 4 — 1981-1988" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">4</span><div class="epi-seq-meta"><small>Période 4 · 1981-1988</small><strong>Confrontation et négociation</strong></div></div><span class="epi-seq-step">Étape 1/5</span></div>
-<div class="epi-period"><div><span class="epi-kicker">1981 → 1988</span><p class="epi-question">Comment des positions politiques fortement opposées reviennent-elles à la négociation ?</p><p>Cette séquence traite une période de confrontation. L’objectif est d’en comprendre la dynamique, sans transformer les violences en ressort ludique.</p><div aria-label="Contenu de cette période" class="epi-mission-meta"><span class="epi-mission-chip">Vidéo · 5 min 13</span><span class="epi-mission-chip">1 activité</span><span class="epi-mission-chip">Repères 1988</span></div><p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-p4-video" data-termine-ecran="">Voir la vidéo</button></p></div><img alt="Photogramme de la capsule Confrontation et négociation 81-88" src="assets/v4_poster.jpg"/></div>
+<div class="epi-period"><div><span class="epi-kicker">1981 → 1988</span><p class="epi-question">Comment des positions politiques fortement opposées reviennent-elles à la négociation ?</p><p>Cette séquence traite une période de confrontation. L’objectif est d’en comprendre la dynamique, sans transformer les violences en ressort ludique.</p><div aria-label="Contenu de cette période" class="epi-mission-meta"><span class="epi-mission-chip">Vidéo · 5 min 13</span><span class="epi-mission-chip">1 activité</span><span class="epi-mission-chip">3 repères documentaires</span></div><div aria-label="Repères documentaires de la période 1981-1988" class="epi-archive-strip"><figure class="epi-archive-card"><img alt="Vue issue de la capsule mobilisant la déclaration de Nainville-les-Roches" src="assets/icono/p4_nainville.jpg"/><figcaption><strong>Nainville-les-Roches</strong>Le document rappelle l’importance de la reconnaissance des légitimités et du blocage institutionnel.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant la chronologie d’avril et mai 1988 à Ouvéa" src="assets/icono/p4_ouvea.jpg"/><figcaption><strong>Avril-mai 1988</strong>La chronologie situe les événements d’Ouvéa comme point de rupture vers une nouvelle séquence politique.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant la poignée de mains Tjibaou-Lafleur" src="assets/icono/p4_poignee.jpg"/><figcaption><strong>Poignée de mains Tjibaou-Lafleur</strong>Cette image ne clôt pas l’histoire : elle marque le traitement négocié de l’opposition politique.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure></div><p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-p4-video" data-termine-ecran="">Voir la vidéo</button></p></div><img alt="Photogramme de la capsule Confrontation et négociation 81-88" src="assets/v4_poster.jpg"/></div>
 </section>
 <section class="panel epi-period-screen" data-composant="video" data-obligatoire="" data-titre="Séquence 4 · 1981-1988" id="epi-p4-video"><div aria-label="Période 4 — 1981-1988" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">4</span><div class="epi-seq-meta"><small>Période 4 · 1981-1988</small><strong>Confrontation et négociation</strong></div></div><span class="epi-seq-step">Étape 2/5</span></div>
 <p class="eyebrow">1981-1988</p><h1>Confrontation &amp; négociation 81-88</h1>
-<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>quelles étapes font passer de la polarisation au retour à la négociation ?</strong></span></div></div>
-<div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="about:blank" data-youtube-src="https://www.youtube-nocookie.com/embed/XxdrkW3-TQw?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" title="Confrontation &amp; négociation 81-88"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
-
+<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Question de lecture</b><span>Gardez cette question en tête pendant la vidéo : <strong>quelles étapes font passer de la polarisation au retour à la négociation ?</strong></span></div></div>
+<div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" data-youtube-src="https://www.youtube-nocookie.com/embed/XxdrkW3-TQw?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" src="about:blank" title="Confrontation &amp; négociation 81-88"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p4-activite" data-termine-ecran="">J’ai terminé la vidéo</button></p>
 </section>
-<section class="panel epi-period-screen" data-composant="ordonner" data-obligatoire="" data-titre="Séquence 4 · De la polarisation à la négociation" id="epi-p4-activite"><div aria-label="Période 4 — 1981-1988" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">4</span><div class="epi-seq-meta"><small>Période 4 · 1981-1988</small><strong>Confrontation et négociation</strong></div></div><span class="epi-seq-step">Étape 3/5</span></div>
+<section class="panel epi-period-screen" data-composant="ordonner" data-obligatoire="" data-titre="Séquence 4 · De la polarisation à la négociation" id="epi-p4-activite"><div aria-label="Période 4 — 1981-1988" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">4</span><div class="epi-seq-meta"><small>Période 4 · 1981-1988</small><strong>Confrontation et négociation</strong></div></div><span class="epi-seq-step">Étape 3/5</span></div><div class="g-confid epi-confid epi-formative-confid"><span aria-hidden="true" class="epi-lock"></span><span>Vos réponses à cette activité ne sont ni enregistrées ni transmises. Vous pouvez essayer, vérifier et rejouer librement.</span></div>
 <p class="eyebrow">Je comprends la dynamique</p><h1>Quatre états à remettre en relation</h1>
 <div class="g-consigne"><b>Consigne</b><span>Replacez ces états dans la dynamique générale montrée par la capsule. Il ne s’agit pas de réduire l’histoire à quatre mots, mais d’identifier le mouvement d’ensemble.</span></div>
 <div id="act-p4"></div><div class="epi-feedback" hidden="" id="fb-p4"></div>
@@ -1052,16 +1315,15 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p5-question" data-termine-ecran="">Passer à 1988-1998</button></p>
 </section>
 <section class="panel epi-period-screen" data-composant="question" data-obligatoire="" data-titre="Séquence 5 · 1988-1998" id="epi-p5-question"><div aria-label="Période 5 — 1988-1998" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">5</span><div class="epi-seq-meta"><small>Période 5 · 1988-1998</small><strong>Le temps des accords</strong></div></div><span class="epi-seq-step">Étape 1/4</span></div>
-<div class="epi-period"><div><span class="epi-kicker">1988 → 1998</span><p class="epi-question">Après les accords de 1988, que faut-il transformer pour inscrire le compromis dans la durée ?</p><p>Cette dernière capsule suit la décennie de rééquilibrage et le passage des accords de Matignon-Oudinot à l’Accord de Nouméa.</p><div aria-label="Contenu de cette période" class="epi-mission-meta"><span class="epi-mission-chip">Vidéo · 4 min 05</span><span class="epi-mission-chip">1 activité</span><span class="epi-mission-chip">Comparateur final</span></div><p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-p5-video" data-termine-ecran="">Voir la vidéo</button></p></div><img alt="Photogramme de la capsule De Matignon à Nouméa" src="assets/v5_poster.jpg"/></div>
+<div class="epi-period"><div><span class="epi-kicker">1988 → 1998</span><p class="epi-question">Après les accords de 1988, que faut-il transformer pour inscrire le compromis dans la durée ?</p><p>Cette dernière capsule suit la décennie de rééquilibrage et le passage des accords de Matignon-Oudinot à l’Accord de Nouméa.</p><div aria-label="Contenu de cette période" class="epi-mission-meta"><span class="epi-mission-chip">Vidéo · 4 min 05</span><span class="epi-mission-chip">1 activité</span><span class="epi-mission-chip">3 repères documentaires</span></div><div aria-label="Repères documentaires de la période 1988-1998" class="epi-archive-strip"><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant la construction politique et la création des provinces" src="assets/icono/p5_provinces.jpg"/><figcaption><strong>Trois provinces</strong>La capsule rend visible la provincialisation comme levier d’équilibre territorial et politique.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant le programme 400 cadres" src="assets/icono/p5_400cadres.jpg"/><figcaption><strong>Programme 400 cadres</strong>La formation des cadres est traitée comme levier humain du rééquilibrage.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure><figure class="epi-archive-card"><img alt="Vue issue de la capsule montrant la signature de l’Accord de Nouméa" src="assets/icono/p5_noumea.jpg"/><figcaption><strong>Accord de Nouméa</strong>La signature devient un document repère pour matérialiser le nouvel équilibre négocié.<small>Document d’appui extrait de la capsule vidéo.</small></figcaption></figure></div><p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-p5-video" data-termine-ecran="">Voir la vidéo</button></p></div><img alt="Photogramme de la capsule De Matignon à Nouméa" src="assets/v5_poster.jpg"/></div>
 </section>
 <section class="panel epi-period-screen" data-composant="video" data-obligatoire="" data-titre="Séquence 5 · 1988-1998" id="epi-p5-video"><div aria-label="Période 5 — 1988-1998" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">5</span><div class="epi-seq-meta"><small>Période 5 · 1988-1998</small><strong>Le temps des accords</strong></div></div><span class="epi-seq-step">Étape 2/4</span></div>
 <p class="eyebrow">1988-1998</p><h1>De Matignon à Nouméa</h1>
-<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Consigne</b><span>Gardez cette question en tête pendant la vidéo : <strong>quels leviers transforment le compromis politique en transformations institutionnelles, territoriales et humaines ?</strong></span></div></div>
-<div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="about:blank" data-youtube-src="https://www.youtube-nocookie.com/embed/iluEH6o8LCs?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" title="De Matignon à Nouméa"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
-
+<div class="epi-objectif"><div aria-hidden="true" class="picto">?</div><div><b>Question de lecture</b><span>Gardez cette question en tête pendant la vidéo : <strong>quels leviers transforment le compromis politique en transformations institutionnelles, territoriales et humaines ?</strong></span></div></div>
+<div class="epi-video-shell"><div class="epi-video"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" data-youtube-src="https://www.youtube-nocookie.com/embed/iluEH6o8LCs?rel=0&amp;modestbranding=1&amp;cc_load_policy=1&amp;hl=fr&amp;enablejsapi=1" loading="lazy" src="about:blank" title="De Matignon à Nouméa"></iframe></div><p class="epi-video-note">La vidéo est hébergée hors du package. Votre écran de parcours est mémorisé ; si vous interrompez la capsule, le lecteur vidéo peut toutefois reprendre au début. Activez les sous-titres dans le lecteur lorsqu’ils sont disponibles.</p></div>
 <p class="epi-actionbar"><button class="btn btn-accent" data-go="epi-p5-activite" data-termine-ecran="">J’ai terminé la vidéo</button></p>
 </section>
-<section class="panel epi-period-screen" data-composant="appariement" data-obligatoire="" data-titre="Séquence 5 · Les leviers du rééquilibrage" id="epi-p5-activite"><div aria-label="Période 5 — 1988-1998" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">5</span><div class="epi-seq-meta"><small>Période 5 · 1988-1998</small><strong>Le temps des accords</strong></div></div><span class="epi-seq-step">Étape 3/4</span></div>
+<section class="panel epi-period-screen" data-composant="appariement" data-obligatoire="" data-titre="Séquence 5 · Les leviers du rééquilibrage" id="epi-p5-activite"><div aria-label="Période 5 — 1988-1998" class="epi-seq-head"><div class="epi-seq-id"><span class="epi-seq-num">5</span><div class="epi-seq-meta"><small>Période 5 · 1988-1998</small><strong>Le temps des accords</strong></div></div><span class="epi-seq-step">Étape 3/4</span></div><div class="g-confid epi-confid epi-formative-confid"><span aria-hidden="true" class="epi-lock"></span><span>Vos réponses à cette activité ne sont ni enregistrées ni transmises. Vous pouvez essayer, vérifier et rejouer librement.</span></div>
 <p class="eyebrow">Je relie</p><h1>Construire l’équilibre : quels leviers pour quelles transformations ?</h1><div class="g-consigne"><b>Consigne</b><span>Associez chaque levier à la transformation qu’il porte dans la logique de la période.</span></div>
 <div id="act-p5"></div><div class="epi-feedback" hidden="" id="fb-p5"></div>
 <p class="epi-actionbar"><button class="btn btn-accent" data-next="epi-p5-synth" disabled="" id="btn-p5">Vérifier mes associations</button></p>
@@ -1074,10 +1336,10 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 </section>
 <section class="panel" data-composant="frise" data-obligatoire="" data-titre="La grande frise" id="epi-frise">
 <p class="eyebrow">Vue d’ensemble</p><h1>La grande frise interactive</h1><p class="chapo">Explorez les cinq périodes et croisez plusieurs fils : institutions, textes et statuts, mouvements politiques, acteurs, accords et contexte. L’objectif est de comprendre les transformations, pas de mémoriser une liste de dates.</p>
-<div class="epi-frise-intro"><div class="epi-card"><h3>Comment la lire ?</h3><p>Choisissez un filtre, puis sélectionnez un repère. La fiche détaillée vous indique <strong>ce qui change</strong> et pourquoi ce jalon compte dans le récit.</p></div><div class="epi-card"><h3>Repère visuel</h3><p>Chaque période conserve le photogramme de sa capsule afin de garder un lien immédiat avec le récit vidéo.</p></div></div>
-<div class="epi-filters" aria-label="Filtres de la frise"><button class="epi-filter on" data-filter="all">Tous</button><button class="epi-filter" data-filter="institution">Institutions</button><button class="epi-filter" data-filter="texte">Textes & statuts</button><button class="epi-filter" data-filter="mouvement">Mouvements</button><button class="epi-filter" data-filter="acteur">Acteurs</button><button class="epi-filter" data-filter="accord">Accords</button><button class="epi-filter" data-filter="contexte">Contexte</button></div>
-<div class="epi-timeline-wrap" aria-label="Frise chronologique 1944-1998"><div class="epi-timeline" id="epi-timeline"></div></div>
-<div class="epi-frise-detail" id="epi-event-detail" aria-live="polite"><div class="epi-frise-detail-media"><img src="assets/v1_poster.jpg" alt="Photogramme de la période 1944-1946"></div><div class="epi-frise-detail-copy"><div class="epi-frise-meta"><span>1944-1998</span><span>Frise interactive</span></div><h3>Sélectionnez un repère</h3><p>Vous verrez ici ce que ce jalon transforme et le fil auquel il se rattache.</p></div></div>
+<div class="epi-frise-intro"><div class="epi-card"><h3>Comment la lire ?</h3><p>Choisissez un filtre, puis sélectionnez un repère. La fiche détaillée vous indique <strong>ce qui change</strong>, le document iconographique mobilisé et la source de vérification associée.</p></div><div class="epi-card"><h3>Documents d’appui</h3><p>Les cinq périodes ne reposent plus seulement sur un photogramme générique : les repères majeurs mobilisent désormais des vues issues des capsules d’Olivier Houdan pour rendre visibles les archives, les acteurs et les accords.</p></div></div>
+<div aria-label="Filtres de la frise" class="epi-filters"><button class="epi-filter on" data-filter="all">Tous</button><button class="epi-filter" data-filter="institution">Institutions</button><button class="epi-filter" data-filter="texte">Textes &amp; statuts</button><button class="epi-filter" data-filter="mouvement">Mouvements</button><button class="epi-filter" data-filter="acteur">Acteurs</button><button class="epi-filter" data-filter="accord">Accords</button><button class="epi-filter" data-filter="contexte">Contexte</button></div>
+<div aria-label="Frise chronologique 1944-1998" class="epi-timeline-wrap"><div class="epi-timeline" id="epi-timeline"></div></div>
+<div aria-live="polite" class="epi-frise-detail" id="epi-event-detail"><div class="epi-frise-detail-media"><img alt="Photogramme de la période 1944-1946" src="assets/v1_poster.jpg"/></div><div class="epi-frise-detail-copy"><div class="epi-frise-meta"><span>1944-1998</span><span>Frise interactive</span></div><h3>Sélectionnez un repère</h3><p>Vous verrez ici ce que ce jalon transforme et le fil auquel il se rattache.</p></div></div>
 <p><button class="btn btn-accent" data-go="epi-frise-mode" data-termine-ecran="" disabled="" id="btn-frise">J’ai consulté un repère</button></p>
 </section>
 <section class="panel" data-composant="mode-emploi" data-obligatoire="" data-titre="Lire la frise" id="epi-frise-mode">
@@ -1085,7 +1347,7 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <div class="epi-grid"><div class="epi-card"><h3>1. Cherchez un basculement</h3><p>Une date est utile lorsqu’elle permet d’identifier ce qui change avant et après.</p></div><div class="epi-card"><h3>2. Reliez les fils</h3><p>Institution, statut, contexte politique et accord évoluent ensemble, mais pas au même rythme.</p></div><div class="epi-card"><h3>3. Revenez-y en situation</h3><p>La frise est conçue comme un repère consultable, pas comme une liste à mémoriser.</p></div><div class="epi-card"><h3>4. Gardez le périmètre</h3><p>Le module explique l’évolution historique ; le fonctionnement actuel des institutions est traité dans le parcours présentiel du Congrès.</p></div></div>
 <p style="margin-top:20px;"><button class="btn btn-accent" data-go="epi-defi" data-termine-ecran="">Faire le défi de synthèse</button></p>
 </section>
-<section class="panel" data-composant="defi" data-obligatoire="" data-titre="Défi de synthèse" id="epi-defi">
+<section class="panel" data-composant="defi" data-obligatoire="" data-titre="Défi de synthèse" id="epi-defi"><div class="g-confid epi-confid epi-formative-confid"><span aria-hidden="true" class="epi-lock"></span><span>Vos réponses à cette activité ne sont ni enregistrées ni transmises. Vous pouvez essayer, vérifier et rejouer librement.</span></div>
 <p class="eyebrow">Je mobilise les repères</p><h1>Quelle transformation est en jeu ?</h1>
 <div class="g-consigne"><b>Consigne</b><span>Trois situations, trois choix. L’objectif n’est pas d’obtenir une note mais de vérifier que vous reliez correctement période et transformation.</span></div><div id="act-defi"></div><div class="epi-feedback" hidden="" id="fb-defi"></div>
 <p><button class="btn btn-accent" data-next="epi-synthese" disabled="" id="btn-defi">Vérifier mes réponses</button></p>
@@ -1099,6 +1361,7 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <div class="epi-transform"><div class="epi-year">1988-98</div><div><strong>Rééquilibrage et nouvel équilibre institutionnel.</strong><br/>Une décennie d’accords transforme durablement l’organisation politique du territoire.</div></div>
 <p style="margin-top:22px;"><button class="btn btn-accent" data-go="g-post" data-termine-ecran="">Faire mon positionnement de sortie</button></p>
 </section>
+<section aria-hidden="true" class="panel" data-hors-progression="" data-titre="Évaluation" hidden="" id="g-eval"><h1 data-slot="titre-eval">Évaluation non utilisée dans ce module</h1><div data-slot="eval"></div><div id="eval-zone"></div><div hidden="" id="g-eval-bilan"></div></section>
 <!-- ============ NOYAU · POSITIONNEMENT DE SORTIE ============ -->
 <section class="panel" data-obligatoire="" data-titre="Positionnement de sortie" id="g-post">
 <p class="eyebrow">Positionnement</p>
@@ -1116,6 +1379,7 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <p><button class="btn btn-primaire" data-go="g-fin" disabled="" id="g-retro-suivant">Je valide</button></p>
 </div>
 </section>
+<section aria-hidden="true" class="panel" data-hors-progression="" data-titre="Votre appréciation" hidden="" id="g-satisf"><div id="g-satisf-items"></div><button data-go="g-fin" disabled="" id="g-satisf-suivant" type="button">Continuer</button></section>
 <!-- ============ NOYAU · CLÔTURE ============ -->
 <!-- SLOTS : [data-slot="titre-fin"], [data-slot="fin"]. -->
 <section class="panel" data-hors-progression="" data-titre="Clôture" id="g-fin">
@@ -1157,34 +1421,45 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
 <tr><th>Conception pédagogique et production numérique</th><td>IFAP — Institut de formation à l’administration publique.</td></tr>
 <tr><th>Expertise historique et contenus de référence</th><td>Olivier Houdan.</td></tr>
 <tr><th>Intégration technique</th><td>HTML / SCORM 1.2 pour la plateforme LIANE. Vidéos hébergées hors package.</td></tr>
-<tr><th>Version</th><td>Version design v1.6 · septembre 2026.</td></tr>
+<tr><th>Version</th><td>Version v1.10 · recette noyau commun 1.8.1 · septembre 2026.</td></tr>
 </table>
 <h2 class="section">Médias utilisés dans le module</h2>
 <table class="epi-credit-table epi-credit-media">
 <tr><th>Média</th><th>Provenance</th><th>Usage dans le module</th></tr>
-<tr><td>Photogramme « 1944-1946 : L’ordre bascule »</td><td>Extrait de la capsule vidéo du parcours.</td><td>Ouverture de la période 1 et repère visuel de frise.</td></tr>
-<tr><td>Photogramme « Émancipation politique »</td><td>Extrait de la capsule vidéo du parcours.</td><td>Ouverture de la période 2 et repère visuel de frise.</td></tr>
-<tr><td>Photogramme « Nouvelle-Calédonie 57-77 »</td><td>Extrait de la capsule vidéo du parcours.</td><td>Ouverture de la période 3 et repère visuel de frise.</td></tr>
-<tr><td>Photogramme « Confrontation &amp; négociation 81-88 »</td><td>Extrait de la capsule vidéo du parcours.</td><td>Ouverture de la période 4 et repère visuel de frise.</td></tr>
-<tr><td>Photogramme « De Matignon à Nouméa »</td><td>Extrait de la capsule vidéo du parcours.</td><td>Ouverture de la période 5 et repère visuel de frise.</td></tr>
+<tr><td>Photogrammes de période (5)</td><td>Extraits des cinq capsules vidéo du parcours.</td><td>Ouvertures de période et repères visuels transversaux.</td></tr>
+<tr><td>Ordre colonial / indigénat</td><td>Capture extraite de la capsule « 1944-1946 : L’ordre bascule ».</td><td>Repère documentaire de la période 1.</td></tr>
+<tr><td>Brazzaville et contexte de guerre</td><td>Capture extraite de la capsule « 1944-1946 : L’ordre bascule ».</td><td>Repère documentaire de la période 1 et document d’appui de frise.</td></tr>
+<tr><td>Rupture de 1946</td><td>Capture extraite de la capsule « 1944-1946 : L’ordre bascule ».</td><td>Repère documentaire de la période 1 et document d’appui de frise.</td></tr>
+<tr><td>Élargissement électoral</td><td>Capture extraite de la capsule « Émancipation politique ».</td><td>Repère documentaire de la période 2.</td></tr>
+<tr><td>Neuf premiers élus mélanésiens</td><td>Capture extraite de la capsule « Émancipation politique ».</td><td>Repère documentaire de la période 2 et document d’appui de frise.</td></tr>
+<tr><td>Union calédonienne</td><td>Capture extraite de la capsule « Émancipation politique ».</td><td>Repère documentaire de la période 2 et document d’appui de frise.</td></tr>
+<tr><td>Loi-cadre / loi Jacquinot</td><td>Capture extraite de la capsule « Nouvelle-Calédonie 57-77 ».</td><td>Repère documentaire de la période 3 et document d’appui de frise.</td></tr>
+<tr><td>Boom du nickel</td><td>Capture extraite de la capsule « Nouvelle-Calédonie 57-77 ».</td><td>Repère documentaire de la période 3 et document d’appui de frise.</td></tr>
+<tr><td>Mélanésia 2000</td><td>Capture extraite de la capsule « Nouvelle-Calédonie 57-77 ».</td><td>Repère documentaire de la période 3 et document d’appui de frise.</td></tr>
+<tr><td>Nainville-les-Roches</td><td>Capture extraite de la capsule « Confrontation &amp; négociation 81-88 ».</td><td>Repère documentaire de la période 4 et document d’appui de frise.</td></tr>
+<tr><td>Chronologie d’Ouvéa, avril-mai 1988</td><td>Capture extraite de la capsule « Confrontation &amp; négociation 81-88 ».</td><td>Repère documentaire de la période 4 et document d’appui de frise.</td></tr>
+<tr><td>Poignée de mains Tjibaou-Lafleur</td><td>Capture extraite de la capsule « Confrontation &amp; négociation 81-88 ».</td><td>Repère documentaire de la période 4 et document d’appui de frise.</td></tr>
+<tr><td>Trois provinces</td><td>Capture extraite de la capsule « De Matignon à Nouméa ».</td><td>Repère documentaire de la période 5 et document d’appui de frise.</td></tr>
+<tr><td>Programme 400 cadres</td><td>Capture extraite de la capsule « De Matignon à Nouméa ».</td><td>Repère documentaire de la période 5 et document d’appui de frise.</td></tr>
+<tr><td>Accord de Nouméa</td><td>Capture extraite de la capsule « De Matignon à Nouméa ».</td><td>Repère documentaire de la période 5 et document d’appui de frise.</td></tr>
 </table>
-<div class="encadre encadre-info"><h4>Archives présentes dans les capsules</h4><p>Les photographies et documents d’archives visibles à l’intérieur des cinq vidéos relèvent des crédits et dossiers de production propres à ces capsules. Le SCORM n’en réimporte pas les fichiers : il affiche uniquement les vidéos hébergées et les cinq photogrammes ci-dessus.</p></div>
+<div class="encadre encadre-info"><h4>Archives réinjectées dans le SCORM</h4><p>La v1.8 ne se limite plus aux cinq photogrammes de période. Quinze documents d’appui issus des capsules ont été extraits, légendés et réintégrés dans les ouvertures de séquence et dans la grande frise afin de mieux exploiter l’iconographie proposée par Olivier Houdan.</p></div>
 <p><button class="btn btn-secondaire" data-go="g-fin">Retour à la clôture</button></p>
 </section>
 <section class="panel" data-hors-progression="" data-titre="Sources et références" id="epi-sources">
 <p class="eyebrow">Sources</p><h1>Sources et références</h1>
 <p class="chapo">Le corpus principal est constitué des contenus de référence d’Olivier Houdan et des cinq capsules produites pour le parcours. Les repères juridiques et institutionnels ci-dessous ont été vérifiés sur des sources officielles ou institutionnelles. Liens consultés le 18 septembre 2026.</p>
 <ul class="epi-source-list">
-<li><strong>Citoyenneté en 1946 :</strong> loi n° 46-940 du 7 mai 1946, Légifrance — <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000315563" target="_blank" rel="noopener">ouvrir la source</a>.</li>
-<li><strong>Loi-cadre et institutions de 1957 :</strong> décret n° 57-811 du 22 juillet 1957, Légifrance — <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000704617" target="_blank" rel="noopener">ouvrir la source</a>.</li>
-<li><strong>Reprise en main puis large autonomie, 1965-1982 :</strong> Congrès de la Nouvelle-Calédonie, histoire de l’Assemblée territoriale — <a href="https://www.congres.nc/lassemblee/histoire/lassemblee-territoriale/" target="_blank" rel="noopener">ouvrir la source</a>.</li>
-<li><strong>Succession des assemblées :</strong> Conseil général → Assemblée territoriale → Congrès du Territoire → Congrès de la Nouvelle-Calédonie — <a href="https://www.congres.nc/lassemblee/histoire/presentation/" target="_blank" rel="noopener">ouvrir la source du Congrès</a>.</li>
-<li><strong>Premiers élus mélanésiens au Conseil général (1953) :</strong> Congrès de la Nouvelle-Calédonie — <a href="https://www.congres.nc/commemoration-les-premiers-elus-melanesiens-au-conseil-general-70-ans/" target="_blank" rel="noopener">ouvrir la source</a>.</li>
-<li><strong>Nainville-les-Roches et statuts 1982-1985 :</strong> Congrès de la Nouvelle-Calédonie — <a href="https://www.congres.nc/lassemblee/histoire/lassemblee-territoriale/" target="_blank" rel="noopener">ouvrir la source</a>.</li>
-<li><strong>Congrès du Territoire et provincialisation :</strong> Congrès de la Nouvelle-Calédonie — <a href="https://www.congres.nc/lassemblee/histoire/le-congres-du-territoire/" target="_blank" rel="noopener">ouvrir la source</a>.</li>
-<li><strong>Accords de Matignon-Oudinot, rééquilibrage, programme 400 cadres et Accord de Nouméa :</strong> services de l’État en Nouvelle-Calédonie — <a href="https://www.nouvelle-caledonie.gouv.fr/Actions-de-l-Etat/Elections/Elections-2020/REFERENDUM-2020/Les-etapes-du-processus-institutionnel" target="_blank" rel="noopener">ouvrir la source</a>.</li>
-<li><strong>Préalable minier et accord de Bercy du 1er février 1998 :</strong> Assemblée nationale, travaux préparatoires relatifs à l’Accord de Nouméa — <a href="https://www.assemblee-nationale.fr/11/dossiers/Nouvelle-caledonie/cra980611.asp" target="_blank" rel="noopener">ouvrir la source</a>.</li>
-<li><strong>Union calédonienne, recompositions politiques et boom du nickel :</strong> Maison de la Nouvelle-Calédonie, ressources historiques — <a href="https://www.mncparis.fr/" target="_blank" rel="noopener">ouvrir le site</a>.</li>
+<li><strong>Citoyenneté en 1946 :</strong> loi n° 46-940 du 7 mai 1946, Légifrance — <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000315563" rel="noopener" target="_blank">ouvrir la source</a>.</li>
+<li><strong>Loi-cadre et institutions de 1957 :</strong> décret n° 57-811 du 22 juillet 1957, Légifrance — <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000704617" rel="noopener" target="_blank">ouvrir la source</a>.</li>
+<li><strong>Reprise en main puis large autonomie, 1965-1982 :</strong> Congrès de la Nouvelle-Calédonie, histoire de l’Assemblée territoriale — <a href="https://www.congres.nc/lassemblee/histoire/lassemblee-territoriale/" rel="noopener" target="_blank">ouvrir la source</a>.</li>
+<li><strong>Succession des assemblées :</strong> Conseil général → Assemblée territoriale → Congrès du Territoire → Congrès de la Nouvelle-Calédonie — <a href="https://www.congres.nc/lassemblee/histoire/presentation/" rel="noopener" target="_blank">ouvrir la source du Congrès</a>.</li>
+<li><strong>Premiers élus mélanésiens au Conseil général (1953) :</strong> Congrès de la Nouvelle-Calédonie — <a href="https://www.congres.nc/commemoration-les-premiers-elus-melanesiens-au-conseil-general-70-ans/" rel="noopener" target="_blank">ouvrir la source</a>.</li>
+<li><strong>Nainville-les-Roches et statuts 1982-1985 :</strong> Congrès de la Nouvelle-Calédonie — <a href="https://www.congres.nc/lassemblee/histoire/lassemblee-territoriale/" rel="noopener" target="_blank">ouvrir la source</a>.</li>
+<li><strong>Congrès du Territoire et provincialisation :</strong> Congrès de la Nouvelle-Calédonie — <a href="https://www.congres.nc/lassemblee/histoire/le-congres-du-territoire/" rel="noopener" target="_blank">ouvrir la source</a>.</li>
+<li><strong>Accords de Matignon-Oudinot, rééquilibrage, programme 400 cadres et Accord de Nouméa :</strong> services de l’État en Nouvelle-Calédonie — <a href="https://www.nouvelle-caledonie.gouv.fr/Actions-de-l-Etat/Elections/Elections-2020/REFERENDUM-2020/Les-etapes-du-processus-institutionnel" rel="noopener" target="_blank">ouvrir la source</a>.</li>
+<li><strong>Préalable minier et accord de Bercy du 1er février 1998 :</strong> Assemblée nationale, travaux préparatoires relatifs à l’Accord de Nouméa — <a href="https://www.assemblee-nationale.fr/11/dossiers/Nouvelle-caledonie/cra980611.asp" rel="noopener" target="_blank">ouvrir la source</a>.</li>
+<li><strong>Union calédonienne, recompositions politiques et boom du nickel :</strong> Maison de la Nouvelle-Calédonie, ressources historiques — <a href="https://www.mncparis.fr/" rel="noopener" target="_blank">ouvrir le site</a>.</li>
 </ul>
 <p><button class="btn btn-secondaire" data-go="g-fin">Retour à la clôture</button></p>
 </section>
@@ -1229,18 +1504,23 @@ h3{line-height:1.25}.chapo{font-size:17.5px;line-height:1.55;color:var(--texte-2
    ============================================================================ */
 var GABARIT=(function(){"use strict";
 var config={titre:"Titre du module",sousTitre:"Congrès de la Nouvelle-Calédonie × IFAP — mandature 2026-2031",
-  items:[],orientation:null,ipsatif:true,reportPositionnement:true,reportEval:true,dateMaj:"",nbQuestionsEval:0,
-  reprise:true,accesOperationnel:true,ouvrirSousEtape:null,dev:true};
+  items:[],orientation:null,ipsatif:true,reportPositionnement:true,reportEval:false,reportProgression:false,dateMaj:"",nbQuestionsEval:0,
+  reprise:true,accesOperationnel:true,ouvrirSousEtape:null,restaurerEtat:null,
+  supportMobile:true,mobileMinWidth:768,dev:true};
 var NIVEAUX=["Pas du tout","Plutôt non","Plutôt oui","Tout à fait"];
 var SATISFACTION=["Ce module m'a été utile pour l'exercice de mon mandat.","La durée et le rythme étaient adaptés.","Les exemples étaient ancrés dans la réalité calédonienne.","Je recommanderais ce module à un autre élu."];
-var etat={page:null,vues:{},terminees:{},pre:{},post:{},retro:{},eval:{},satisf:{},mod:{},complete:false};
+var etat={page:null,vues:{},terminees:{},pre:{},post:{},retro:{},eval:{},satisf:{},sousEtapes:{},donnees:{},complete:false};
 var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
 
 /* ---- Couche SCORM 1.2 : liste blanche appliquée par le code (spec §1.3) ---- */
 var SCORM=(function(){var api=null,actif=false,debut=Date.now();
  var BLANCHE=["cmi.core.lesson_status","cmi.core.lesson_location","cmi.core.session_time","cmi.core.exit","cmi.suspend_data"];
- var PROSCRITS=["cmi.core.score","cmi.objectives","cmi.student_data.mastery_score"];
- function autorise(k){return BLANCHE.indexOf(k)!==-1||/^cmi\.interactions\.\d+\.(id|type|student_response|result)$/.test(k)}
+ var PROSCRITS=["cmi.core.score","cmi.student_data.mastery_score"];
+ function autorise(k){
+  if(BLANCHE.indexOf(k)!==-1)return true;
+  if(/^cmi\.interactions\.\d+\.(id|type|student_response|result)$/.test(k))return !!(config.reportPositionnement||config.reportEval);
+  if(/^cmi\.objectives\.\d+\.(id|status)$/.test(k))return !!config.reportProgression;
+  return false}
  function ch(w,p){while(w.API==null&&w.parent!=null&&w.parent!=w&&p<500){p++;w=w.parent}return w.API||null}
  function tr(){var a=ch(window,0);if(!a&&window.opener)a=ch(window.opener,0);return a}
  function init(){api=tr();if(!api){console.info("[GABARIT] Aucune API SCORM — prévisualisation.");return false}
@@ -1253,7 +1533,7 @@ var SCORM=(function(){var api=null,actif=false,debut=Date.now();
  function commit(){if(actif)api.LMSCommit("")}
  function fin(){if(!actif)return;var s=Math.floor((Date.now()-debut)/1000);
   var h=String(Math.floor(s/3600)).padStart(2,"0"),m=String(Math.floor((s%3600)/60)).padStart(2,"0"),x=String(s%60).padStart(2,"0");
-  set("cmi.core.session_time",h+":"+m+":"+x);var statut=get("cmi.core.lesson_status");set("cmi.core.exit",statut==="completed"?"":"suspend");commit();api.LMSFinish("");actif=false}
+  set("cmi.core.session_time",h+":"+m+":"+x);set("cmi.core.exit","");commit();api.LMSFinish("");actif=false}
 return{init:init,get:get,set:set,commit:commit,terminer:fin}})();
 
 /* ---- Positionnements déclaratifs nominatifs : interactions SCORM neutres ---- */
@@ -1285,29 +1565,45 @@ function enregistrerEval(numeroQuestion,reussi,opts){
  SCORM.set("cmi.interactions."+index+".result",reussi?"correct":"wrong");
  SCORM.commit()}
 
-/* ---- suspend_data v3 : vues et séquences terminées sont deux états distincts ---- */
-/* P6 — la liste des « vues » n'est jamais affichée (le menu ne distingue que
-   terminé / actif / à venir) : on ne la persiste plus. La charge ne dépend
-   donc plus du nombre d'écrans, seulement des positionnements et des séquences
-   terminées. Plus de troncature silencieuse. Lecture rétro-compatible v1→v3. */
-function serialiser(){var d={v:5,p:etat.page,fin:Object.keys(etat.terminees),pre:etat.pre,post:etat.post,retro:etat.retro,m:etat.mod,complete:etat.complete};
- var s=JSON.stringify(d);
- if(s.length>3900)console.warn("[GABARIT] suspend_data proche de la limite SCORM 1.2 : "+s.length+" / 4096 caractères.");
- if(s.length>4096)console.error("[GABARIT] suspend_data dépasse la limite SCORM 1.2 : "+s.length+" caractères.");
- return s}
+/* ---- suspend_data v5 : reprise exacte, sous-étapes et productions utiles ----
+   Le noyau persiste uniquement ce qui est nécessaire pour reprendre l'expérience :
+   écran, séquences terminées, positionnements, sous-étapes et données explicitement
+   confiées au noyau par le module. Ne pas y déposer de score ni d'historique de tentatives. */
+var dernierSuspendValide="";
+function serialiser(){return JSON.stringify({v:5,p:etat.page,fin:Object.keys(etat.terminees),pre:etat.pre,post:etat.post,retro:etat.retro,ev:etat.eval,sat:etat.satisf,sub:etat.sousEtapes,m:etat.donnees,complete:etat.complete})}
+function verifierBudgetStockage(contenu){var n=(contenu||"").length;
+ if(n>3900)console.warn("[GABARIT] suspend_data proche de la limite SCORM 1.2 : "+n+"/4096 caractères.");
+ else if(n>3200&&config.dev)console.info("[GABARIT] suspend_data à surveiller : "+n+"/4096 caractères.");
+ return {ok:n<=4096,longueur:n,limite:4096}}
 function deserialiser(){var s=SCORM.get("cmi.suspend_data");if(!s)return;
  try{var d=JSON.parse(s);if([1,2,3,4,5].indexOf(d.v)===-1)return;
- etat.pre=d.pre||{};etat.post=d.post||{};etat.retro=d.retro||{};etat.mod=d.m||{};etat.complete=!!d.complete;
- (d.fin||[]).forEach(function(k){etat.terminees[k]=1});
- if(d.p&&document.getElementById(d.p))etat.page=d.p}catch(e){}}
-function sauver(){SCORM.set("cmi.core.lesson_location",etat.page||"");SCORM.set("cmi.suspend_data",serialiser());SCORM.commit()}
+  etat.pre=d.pre||{};etat.post=d.post||{};etat.retro=d.retro||{};etat.eval=d.ev||{};etat.satisf=d.sat||{};
+  etat.sousEtapes=d.sub||{};etat.donnees=d.m||{};etat.complete=!!d.complete;
+  (d.fin||[]).forEach(function(k){etat.terminees[k]=1});
+  if(d.p&&document.getElementById(d.p))etat.page=d.p;dernierSuspendValide=s
+ }catch(e){console.error("[GABARIT] suspend_data illisible",e)}}
+function sauver(){var contenu=serialiser(),budget=verifierBudgetStockage(contenu);
+ if(!budget.ok){console.error("[GABARIT] sauvegarde refusée : suspend_data dépasse 4096 caractères. Dernier état valide conservé.");
+  if(dernierSuspendValide)SCORM.set("cmi.suspend_data",dernierSuspendValide);SCORM.commit();return false}
+ SCORM.set("cmi.core.lesson_location",etat.page||"");SCORM.set("cmi.suspend_data",contenu);dernierSuspendValide=contenu;SCORM.commit();return true}
+function donnee(cle,valeur){if(typeof cle!=="string"||!cle)return false;var ancienne=etat.donnees[cle];etat.donnees[cle]=valeur;
+ if(!sauver()){if(ancienne===undefined)delete etat.donnees[cle];else etat.donnees[cle]=ancienne;return false}return true}
+function lireDonnee(cle,defaut){return Object.prototype.hasOwnProperty.call(etat.donnees,cle)?etat.donnees[cle]:defaut}
+function sousEtape(id,valeur){id=id||etat.page;if(!id)return false;var ancienne=etat.sousEtapes[id];etat.sousEtapes[id]=valeur;
+ if(!sauver()){if(ancienne===undefined)delete etat.sousEtapes[id];else etat.sousEtapes[id]=ancienne;return false}return true}
+function lireSousEtape(id){return etat.sousEtapes[id||etat.page]}
+
+/* ---- Reporting de progression optionnel : état seulement, aucun contenu ---- */
+function majReportingProgression(){if(!config.reportProgression)return;var requis=ORDRE.filter(dansProgression);
+ requis.forEach(function(id,i){SCORM.set("cmi.objectives."+i+".id","SEQ_"+(i+1));SCORM.set("cmi.objectives."+i+".status",etat.terminees[id]?"completed":"incomplete")});SCORM.commit()}
 
 /* ---- Routeur + progression + menu ---- */
 var ORDRE=[];
 function construireOrdre(){ORDRE=$$('.panel').map(function(p){return p.id})}
 function dansProgression(id){var p=document.getElementById(id);return !!p&&!p.hasAttribute('data-hors-progression')&&!/credit/i.test(id)}
-function terminer(id){id=id||etat.page;if(!dansProgression(id))return;etat.terminees[id]=1;majJauge();sauver();verifierCompletion()}
+function terminer(id){id=id||etat.page;if(!dansProgression(id))return;etat.terminees[id]=1;majJauge();sauver();majReportingProgression();verifierCompletion()}
 function aller(id){var c=document.getElementById(id);if(!c)return;
+ /* Extension EPI : accueil éditorial + chargement paresseux des vidéos. */
  document.body.classList.toggle('epi-accueil-actif',id==='g-contrat');
  $$('.epi-video iframe[data-youtube-src]').forEach(function(f){var actifVideo=c.contains(f);if(actifVideo&&(!f.getAttribute('src')||f.getAttribute('src')==='about:blank')){f.setAttribute('src',f.dataset.youtubeSrc)}else if(!actifVideo&&f.getAttribute('src')&&f.getAttribute('src')!=='about:blank'){try{f.contentWindow.postMessage(JSON.stringify({event:'command',func:'pauseVideo',args:[]}), '*')}catch(e){}}});
  $$('.panel').forEach(function(p){p.classList.remove('actif')});c.classList.add('actif');
@@ -1337,21 +1633,9 @@ var MENU_GROUPS=[
 ];
 function groupePour(id){if(!id)return null;for(var i=0;i<MENU_GROUPS.length;i++)if(MENU_GROUPS[i].test(id))return MENU_GROUPS[i];return null}
 function idsGroupe(g){return ORDRE.filter(function(id){return g.test(id)&&dansProgression(id)})}
-function construireMenu(){var ml=$('#g-menu-liste');ml.innerHTML='';
- MENU_GROUPS.forEach(function(g){var li=document.createElement('li'),a=document.createElement('a');
-  var txt=document.createElement('span'),kicker=document.createElement('span'),lib=document.createElement('span'),st=document.createElement('span');
-  li.dataset.groupe=g.id;a.tabIndex=0;a.setAttribute('role','link');
-  kicker.className='g-menu-kicker';kicker.textContent=g.kicker;lib.className='g-menu-libelle';lib.textContent=g.label;
-  txt.appendChild(kicker);txt.appendChild(lib);st.className='g-menu-statut';st.setAttribute('aria-hidden','true');a.appendChild(txt);a.appendChild(st);
-  a.addEventListener('click',function(){aller(g.start)});a.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();aller(g.start)}});
-  li.appendChild(a);ml.appendChild(li)});majMenu()}
-function majMenu(){var actif=groupePour(etat.page);
- $$('#g-menu-liste li').forEach(function(li){var g=MENU_GROUPS.filter(function(x){return x.id===li.dataset.groupe})[0],a=li.querySelector('a'),st=li.querySelector('.g-menu-statut'),ids=idsGroupe(g),fini=ids.length&&ids.every(function(id){return !!etat.terminees[id]});
-  li.className='';a.removeAttribute('aria-current');
-  if(actif&&g.id===actif.id){li.classList.add('est-actif');a.setAttribute('aria-current','page');st.textContent='→'}
-  else if(fini){li.classList.add('est-termine');st.textContent='✓'}
-  else{li.classList.add('est-a-venir');st.textContent=''}
- })}
+function construireMenu(){var ml=$('#g-menu-liste');ml.innerHTML='';MENU_GROUPS.forEach(function(g){var li=document.createElement('li'),a=document.createElement('a'),txt=document.createElement('span'),kicker=document.createElement('span'),lib=document.createElement('span'),st=document.createElement('span');li.dataset.groupe=g.id;a.tabIndex=0;a.setAttribute('role','link');kicker.className='g-menu-kicker';kicker.textContent=g.kicker;lib.className='g-menu-libelle';lib.textContent=g.label;txt.appendChild(kicker);txt.appendChild(lib);st.className='g-menu-statut';st.setAttribute('aria-hidden','true');a.appendChild(txt);a.appendChild(st);a.addEventListener('click',function(){aller(g.start)});a.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();aller(g.start)}});li.appendChild(a);ml.appendChild(li)});majMenu()}
+function majMenu(){var actif=groupePour(etat.page);$$('#g-menu-liste li').forEach(function(li){var g=MENU_GROUPS.filter(function(x){return x.id===li.dataset.groupe})[0],a=li.querySelector('a'),st=li.querySelector('.g-menu-statut'),ids=idsGroupe(g),fini=ids.length&&ids.every(function(id){return !!etat.terminees[id]});li.className='';a.removeAttribute('aria-current');if(actif&&g.id===actif.id){li.classList.add('est-actif');a.setAttribute('aria-current','page');st.textContent='→'}else if(fini){li.classList.add('est-termine');st.textContent='✓'}else{li.classList.add('est-a-venir');st.textContent=''}})}
+
 
 /* ---- Mentions obligatoires injectées par le noyau (spec §1.4 / §6.4) ---- */
 function confid(id){var c=document.getElementById(id);if(!c)return;
@@ -1379,24 +1663,19 @@ function echelle(cid,cle,cb){var box=document.getElementById(cid);if(!box)return
 function moyenne(o){var v=Object.keys(o).map(function(k){return o[k]});return v.length?v.reduce(function(a,b){return a+b},0)/v.length:0}
 function afficherDelta(){var z=$('#g-delta-zone');if(!z)return;z.innerHTML='';
  var ref=Object.keys(etat.retro).length?etat.retro:etat.pre;
- var apres=etat.post, n=config.items.length, cx=220,cy=220,R=145;
+ var apres=etat.post,n=config.items.length,cx=220,cy=220,R=145;
  var courts=['Repères chronologiques','Citoyenneté & représentation','Évolutions statutaires','Contexte & recompositions','Confrontation & négociation','Matignon-Oudinot / Nouméa'];
  function pt(i,val,rayon){var a=-Math.PI/2+(Math.PI*2*i/n),r=(rayon!=null?rayon:R)*(val/4);return[(cx+Math.cos(a)*r).toFixed(1),(cy+Math.sin(a)*r).toFixed(1)]}
  function poly(vals){return vals.map(function(v,i){return pt(i,v).join(',')}).join(' ')}
  var svg='<svg viewBox="0 0 440 440" role="img" aria-label="Radar comparant votre positionnement de départ avec le recul et votre positionnement actuel sur six dimensions">';
- for(var l=1;l<=4;l++){svg+='<polygon points="'+Array.from({length:n},function(_,i){return pt(i,4,R*l/4).join(',')}).join(' ')+'" fill="none" stroke="#DCE3E8" stroke-width="1"/>'}
- for(var i=0;i<n;i++){var p=pt(i,4);svg+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0]+'" y2="'+p[1]+'" stroke="#DCE3E8" stroke-width="1"/>';var a=-Math.PI/2+(Math.PI*2*i/n),lr=184,lx=cx+Math.cos(a)*lr,ly=cy+Math.sin(a)*lr;var anchor=Math.cos(a)>.25?'start':(Math.cos(a)<-.25?'end':'middle');svg+='<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="'+anchor+'" dominant-baseline="middle" font-size="11.5" font-weight="700" fill="#2F4354">'+(i+1)+'. '+courts[i]+'</text>'}
- var av=Array.from({length:n},function(_,i){return ref[i]||1}), ap=Array.from({length:n},function(_,i){return apres[i]||1});
+ for(var l=1;l<=4;l++)svg+='<polygon points="'+Array.from({length:n},function(_,i){return pt(i,4,R*l/4).join(',')}).join(' ')+'" fill="none" stroke="#DCE3E8" stroke-width="1"/>';
+ for(var i=0;i<n;i++){var p=pt(i,4);svg+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0]+'" y2="'+p[1]+'" stroke="#DCE3E8" stroke-width="1"/>';var a=-Math.PI/2+(Math.PI*2*i/n),lr=184,lx=cx+Math.cos(a)*lr,ly=cy+Math.sin(a)*lr,anchor=Math.cos(a)>.25?'start':(Math.cos(a)<-.25?'end':'middle');svg+='<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="'+anchor+'" dominant-baseline="middle" font-size="11.5" font-weight="700" fill="#2F4354">'+(i+1)+'. '+courts[i]+'</text>'}
+ var av=Array.from({length:n},function(_,i){return ref[i]||1}),ap=Array.from({length:n},function(_,i){return apres[i]||1});
  svg+='<polygon points="'+poly(av)+'" fill="rgba(88,120,143,.08)" stroke="#58788F" stroke-width="3" stroke-dasharray="7 5"/>';
  svg+='<polygon points="'+poly(ap)+'" fill="rgba(248,187,0,.16)" stroke="#B07F00" stroke-width="3"/>';
- av.forEach(function(v,i){var p=pt(i,v);svg+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4" fill="#58788F"/>'});
- ap.forEach(function(v,i){var p=pt(i,v);svg+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4.5" fill="#B07F00"/>'});
- svg+='</svg>';
- var wrap=document.createElement('div');wrap.className='g-radar-wrap';
- var card=document.createElement('div');card.className='g-radar-card';card.innerHTML=svg+'<div class="g-radar-legend"><div class="g-radar-leg"><span class="g-radar-line avant"></span><span>Avant, avec le recul</span></div><div class="g-radar-leg"><span class="g-radar-line"></span><span>Aujourd’hui</span></div></div><p class="g-radar-note">Ce radar juxtapose six auto-positionnements. Il ne produit aucun score global ni classement.</p>';
- var liste=document.createElement('div');liste.className='g-delta-list';
- config.items.forEach(function(txt,i){var a=av[i],p=ap[i],d=document.createElement('div');d.className='g-delta-item';var evolution=p>a?'Vous vous situez plus haut aujourd’hui.':(p<a?'Votre appréciation est plus basse aujourd’hui ; cela peut aussi traduire une lecture plus exigeante de la dimension.':'Votre appréciation est stable.');d.innerHTML='<p><strong>'+(i+1)+'. '+txt+'</strong></p><small>Avant, avec le recul : '+NIVEAUX[a-1]+' · Aujourd’hui : '+NIVEAUX[p-1]+'</small><small>'+evolution+'</small>';liste.appendChild(d)});
- wrap.appendChild(card);wrap.appendChild(liste);z.appendChild(wrap)}
+ av.forEach(function(v,i){var p=pt(i,v);svg+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4" fill="#58788F"/>'});ap.forEach(function(v,i){var p=pt(i,v);svg+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4.5" fill="#B07F00"/>'});svg+='</svg>';
+ var wrap=document.createElement('div');wrap.className='g-radar-wrap';var card=document.createElement('div');card.className='g-radar-card';card.innerHTML=svg+'<div class="g-radar-legend"><div class="g-radar-leg"><span class="g-radar-line avant"></span><span>Avant, avec le recul</span></div><div class="g-radar-leg"><span class="g-radar-line"></span><span>Aujourd’hui</span></div></div><p class="g-radar-note">Ce radar juxtapose six auto-positionnements. Il ne produit aucun score global ni classement.</p>';
+ var liste=document.createElement('div');liste.className='g-delta-list';config.items.forEach(function(txt,i){var a=av[i],p=ap[i],d=document.createElement('div');d.className='g-delta-item';var evolution=p>a?'Vous vous situez plus haut aujourd’hui.':(p<a?'Votre appréciation est plus basse aujourd’hui ; cela peut aussi traduire une lecture plus exigeante de la dimension.':'Votre appréciation est stable.');d.innerHTML='<p><strong>'+(i+1)+'. '+txt+'</strong></p><small>Avant, avec le recul : '+NIVEAUX[a-1]+' · Aujourd’hui : '+NIVEAUX[p-1]+'</small><small>'+evolution+'</small>';liste.appendChild(d)});wrap.appendChild(card);wrap.appendChild(liste);z.appendChild(wrap)}
 
 /* ---- P5 · Complétion : déclarée dès que le travail requis est fait ----
    Repose sur les séquences TERMINÉES, jamais sur un score. Se déclenche dès
@@ -1618,7 +1897,21 @@ function initReprise(){
  $('strong',bandeau).textContent=titre;$('span',bandeau).textContent=pct?pct.textContent:'0 %';
  bandeau.addEventListener('click',function(e){var action=e.target.closest('[data-reprise]');if(!action)return;if(action.dataset.reprise==='debut')aller(ORDRE[0]);bandeau.remove()})}
 
+function appliquerPolitiqueAffichage(){var blocker=$('#g-device-blocker');if(!blocker)return;
+ function estTelephone(){
+  var ua=navigator.userAgent||'',ud=navigator.userAgentData;
+  if(ud&&typeof ud.mobile==='boolean')return ud.mobile===true;
+  if(/iPhone|iPod|Windows Phone|\bMobi\b/i.test(ua))return true;
+  if(/iPad|Tablet|Silk/i.test(ua))return false;
+  if(/Android/i.test(ua)&&!/\bMobi\b/i.test(ua))return false;
+  var touch=(navigator.maxTouchPoints||0)>0,shortSide=Math.min(screen.width||9999,screen.height||9999);
+  return touch&&shortSide<(config.mobileMinWidth||560);
+ }
+ function maj(){var bloque=config.supportMobile===false&&estTelephone();blocker.classList.toggle('g-actif',bloque);blocker.setAttribute('aria-hidden',bloque?'false':'true');document.body.style.overflow=bloque?'hidden':''}
+ maj();window.addEventListener('resize',maj);window.addEventListener('orientationchange',maj)}
+
 function init(cfg){Object.keys(cfg||{}).forEach(function(k){config[k]=cfg[k]});
+ appliquerPolitiqueAffichage();
  $('#g-titre-module').childNodes[0].nodeValue=config.titre+" ";$('#g-sous-titre').textContent=config.sousTitre;
  $$('[data-maj]').forEach(function(e){e.textContent=config.dateMaj});
  SCORM.init();deserialiser();construireOrdre();construireMenu();controleVariete();initPleinEcran();initRevelations();initModaleGenerique();
@@ -1633,8 +1926,15 @@ function init(cfg){Object.keys(cfg||{}).forEach(function(k){config[k]=cfg[k]});
  echelle('g-post-items','post',function(){$('#g-retro-bloc').hidden=false;
   echelle('g-retro-items','retro',function(){$('#g-retro-suivant').disabled=false});
   $('#g-retro-bloc').scrollIntoView({behavior:'smooth'})});
- $('#g-retro-suivant').addEventListener('click',function(){terminer('g-post');if(config.ipsatif)afficherDelta();declarerCompletion()});
-
+ var zs=$('#g-satisf-items');
+ SATISFACTION.forEach(function(t,i){var d=document.createElement('div');d.className='g-item-pos';d.innerHTML='<p>'+t+'</p>';
+  var e=document.createElement('div');e.className='g-echelle';e.setAttribute('role','group');e.setAttribute('aria-label',t);
+  NIVEAUX.forEach(function(lib,n){var b=document.createElement('button');b.type='button';b.textContent=lib;
+   b.addEventListener('click',function(){$$('button',e).forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+    etat.satisf[i]=n+1;if(Object.keys(etat.satisf).length===SATISFACTION.length)$('#g-satisf-suivant').disabled=false});
+   e.appendChild(b)});d.appendChild(e);zs.appendChild(d)});
+ $('#g-retro-suivant').addEventListener('click',function(){terminer('g-post')});
+ $('#g-satisf-suivant').addEventListener('click',function(){terminer('g-satisf');terminer('g-fin');if(config.ipsatif)afficherDelta();declarerCompletion()});
  /* v1.6 — exclut les modales : un clic data-go dans une .g-modal est géré par
     initModaleGenerique seul, jamais deux fois. */
  document.addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(b&&!b.disabled&&!b.closest('.g-modal')){if(b.hasAttribute('data-termine-ecran'))terminer(etat.page);aller(b.dataset.go)}});
@@ -1643,18 +1943,20 @@ function init(cfg){Object.keys(cfg||{}).forEach(function(k){config[k]=cfg[k]});
  $('#g-btn-menu').addEventListener('click',function(){var o=$('#g-menu').classList.toggle('ouvert');this.setAttribute('aria-expanded',o?'true':'false')});
  /* v1.2 — CORRECTIF Recommencer : réinitialise page + complétion + statut SCORM avant sauvegarde */
  $('#g-btn-reprendre').addEventListener('click',function(){if(confirm('Recommencer le module depuis le début ?')){
-  etat.pre={};etat.post={};etat.retro={};etat.eval={};etat.satisf={};etat.vues={};etat.terminees={};
-  etat.mod={};etat.page=ORDRE[0]||null;etat.complete=false;
+  etat.pre={};etat.post={};etat.retro={};etat.eval={};etat.satisf={};etat.sousEtapes={};etat.donnees={};etat.vues={};etat.terminees={};
+  etat.page=ORDRE[0]||null;etat.complete=false;
   SCORM.set("cmi.core.lesson_status","incomplete");
   sauver();location.reload()}});
  window.addEventListener('beforeunload',function(){verifierCompletion();sauver();SCORM.terminer()});
  aller(etat.page||ORDRE[0]);
+ if(typeof config.restaurerEtat==='function')config.restaurerEtat(etat);
+ majReportingProgression();
  /* P5 — à la reprise, si tout le requis est déjà terminé, sceller la complétion. */
  verifierCompletion();
  /* U1 — bandeau de reprise (après aller + verifierCompletion : le % est à jour). */
  initReprise()}
 
-return{init:init,aller:aller,terminer:terminer,confid:confid,droitDate:droitDate,evalResultat:evalResultat,evalTerminee:evalTerminee,appariement:appariement,ordonner:ordonner,verifierCompletion:verifierCompletion,ouvrirAcces:ouvrirAcces,fermerModal:fermerModal,sauver:sauver,etat:etat,version:"1.6-EPI-1.4"}})();
+return{init:init,aller:aller,terminer:terminer,confid:confid,droitDate:droitDate,evalResultat:evalResultat,evalTerminee:evalTerminee,appariement:appariement,ordonner:ordonner,verifierCompletion:verifierCompletion,ouvrirAcces:ouvrirAcces,fermerModal:fermerModal,donnee:donnee,lireDonnee:lireDonnee,sousEtape:sousEtape,lireSousEtape:lireSousEtape,sauver:sauver,verifierBudgetStockage:verifierBudgetStockage,majReportingProgression:majReportingProgression,etat:etat,version:"1.8"}})();
 
 /* ============================================================================
    BÂTIR UN MODULE SUR LE NOYAU (spec §6)
@@ -1729,13 +2031,17 @@ GABARIT.init({
     "Je peux distinguer ce que construisent les accords de Matignon-Oudinot puis l’Accord de Nouméa."
   ],
   orientation:null,
-  dateMaj:"18/09/2026",
+  dateMaj:"20/09/2026",
   nbQuestionsEval:0,
   ipsatif:true,
   reportPositionnement:true,
   reportEval:false,
+  reportProgression:false,
   reprise:true,
   accesOperationnel:true,
+  supportMobile:true,
+  mobileMinWidth:560,
+  restaurerEtat:function(etat){window.__EPI_ETAT_RESTAURE=etat;},
   dev:false
 });
 
@@ -1800,11 +2106,35 @@ GABARIT.init({
   enhance('g-post-items','post');
 })();
 
-/* ===== Interactions EPI · état sauvegardé dans suspend_data v5 ===== */
+
+/* ===== EPI v1.8 · composition vidéo et recette visuelle ===== */
+(function(){
+  'use strict';
+  function enhanceVideoStages(){
+    document.querySelectorAll('.epi-period-screen[data-composant="video"]').forEach(function(sec){
+      if(sec.querySelector('.epi-video-stage'))return;
+      var q=sec.querySelector('.epi-objectif'),v=sec.querySelector('.epi-video-shell');
+      if(!q||!v)return;
+      var stage=document.createElement('div');stage.className='epi-video-stage';
+      q.parentNode.insertBefore(stage,q);stage.appendChild(q);stage.appendChild(v);
+    });
+  }
+  enhanceVideoStages();
+})();
+
+/* ===== Reprise exacte EPI · noyau v1.8.1 =====
+   config.restaurerEtat capture l’état du noyau. Les composants ci-dessous sont reconstruits
+   depuis GABARIT.lireDonnee() / lireSousEtape(). */
+/* ===== Interactions EPI · persistance via les API du noyau v1.8.1 ===== */
 (function(){
   'use strict';
   var E=GABARIT.etat;
-  function state(key,def){if(E.mod[key]===undefined)E.mod[key]=def;return E.mod[key]}
+  function state(key,def){var v=GABARIT.lireDonnee(key);if(v===undefined){GABARIT.donnee(key,def);return def}return v}
+  function store(key,val){GABARIT.donnee(key,val)}
+  /* Réponses formatives : état de session uniquement. Elles ne sont jamais écrites dans suspend_data. */
+  var volatileState={};
+  function vstate(key,def){if(!Object.prototype.hasOwnProperty.call(volatileState,key))volatileState[key]=def;return volatileState[key]}
+  function vstore(key,val){volatileState[key]=val}
   function save(){GABARIT.sauver()}
   function qs(s,c){return (c||document).querySelector(s)}
   function qsa(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))}
@@ -1828,30 +2158,30 @@ GABARIT.init({
       {t:'La citoyenneté est proclamée pour les ressortissants des territoires d’outre-mer.',a:'apres'},
       {t:'La représentation politique des Mélanésiens reste encore très limitée.',a:'avant'},
       {t:'L’élargissement des droits ouvre une nouvelle phase de participation et de représentation.',a:'apres'}
-    ], box=qs('#act-p1'); if(!box)return; var s=state('p1',{}),validated=!!state('p1v',false),btn=qs('#btn-p1'),fb=qs('#fb-p1');
+    ], box=qs('#act-p1'); if(!box)return; var s=vstate('p1',{}),validated=!!vstate('p1v',false),btn=qs('#btn-p1'),fb=qs('#fb-p1');
     box.innerHTML=data.map(function(x,i){return '<div class="epi-item"><div class="epi-item-head"><div><strong>'+x.t+'</strong></div><div class="epi-item-actions"><button class="epi-smallbtn" data-i="'+i+'" data-v="avant">Avant 1946</button><button class="epi-smallbtn" data-i="'+i+'" data-v="apres">Ce que 1946 ouvre</button></div></div></div>'}).join('');
     function count(){return data.filter(function(x,i){return s[i]===x.a}).length}
-    function replay(){s={};E.mod.p1=s;validated=false;E.mod.p1v=false;fb.hidden=true;fb.className='epi-feedback';clearMarks(box);save();render()}
+    function replay(){s={};vstore('p1',s);validated=false;vstore('p1v',false);fb.hidden=true;fb.className='epi-feedback';clearMarks(box);save();render()}
     function showFeedback(){var n=count(),ok=n===data.length;qsa('.epi-item',box).forEach(function(it,i){markItem(it,s[i]===data[i].a)});feedbackBlock(fb,ok,ok?'Vous avez bien identifié le basculement.':n+' repères sur '+data.length+' sont bien classés.',ok?'1946 ouvre une rupture juridique et politique ; ses effets sur la représentation se déploient ensuite progressivement.':'Repérez la différence entre le cadre antérieur et ce que la citoyenneté ouvre : la représentation ne devient pas immédiatement pleine et uniforme.',replay)}
     function render(){qsa('[data-i]',box).forEach(function(b){b.classList.toggle('on',s[b.dataset.i]===b.dataset.v);b.disabled=validated});btn.disabled=!validated&&Object.keys(s).length!==data.length;btn.textContent=validated?'Continuer':'Vérifier mon classement';if(validated)showFeedback()}
-    box.addEventListener('click',function(e){var b=e.target.closest('button[data-i]');if(!b||validated)return;s[b.dataset.i]=b.dataset.v;E.mod.p1=s;save();render()});
-    btn.addEventListener('click',function(){finishOrValidate(btn,function(){return validated},btn.dataset.next,function(){validated=true;E.mod.p1v=true;save();render()})});render()
+    box.addEventListener('click',function(e){var b=e.target.closest('button[data-i]');if(!b||validated)return;s[b.dataset.i]=b.dataset.v;vstore('p1',s);render()});
+    btn.addEventListener('click',function(){finishOrValidate(btn,function(){return validated},btn.dataset.next,function(){validated=true;vstore('p1v',true);render()})});render()
   }
 
-  function initOrder(id,key,items,correct,initial,btnSel,next,good,bad){var box=qs(id);if(!box)return;var s=state(key,initial.slice()),validated=!!state(key+'v',false),btn=qs(btnSel),fb=qs('#fb-'+key);
+  function initOrder(id,key,items,correct,initial,btnSel,next,good,bad){var box=qs(id);if(!box)return;var s=vstate(key,initial.slice()),validated=!!vstate(key+'v',false),btn=qs(btnSel),fb=qs('#fb-'+key);
     function count(){return s.filter(function(v,i){return v===correct[i]}).length}
-    function replay(){s=initial.slice();E.mod[key]=s;validated=false;E.mod[key+'v']=false;fb.hidden=true;fb.className='epi-feedback';save();render()}
+    function replay(){s=initial.slice();vstore(key,s);validated=false;vstore(key+'v',false);fb.hidden=true;fb.className='epi-feedback';save();render()}
     function render(){box.innerHTML=s.map(function(idx,pos){var ok=idx===correct[pos];return '<div class="epi-item '+(validated?(ok?'is-correct':'is-wrong'):'')+'"><div class="epi-item-head"><div><strong>'+(pos+1)+'.</strong> '+items[idx]+'</div><div class="epi-item-actions"><button class="epi-smallbtn" data-pos="'+pos+'" data-dir="-1" '+(validated||pos===0?'disabled':'')+'>↑</button><button class="epi-smallbtn" data-pos="'+pos+'" data-dir="1" '+(validated||pos===s.length-1?'disabled':'')+'>↓</button></div>'+(validated?'<span class="epi-result-mark" aria-label="'+(ok?'Position correcte':'Position à revoir')+'">'+(ok?'✓':'✕')+'</span>':'')+'</div></div>'}).join('');btn.disabled=false;btn.textContent=validated?'Continuer':'Vérifier l’ordre';if(validated){var n=count(),ok=n===items.length;feedbackBlock(fb,ok,ok?good:n+' position'+(n>1?'s':'')+' sur '+items.length+' correctement placée'+(n>1?'s':'' )+'.',ok?'Le droit reconnu devient progressivement une capacité effective à participer et à être représenté.':bad,replay)}}
-    box.addEventListener('click',function(e){var b=e.target.closest('button[data-pos]');if(!b||b.disabled||validated)return;var p=+b.dataset.pos,n=p+(+b.dataset.dir),tmp=s[p];s[p]=s[n];s[n]=tmp;E.mod[key]=s;save();render()});
-    btn.addEventListener('click',function(){finishOrValidate(btn,function(){return validated},next,function(){validated=true;E.mod[key+'v']=true;save();render()})});render()}
+    box.addEventListener('click',function(e){var b=e.target.closest('button[data-pos]');if(!b||b.disabled||validated)return;var p=+b.dataset.pos,n=p+(+b.dataset.dir),tmp=s[p];s[p]=s[n];s[n]=tmp;vstore(key,s);render()});
+    btn.addEventListener('click',function(){finishOrValidate(btn,function(){return validated},next,function(){validated=true;vstore(key+'v',true);render()})});render()}
 
-  function initPairs(id,key,rows,opts,answers,btnSel,next,good,bad){var box=qs(id);if(!box)return;var s=state(key,{}),validated=!!state(key+'v',false),btn=qs(btnSel),fb=qs('#fb-'+key);
+  function initPairs(id,key,rows,opts,answers,btnSel,next,good,bad){var box=qs(id);if(!box)return;var s=vstate(key,{}),validated=!!vstate(key+'v',false),btn=qs(btnSel),fb=qs('#fb-'+key);
     function count(){return rows.filter(function(_,i){return s[i]===answers[i]}).length}
-    function replay(){s={};E.mod[key]=s;validated=false;E.mod[key+'v']=false;fb.hidden=true;fb.className='epi-feedback';save();render()}
+    function replay(){s={};vstore(key,s);validated=false;vstore(key+'v',false);fb.hidden=true;fb.className='epi-feedback';save();render()}
     box.innerHTML=rows.map(function(r,i){return '<div class="epi-item"><div class="epi-item-head"><strong>'+r+'</strong></div><div class="epi-item-actions" style="margin-top:9px">'+opts.map(function(o,j){return '<button class="epi-smallbtn" data-r="'+i+'" data-o="'+j+'">'+o+'</button>'}).join('')+'</div></div>'}).join('');
     function render(){qsa('[data-r]',box).forEach(function(b){b.classList.toggle('on',String(s[b.dataset.r])===b.dataset.o);b.disabled=validated});qsa('.epi-item',box).forEach(function(it,i){it.classList.remove('is-correct','is-wrong');var old=it.querySelector('.epi-result-mark');if(old)old.remove();if(validated)markItem(it,s[i]===answers[i])});btn.disabled=!validated&&Object.keys(s).length!==rows.length;btn.textContent=validated?'Continuer':'Vérifier mes associations';if(validated){var n=count(),ok=n===rows.length;feedbackBlock(fb,ok,ok?good:n+' association'+(n>1?'s':'')+' sur '+rows.length+' correcte'+(n>1?'s':'' )+'.',ok?'Vous distinguez les dynamiques mobilisées dans cette période.':bad,replay)}}
-    box.addEventListener('click',function(e){var b=e.target.closest('button[data-r]');if(!b||validated)return;s[b.dataset.r]=+b.dataset.o;E.mod[key]=s;save();render()});
-    btn.addEventListener('click',function(){finishOrValidate(btn,function(){return validated},next,function(){validated=true;E.mod[key+'v']=true;save();render()})});render()}
+    box.addEventListener('click',function(e){var b=e.target.closest('button[data-r]');if(!b||validated)return;s[b.dataset.r]=+b.dataset.o;vstore(key,s);render()});
+    btn.addEventListener('click',function(){finishOrValidate(btn,function(){return validated},next,function(){validated=true;vstore(key+'v',true);render()})});render()}
 
   function initTimeline(){var box=qs('#epi-timeline'),detail=qs('#epi-event-detail');if(!box)return;
     var periods=[
@@ -1863,56 +2193,56 @@ GABARIT.init({
     ];
     var labels={institution:'Institution',texte:'Texte / statut',mouvement:'Mouvement',acteur:'Acteur',accord:'Accord / négociation',contexte:'Contexte'};
     var events=[
-      {p:1,y:'1944',c:'institution',t:'Rétablissement du Conseil général',d:'Après sa dissolution au début de la Seconde Guerre mondiale, le Conseil général est rétabli en 1944. Le cadre colonial demeure, mais la période de guerre ouvre une phase de remise en question.',s:'Congrès de la Nouvelle-Calédonie — histoire de l’institution.'},
-      {p:1,y:'1946',c:'texte',t:'Citoyenneté',d:'La loi du 7 mai 1946 proclame citoyens les ressortissants des territoires d’outre-mer. C’est une rupture juridique majeure ; ses effets politiques se déploient ensuite progressivement.',s:'Loi n° 46-940 du 7 mai 1946 — Légifrance.'},
-      {p:2,y:'1951',c:'acteur',t:'Maurice Lenormand député',d:'L’élection de Maurice Lenormand comme député constitue un jalon de la recomposition de la représentation politique dans le territoire.',s:'Maison de la Nouvelle-Calédonie — « Les institutions ».'},
-      {p:2,y:'1953',c:'institution',t:'Premiers élus mélanésiens',d:'Neuf conseillers mélanésiens sont installés au Conseil général après le scrutin de février 1953. La représentation politique se transforme concrètement.',s:'Congrès de la Nouvelle-Calédonie — commémoration des premiers élus mélanésiens.'},
-      {p:2,y:'1953',c:'mouvement',t:'Union calédonienne',d:'L’Union calédonienne se constitue en 1953 autour d’un projet d’entente entre communautés et d’autonomie, et devient une force centrale de la vie politique calédonienne.',s:'Maison de la Nouvelle-Calédonie — « Les institutions ».'},
-      {p:3,y:'1957',c:'institution',t:'Assemblée territoriale',d:'Le Conseil général devient Assemblée territoriale, composée de trente membres. Le même mouvement institue un Conseil de gouvernement : l’autonomie locale prend une forme nouvelle.',s:'Congrès de la Nouvelle-Calédonie — histoire de l’Assemblée territoriale.'},
-      {p:3,y:'1963',c:'texte',t:'Loi Jacquinot',d:'La loi Jacquinot marque une reprise en main : le rôle des ministres territoriaux est supprimé et l’autonomie ouverte en 1957 est réduite.',s:'Maison de la Nouvelle-Calédonie — « Les institutions ».'},
-      {p:3,y:'1969',c:'texte',t:'Lois Billotte',d:'Les lois dites Billotte réduisent encore certaines libertés locales, notamment dans les domaines de la mine et de la fiscalité.',s:'Maison de la Nouvelle-Calédonie — « Les institutions ».'},
-      {p:3,y:'1969-72',c:'contexte',t:'Boom du nickel',d:'L’expansion du nickel transforme l’économie, les mobilités et la démographie. Ces changements alimentent aussi de nouvelles tensions sociales et politiques.',s:'Maison de la Nouvelle-Calédonie — « L’histoire de la Nouvelle-Calédonie ».'},
-      {p:3,y:'Fin des années 1960',c:'mouvement',t:'Nouvelles revendications kanak',d:'De nouveaux mouvements, dont les Foulards rouges, portent plus fortement les revendications identitaires et politiques kanak.',s:'Maison de la Nouvelle-Calédonie — « L’histoire de la Nouvelle-Calédonie ».'},
-      {p:3,y:'1975',c:'contexte',t:'Mélanésia 2000',d:'Le festival Mélanésia 2000 constitue un moment majeur d’affirmation culturelle kanak et contribue à rendre plus visible la question identitaire dans l’espace public.',s:'Maison de la Nouvelle-Calédonie — ressources historiques.'},
-      {p:3,y:'1976',c:'texte',t:'Statut de large autonomie',d:'Le statut du 28 décembre 1976 ouvre une nouvelle phase de large autonomie, avec un Conseil de gouvernement de nouveau renforcé.',s:'Congrès de la Nouvelle-Calédonie — histoire de l’Assemblée territoriale.'},
-      {p:3,y:'1976',c:'mouvement',t:'Création du PALIKA',d:'Le Parti de libération kanak s’inscrit dans la structuration du courant indépendantiste à la fin des années 1970.',s:'Maison de la Nouvelle-Calédonie — ressources historiques.'},
-      {p:3,y:'1977',c:'mouvement',t:'Recomposition des blocs politiques',d:'L’Union calédonienne se prononce pour l’indépendance ; parallèlement, le RPC puis le RPCR structurent le courant favorable au maintien dans la République.',s:'Maison de la Nouvelle-Calédonie — « Les institutions ».'},
-      {p:3,y:'1979',c:'mouvement',t:'Front indépendantiste',d:'Plusieurs formations indépendantistes se regroupent au sein du Front indépendantiste, préfigurant les recompositions du début des années 1980.',s:'Maison de la Nouvelle-Calédonie — « L’histoire de la Nouvelle-Calédonie ».'},
-      {p:4,y:'1981',c:'contexte',t:'Tensions politiques accrues',d:'L’alternance nationale et l’assassinat de Pierre Declercq s’inscrivent dans un contexte de tensions croissantes autour de l’avenir politique du territoire.',s:'Maison de la Nouvelle-Calédonie — ressources historiques.'},
-      {p:4,y:'1982',c:'institution',t:'Réformes et nouvel exécutif',d:'Des réformes foncières, culturelles et de développement sont engagées ; Jean-Marie Tjibaou accède à la vice-présidence du Conseil de gouvernement.',s:'Congrès de la Nouvelle-Calédonie — histoire de l’Assemblée territoriale.'},
-      {p:4,y:'1983',c:'accord',t:'Nainville-les-Roches',d:'La table ronde de Nainville-les-Roches cherche une base de dialogue sur l’avenir institutionnel. Elle marque une tentative importante de reconnaissance des légitimités en présence.',s:'Congrès de la Nouvelle-Calédonie — 40e anniversaire de Nainville-les-Roches.'},
-      {p:4,y:'1984',c:'texte',t:'Statut Lemoine',d:'Le statut de 1984 accorde une large autonomie au territoire et prévoit une consultation ultérieure sur son avenir.',s:'Congrès de la Nouvelle-Calédonie — histoire de l’Assemblée territoriale.'},
-      {p:4,y:'1984',c:'mouvement',t:'FLNKS et boycott actif',d:'La création du FLNKS et le boycott des élections territoriales ouvrent la période communément appelée « les Événements ».',s:'Maison de la Nouvelle-Calédonie — ressources historiques.'},
-      {p:4,y:'1985',c:'institution',t:'Congrès du Territoire',d:'Avec le statut Fabius-Pisani, l’Assemblée territoriale devient Congrès du Territoire et l’organisation régionale est profondément remaniée.',s:'Congrès de la Nouvelle-Calédonie — histoire du Congrès du Territoire.'},
-      {p:4,y:'1988',c:'contexte',t:'Ouvéa : avril-mai 1988',d:'Les violences d’avril-mai 1988 à Ouvéa sont suivies, en juin, par une mission de dialogue et la reprise d’une négociation politique.',s:'Congrès de la Nouvelle-Calédonie — histoire du Congrès du Territoire ; services de l’État.'},
-      {p:4,y:'26 juin 1988',c:'accord',t:'Accord de Matignon',d:'Jean-Marie Tjibaou et Jacques Lafleur signent l’accord de Matignon sous l’égide de Michel Rocard. Il ouvre une période de paix civile, de développement et de rééquilibrage.',s:'Services de l’État en Nouvelle-Calédonie — étapes du processus institutionnel.'},
-      {p:5,y:'Août 1988',c:'accord',t:'Accord d’Oudinot',d:'L’accord d’Oudinot précise l’organisation institutionnelle et complète le dispositif ouvert par Matignon.',s:'Services de l’État en Nouvelle-Calédonie — étapes du processus institutionnel.'},
-      {p:5,y:'1989',c:'institution',t:'Trois provinces',d:'La Nouvelle-Calédonie est organisée autour des provinces Sud, Nord et Îles Loyauté ; le Congrès est formé par la réunion de leurs élus.',s:'Congrès de la Nouvelle-Calédonie — histoire du Congrès du Territoire.'},
-      {p:5,y:'1989',c:'contexte',t:'Programme 400 cadres',d:'La Mission Formation est créée pour mettre en œuvre le programme « 400 cadres », levier de rééquilibrage des compétences humaines issu des accords de Matignon-Oudinot.',s:'Gouvernement de la Nouvelle-Calédonie — création du GIP Formation–Cadres Avenir.'},
-      {p:5,y:'1996',c:'accord',t:'Reprise des négociations',d:'Les discussions destinées à éviter l’échéance référendaire prévue en 1998 reprennent entre l’État, le RPCR et le FLNKS.',s:'Congrès de la Nouvelle-Calédonie — histoire du Congrès du Territoire.'},
-      {p:5,y:'1 fév. 1998',c:'accord',t:'Accord de Bercy',d:'L’accord sur l’échange de massifs miniers lève le « préalable minier » et permet la reprise des négociations politiques sur l’avenir institutionnel.',s:'Assemblée nationale / Sénat — travaux préparatoires relatifs à l’Accord de Nouméa.'},
-      {p:5,y:'5 mai 1998',c:'accord',t:'Accord de Nouméa',d:'L’Accord de Nouméa organise un nouvel équilibre politique et institutionnel et un processus de transferts progressifs de compétences.',s:'Services de l’État en Nouvelle-Calédonie — Accord de Nouméa.'},
-      {p:5,y:'8 nov. 1998',c:'contexte',t:'Approbation par consultation',d:'L’Accord de Nouméa est soumis à la population de Nouvelle-Calédonie et approuvé lors de la consultation du 8 novembre 1998.',s:'Sénat — travaux relatifs à la loi organique de 1999.'}
+      {p:1,y:'1944',c:'institution',t:'Rétablissement du Conseil général',d:'Après sa dissolution au début de la Seconde Guerre mondiale, le Conseil général est rétabli en 1944. Le cadre colonial demeure, mais la période de guerre ouvre une phase de remise en question.',s:'Congrès de la Nouvelle-Calédonie — histoire de l’institution.',img:'assets/icono/p1_indigenat.jpg',alt:'Vue issue de la capsule montrant l’ancienne logique coloniale d’extraction.',credit:'Capture extraite de la capsule « 1944-1946 : L’ordre bascule ».'},
+      {p:1,y:'1946',c:'texte',t:'Citoyenneté',d:'La loi du 7 mai 1946 proclame citoyens les ressortissants des territoires d’outre-mer. C’est une rupture juridique majeure ; ses effets politiques se déploient ensuite progressivement.',s:'Loi n° 46-940 du 7 mai 1946 — Légifrance.',img:'assets/icono/p1_rupture1946.jpg',alt:'Vue issue de la capsule rappelant les jalons de la rupture de 1946.',credit:'Capture extraite de la capsule « 1944-1946 : L’ordre bascule ».'},
+      {p:2,y:'1951',c:'acteur',t:'Maurice Lenormand député',d:'L’élection de Maurice Lenormand comme député constitue un jalon de la recomposition de la représentation politique dans le territoire.',s:'Maison de la Nouvelle-Calédonie — « Les institutions ».',img:'assets/icono/p2_vote_elu.jpg',alt:'Vue issue de la capsule montrant la progression de 1946 à 1953.',credit:'Capture extraite de la capsule « Émancipation politique ».'},
+      {p:2,y:'1953',c:'institution',t:'Premiers élus mélanésiens',d:'Neuf conseillers mélanésiens sont installés au Conseil général après le scrutin de février 1953. La représentation politique se transforme concrètement.',s:'Congrès de la Nouvelle-Calédonie — commémoration des premiers élus mélanésiens.',img:'assets/icono/p2_neuf_elus.jpg',alt:'Vue issue de la capsule montrant les neuf premiers élus mélanésiens.',credit:'Capture extraite de la capsule « Émancipation politique ».'},
+      {p:2,y:'1953',c:'mouvement',t:'Union calédonienne',d:'L’Union calédonienne se constitue en 1953 autour d’un projet d’entente entre communautés et d’autonomie, et devient une force centrale de la vie politique calédonienne.',s:'Maison de la Nouvelle-Calédonie — « Les institutions ».',img:'assets/icono/p2_uc.jpg',alt:'Vue issue de la capsule montrant une carte d’adhérent de l’Union calédonienne.',credit:'Capture extraite de la capsule « Émancipation politique ».'},
+      {p:3,y:'1957',c:'institution',t:'Assemblée territoriale',d:'Le Conseil général devient Assemblée territoriale, composée de trente membres. Le même mouvement institue un Conseil de gouvernement : l’autonomie locale prend une forme nouvelle.',s:'Congrès de la Nouvelle-Calédonie — histoire de l’Assemblée territoriale.',img:'assets/icono/p3_lois.jpg',alt:'Vue issue de la capsule montrant la loi-cadre de 1957.',credit:'Capture extraite de la capsule « Nouvelle-Calédonie 57-77 ».'},
+      {p:3,y:'1963',c:'texte',t:'Loi Jacquinot',d:'La loi Jacquinot marque une reprise en main : le rôle des ministres territoriaux est supprimé et l’autonomie ouverte en 1957 est réduite.',s:'Maison de la Nouvelle-Calédonie — « Les institutions ».',img:'assets/icono/p3_lois.jpg',alt:'Vue issue de la capsule montrant la loi Jacquinot de 1963.',credit:'Capture extraite de la capsule « Nouvelle-Calédonie 57-77 ».'},
+      {p:3,y:'1969',c:'texte',t:'Lois Billotte',d:'Les lois dites Billotte réduisent encore certaines libertés locales, notamment dans les domaines de la mine et de la fiscalité.',s:'Maison de la Nouvelle-Calédonie — « Les institutions ».',img:'assets/icono/p3_lois.jpg',alt:'Vue issue de la capsule montrant les principaux jalons institutionnels de la période.',credit:'Capture extraite de la capsule « Nouvelle-Calédonie 57-77 ».'},
+      {p:3,y:'1969-72',c:'contexte',t:'Boom du nickel',d:'L’expansion du nickel transforme l’économie, les mobilités et la démographie. Ces changements alimentent aussi de nouvelles tensions sociales et politiques.',s:'Maison de la Nouvelle-Calédonie — « L’histoire de la Nouvelle-Calédonie ».',img:'assets/icono/p3_nickel.jpg',alt:'Vue issue de la capsule montrant le boom du nickel.',credit:'Capture extraite de la capsule « Nouvelle-Calédonie 57-77 ».'},
+      {p:3,y:'Fin des années 1960',c:'mouvement',t:'Nouvelles revendications kanak',d:'De nouveaux mouvements, dont les Foulards rouges, portent plus fortement les revendications identitaires et politiques kanak.',s:'Maison de la Nouvelle-Calédonie — « L’histoire de la Nouvelle-Calédonie ».',img:'assets/v3_poster.jpg',alt:'Photogramme de la période 1957-1981.',credit:'Photogramme de la capsule de période.'},
+      {p:3,y:'1975',c:'contexte',t:'Mélanésia 2000',d:'Le festival Mélanésia 2000 constitue un moment majeur d’affirmation culturelle kanak et contribue à rendre plus visible la question identitaire dans l’espace public.',s:'Maison de la Nouvelle-Calédonie — ressources historiques.',img:'assets/icono/p3_melanesia.jpg',alt:'Vue issue de la capsule montrant la chronologie 1957-1977, incluant Mélanésia 2000.',credit:'Capture extraite de la capsule « Nouvelle-Calédonie 57-77 ».'},
+      {p:3,y:'1976',c:'texte',t:'Statut de large autonomie',d:'Le statut du 28 décembre 1976 ouvre une nouvelle phase de large autonomie, avec un Conseil de gouvernement de nouveau renforcé.',s:'Congrès de la Nouvelle-Calédonie — histoire de l’Assemblée territoriale.',img:'assets/icono/p3_lois.jpg',alt:'Vue issue de la capsule montrant les jalons de 1957 à 1977.',credit:'Capture extraite de la capsule « Nouvelle-Calédonie 57-77 ».'},
+      {p:3,y:'1976',c:'mouvement',t:'Création du PALIKA',d:'Le Parti de libération kanak s’inscrit dans la structuration du courant indépendantiste à la fin des années 1970.',s:'Maison de la Nouvelle-Calédonie — ressources historiques.',img:'assets/v3_poster.jpg',alt:'Photogramme de la période 1957-1981.',credit:'Photogramme de la capsule de période.'},
+      {p:3,y:'1977',c:'mouvement',t:'Recomposition des blocs politiques',d:'L’Union calédonienne se prononce pour l’indépendance ; parallèlement, le RPC puis le RPCR structurent le courant favorable au maintien dans la République.',s:'Maison de la Nouvelle-Calédonie — « Les institutions ».',img:'assets/v3_poster.jpg',alt:'Photogramme de la période 1957-1981.',credit:'Photogramme de la capsule de période.'},
+      {p:3,y:'1979',c:'mouvement',t:'Front indépendantiste',d:'Plusieurs formations indépendantistes se regroupent au sein du Front indépendantiste, préfigurant les recompositions du début des années 1980.',s:'Maison de la Nouvelle-Calédonie — « L’histoire de la Nouvelle-Calédonie ».',img:'assets/v3_poster.jpg',alt:'Photogramme de la période 1957-1981.',credit:'Photogramme de la capsule de période.'},
+      {p:4,y:'1981',c:'contexte',t:'Tensions politiques accrues',d:'L’alternance nationale et l’assassinat de Pierre Declercq s’inscrivent dans un contexte de tensions croissantes autour de l’avenir politique du territoire.',s:'Maison de la Nouvelle-Calédonie — ressources historiques.',img:'assets/v4_poster.jpg',alt:'Photogramme de la période 1981-1988.',credit:'Photogramme de la capsule de période.'},
+      {p:4,y:'1982',c:'institution',t:'Réformes et nouvel exécutif',d:'Des réformes foncières, culturelles et de développement sont engagées ; Jean-Marie Tjibaou accède à la vice-présidence du Conseil de gouvernement.',s:'Congrès de la Nouvelle-Calédonie — histoire de l’Assemblée territoriale.',img:'assets/v4_poster.jpg',alt:'Photogramme de la période 1981-1988.',credit:'Photogramme de la capsule de période.'},
+      {p:4,y:'1983',c:'accord',t:'Nainville-les-Roches',d:'La table ronde de Nainville-les-Roches cherche une base de dialogue sur l’avenir institutionnel. Elle marque une tentative importante de reconnaissance des légitimités en présence.',s:'Congrès de la Nouvelle-Calédonie — 40e anniversaire de Nainville-les-Roches.',img:'assets/icono/p4_nainville.jpg',alt:'Vue issue de la capsule mobilisant la déclaration de Nainville-les-Roches.',credit:'Capture extraite de la capsule « Confrontation & négociation 81-88 ».'},
+      {p:4,y:'1984',c:'texte',t:'Statut Lemoine',d:'Le statut de 1984 accorde une large autonomie au territoire et prévoit une consultation ultérieure sur son avenir.',s:'Congrès de la Nouvelle-Calédonie — histoire de l’Assemblée territoriale.',img:'assets/v4_poster.jpg',alt:'Photogramme de la période 1981-1988.',credit:'Photogramme de la capsule de période.'},
+      {p:4,y:'1984',c:'mouvement',t:'FLNKS et boycott actif',d:'La création du FLNKS et le boycott des élections territoriales ouvrent la période communément appelée « les Événements ».',s:'Maison de la Nouvelle-Calédonie — ressources historiques.',img:'assets/v4_poster.jpg',alt:'Photogramme de la période 1981-1988.',credit:'Photogramme de la capsule de période.'},
+      {p:4,y:'1985',c:'institution',t:'Congrès du Territoire',d:'Avec le statut Fabius-Pisani, l’Assemblée territoriale devient Congrès du Territoire et l’organisation régionale est profondément remaniée.',s:'Congrès de la Nouvelle-Calédonie — histoire du Congrès du Territoire.',img:'assets/v4_poster.jpg',alt:'Photogramme de la période 1981-1988.',credit:'Photogramme de la capsule de période.'},
+      {p:4,y:'1988',c:'contexte',t:'Ouvéa : avril-mai 1988',d:'Les violences d’avril-mai 1988 à Ouvéa sont suivies, en juin, par une mission de dialogue et la reprise d’une négociation politique.',s:'Congrès de la Nouvelle-Calédonie — histoire du Congrès du Territoire ; services de l’État.',img:'assets/icono/p4_ouvea.jpg',alt:'Vue issue de la capsule montrant la chronologie d’avril et mai 1988 à Ouvéa.',credit:'Capture extraite de la capsule « Confrontation & négociation 81-88 ».'},
+      {p:4,y:'26 juin 1988',c:'accord',t:'Accord de Matignon',d:'Jean-Marie Tjibaou et Jacques Lafleur signent l’accord de Matignon sous l’égide de Michel Rocard. Il ouvre une période de paix civile, de développement et de rééquilibrage.',s:'Services de l’État en Nouvelle-Calédonie — étapes du processus institutionnel.',img:'assets/icono/p4_poignee.jpg',alt:'Vue issue de la capsule montrant la poignée de mains Tjibaou-Lafleur.',credit:'Capture extraite de la capsule « Confrontation & négociation 81-88 ».'},
+      {p:5,y:'Août 1988',c:'accord',t:'Accord d’Oudinot',d:'L’accord d’Oudinot précise l’organisation institutionnelle et complète le dispositif ouvert par Matignon.',s:'Services de l’État en Nouvelle-Calédonie — étapes du processus institutionnel.',img:'assets/v5_poster.jpg',alt:'Photogramme de la période 1988-1998.',credit:'Photogramme de la capsule de période.'},
+      {p:5,y:'1989',c:'institution',t:'Trois provinces',d:'La Nouvelle-Calédonie est organisée autour des provinces Sud, Nord et Îles Loyauté ; le Congrès est formé par la réunion de leurs élus.',s:'Congrès de la Nouvelle-Calédonie — histoire du Congrès du Territoire.',img:'assets/icono/p5_provinces.jpg',alt:'Vue issue de la capsule montrant la construction politique et la création des provinces.',credit:'Capture extraite de la capsule « De Matignon à Nouméa ».'},
+      {p:5,y:'1989',c:'contexte',t:'Programme 400 cadres',d:'La Mission Formation est créée pour mettre en œuvre le programme « 400 cadres », levier de rééquilibrage des compétences humaines issu des accords de Matignon-Oudinot.',s:'Gouvernement de la Nouvelle-Calédonie — création du GIP Formation–Cadres Avenir.',img:'assets/icono/p5_400cadres.jpg',alt:'Vue issue de la capsule montrant le programme 400 cadres.',credit:'Capture extraite de la capsule « De Matignon à Nouméa ».'},
+      {p:5,y:'1996',c:'accord',t:'Reprise des négociations',d:'Les discussions destinées à éviter l’échéance référendaire prévue en 1998 reprennent entre l’État, le RPCR et le FLNKS.',s:'Congrès de la Nouvelle-Calédonie — histoire du Congrès du Territoire.',img:'assets/v5_poster.jpg',alt:'Photogramme de la période 1988-1998.',credit:'Photogramme de la capsule de période.'},
+      {p:5,y:'1 fév. 1998',c:'accord',t:'Accord de Bercy',d:'L’accord sur l’échange de massifs miniers lève le « préalable minier » et permet la reprise des négociations politiques sur l’avenir institutionnel.',s:'Assemblée nationale / Sénat — travaux préparatoires relatifs à l’Accord de Nouméa.',img:'assets/v5_poster.jpg',alt:'Photogramme de la période 1988-1998.',credit:'Photogramme de la capsule de période.'},
+      {p:5,y:'5 mai 1998',c:'accord',t:'Accord de Nouméa',d:'L’Accord de Nouméa organise un nouvel équilibre politique et institutionnel et un processus de transferts progressifs de compétences.',s:'Services de l’État en Nouvelle-Calédonie — Accord de Nouméa.',img:'assets/icono/p5_noumea.jpg',alt:'Vue issue de la capsule montrant la signature de l’Accord de Nouméa.',credit:'Capture extraite de la capsule « De Matignon à Nouméa ».'},
+      {p:5,y:'8 nov. 1998',c:'contexte',t:'Approbation par consultation',d:'L’Accord de Nouméa est soumis à la population de Nouvelle-Calédonie et approuvé lors de la consultation du 8 novembre 1998.',s:'Sénat — travaux relatifs à la loi organique de 1999.',img:'assets/icono/p5_noumea.jpg',alt:'Vue issue de la capsule montrant la signature de l’Accord de Nouméa.',credit:'Capture extraite de la capsule « De Matignon à Nouméa ».'}
     ];
-    var ts=state('frise',{filter:'all',selected:null,scroll:0,seen:false}),current=ts.filter||'all',wrap=qs('.epi-timeline-wrap'),detailInitial=detail.innerHTML,scrollTimer=null;
-    function render(){box.innerHTML=periods.map(function(p){var ev=events.filter(function(e){return e.p===p.id&&(current==='all'||e.c===current)});return '<section class="epi-period-col"><div class="epi-period-visual"><img src="'+p.img+'" alt="Photogramme de la période '+p.years+'"><div class="epi-period-caption"><small>'+p.years+'</small><b>'+p.title+'</b></div></div><div class="epi-period-events">'+(ev.length?ev.map(function(e){var i=events.indexOf(e);return '<button class="epi-event" data-event="'+i+'" data-cat="'+e.c+'"><b>'+e.y+'</b><span>'+e.t+'</span><small>'+labels[e.c]+'</small></button>'}).join(''):'<div class="epi-frise-empty">Aucun repère pour ce filtre.</div>')+'</div></section>'}).join('');qsa('.epi-filter').forEach(function(x){x.classList.toggle('on',x.dataset.filter===current)});if(wrap)setTimeout(function(){wrap.scrollLeft=ts.scroll||0},0);if(ts.selected!=null){var b=box.querySelector('[data-event="'+ts.selected+'"]');if(b)show(ts.selected,b);else detail.innerHTML=detailInitial}else detail.innerHTML=detailInitial;enable('#btn-frise',!!ts.seen)}
-    function show(i,b){qsa('.epi-event',box).forEach(function(x){x.classList.toggle('on',x===b)});var e=events[i],p=periods[e.p-1];detail.innerHTML='<div class="epi-frise-detail-media"><img src="'+p.img+'" alt="Photogramme de la période '+p.years+'"></div><div class="epi-frise-detail-copy"><div class="epi-frise-meta"><span>'+e.y+'</span><span>'+labels[e.c]+'</span><span>Période '+e.p+'</span></div><h3>'+e.t+'</h3><p>'+e.d+'</p><p class="epi-frise-source"><strong>Source de vérification :</strong> '+e.s+'</p></div>'}
-    var filters=qs('.epi-filters');if(filters)filters.addEventListener('click',function(ev){var b=ev.target.closest('[data-filter]');if(!b)return;current=b.dataset.filter;ts.filter=current;E.mod.frise=ts;save();render()});
-    box.addEventListener('click',function(ev){var b=ev.target.closest('[data-event]');if(!b)return;ts.selected=+b.dataset.event;ts.seen=true;E.mod.frise=ts;save();enable('#btn-frise',true);show(ts.selected,b)});
-    if(wrap)wrap.addEventListener('scroll',function(){clearTimeout(scrollTimer);scrollTimer=setTimeout(function(){ts.scroll=Math.round(wrap.scrollLeft);E.mod.frise=ts;save()},250)},{passive:true});render()
+    var ts=state('frise',{filter:'all',scroll:0,seen:false}),ancienSelected=ts.selected,sub=GABARIT.lireSousEtape('epi-frise'),selected=sub!=null?+sub:(ancienSelected!=null?+ancienSelected:null),current=ts.filter||'all',wrap=qs('.epi-timeline-wrap'),detailInitial=detail.innerHTML,scrollTimer=null;if(Object.prototype.hasOwnProperty.call(ts,'selected')){delete ts.selected;store('frise',ts);if(selected!=null)GABARIT.sousEtape('epi-frise',String(selected))}
+    function render(){box.innerHTML=periods.map(function(p){var ev=events.filter(function(e){return e.p===p.id&&(current==='all'||e.c===current)});return '<section class="epi-period-col"><div class="epi-period-visual"><img src="'+p.img+'" alt="Photogramme de la période '+p.years+'"><div class="epi-period-caption"><small>'+p.years+'</small><b>'+p.title+'</b></div></div><div class="epi-period-events">'+(ev.length?ev.map(function(e){var i=events.indexOf(e);return '<button class="epi-event" data-event="'+i+'" data-cat="'+e.c+'"><b>'+e.y+'</b><span>'+e.t+'</span><small>'+labels[e.c]+'</small></button>'}).join(''):'<div class="epi-frise-empty">Aucun repère pour ce filtre.</div>')+'</div></section>'}).join('');qsa('.epi-filter').forEach(function(x){x.classList.toggle('on',x.dataset.filter===current)});if(wrap)setTimeout(function(){wrap.scrollLeft=ts.scroll||0},0);if(selected!=null){var b=box.querySelector('[data-event="'+selected+'"]');if(b)show(selected,b);else detail.innerHTML=detailInitial}else detail.innerHTML=detailInitial;enable('#btn-frise',!!ts.seen)}
+    function show(i,b){qsa('.epi-event',box).forEach(function(x){x.classList.toggle('on',x===b)});var e=events[i],p=periods[e.p-1];detail.innerHTML='<div class="epi-frise-detail-media"><img src="'+(e.img||p.img)+'" alt="'+(e.alt||('Photogramme de la période '+p.years))+'"></div><div class="epi-frise-detail-copy"><div class="epi-frise-meta"><span>'+e.y+'</span><span>'+labels[e.c]+'</span><span>Période '+e.p+'</span></div><h3>'+e.t+'</h3><p>'+e.d+'</p>'+(e.credit?'<p class="epi-frise-source"><strong>Document affiché :</strong> '+e.credit+'</p>':'')+'<p class="epi-frise-source"><strong>Source de vérification :</strong> '+e.s+'</p></div>'}
+    var filters=qs('.epi-filters');if(filters)filters.addEventListener('click',function(ev){var b=ev.target.closest('[data-filter]');if(!b)return;current=b.dataset.filter;ts.filter=current;store('frise',ts);render()});
+    box.addEventListener('click',function(ev){var b=ev.target.closest('[data-event]');if(!b)return;selected=+b.dataset.event;ts.seen=true;store('frise',ts);GABARIT.sousEtape('epi-frise',String(selected));enable('#btn-frise',true);show(selected,b)});
+    if(wrap)wrap.addEventListener('scroll',function(){clearTimeout(scrollTimer);scrollTimer=setTimeout(function(){ts.scroll=Math.round(wrap.scrollLeft);store('frise',ts)},250)},{passive:true});render()
   }
 
   function initDefi(){var qsData=[
     {q:'Vous cherchez la période qui transforme le cadre institutionnel local avec une Assemblée territoriale et un Conseil de gouvernement.',o:['1946','1957','1988'],a:1},
     {q:'Vous cherchez le moment où la sortie de la confrontation ouvre une décennie de rééquilibrage.',o:['1976','1988','1998'],a:1},
     {q:'Vous cherchez l’accord qui organise un nouvel équilibre institutionnel à la fin de la décennie ouverte par Matignon-Oudinot.',o:['Accord de Nouméa','Loi-cadre','Statut Lemoine'],a:0}
-  ],box=qs('#act-defi');if(!box)return;var s=state('defi',{}),validated=!!state('defiv',false),btn=qs('#btn-defi'),fb=qs('#fb-defi');
+  ],box=qs('#act-defi');if(!box)return;var s=vstate('defi',{}),validated=!!vstate('defiv',false),btn=qs('#btn-defi'),fb=qs('#fb-defi');
     box.innerHTML=qsData.map(function(x,i){return '<div class="epi-item"><div class="epi-item-head"><strong>'+x.q+'</strong></div><div class="epi-item-actions" style="margin-top:10px">'+x.o.map(function(o,j){return '<button class="epi-choice" data-q="'+i+'" data-a="'+j+'">'+o+'</button>'}).join('')+'</div></div>'}).join('');
     function count(){return qsData.filter(function(x,i){return s[i]===x.a}).length}
-    function replay(){s={};E.mod.defi=s;validated=false;E.mod.defiv=false;fb.hidden=true;fb.className='epi-feedback';save();render()}
+    function replay(){s={};vstore('defi',s);validated=false;vstore('defiv',false);fb.hidden=true;fb.className='epi-feedback';save();render()}
     function render(){qsa('[data-q]',box).forEach(function(b){b.classList.toggle('on',String(s[b.dataset.q])===b.dataset.a);b.disabled=validated});qsa('.epi-item',box).forEach(function(it,i){it.classList.remove('is-correct','is-wrong');var old=it.querySelector('.epi-result-mark');if(old)old.remove();if(validated)markItem(it,s[i]===qsData[i].a)});btn.disabled=!validated&&Object.keys(s).length!==qsData.length;btn.textContent=validated?'Voir la synthèse':'Vérifier mes réponses';if(validated){var n=count(),ok=n===qsData.length;feedbackBlock(fb,ok,ok?'Les trois transformations sont correctement reliées.':n+' repère'+(n>1?'s':'')+' sur 3 correctement relié'+(n>1?'s':'' )+'.',ok?'Vous pouvez utiliser la frise comme un outil de repérage, sans apprendre une liste de dates.':'Les réponses à revoir sont signalées par une croix. La frise reste accessible depuis le menu si vous souhaitez vérifier un jalon.',replay)}}
-    box.addEventListener('click',function(e){var b=e.target.closest('[data-q]');if(!b||validated)return;s[b.dataset.q]=+b.dataset.a;E.mod.defi=s;save();render()});
-    btn.addEventListener('click',function(){finishOrValidate(btn,function(){return validated},btn.dataset.next,function(){validated=true;E.mod.defiv=true;save();render()})});render()}
+    box.addEventListener('click',function(e){var b=e.target.closest('[data-q]');if(!b||validated)return;s[b.dataset.q]=+b.dataset.a;vstore('defi',s);render()});
+    btn.addEventListener('click',function(){finishOrValidate(btn,function(){return validated},btn.dataset.next,function(){validated=true;vstore('defiv',true);render()})});render()}
 
   initBinary();
   initOrder('#act-p2','p2',['Citoyenneté reconnue','Organisation collective et politique','Participation électorale élargie','Représentation accrue'],[0,1,2,3],[2,0,3,1],'#btn-p2','epi-p2-synth','C’est la logique attendue.','Le fil à retrouver va du droit reconnu à l’organisation, puis à l’élargissement de la participation et à une représentation accrue.');
